@@ -1,0 +1,1 @@
+matlab -nosplash -nodesktop -r "run('runscript.m');";
