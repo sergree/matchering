@@ -67,6 +67,7 @@ Otherwise you will get only one WAV file: not limited 32-bit floating point for 
 ## Error Codes
 
 Our `matchering.m` module returns an integer that indicates a process, a success or a specific error.
+
 | Code | Meaning                                                               |
 |------|-----------------------------------------------------------------------|
 | 2    | In queue for processing                                               |
