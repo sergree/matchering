@@ -97,6 +97,7 @@ Our `matchering.m` module returns an integer that indicates a process, a success
 ## Donate
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)][donate]
+
 If our script saved your time or money, you may [support us][donate].
 
 **Thank you!**
