@@ -41,7 +41,7 @@ With this setup you will get results without [sound limiting][limiter]. If you h
 - *(Optional)* `mrswatson64.exe` from [MrsWatson][mrswatson];
 - *(Optional)* Some brickwall limiter VST2x64 DLL - original **Matchering** used `Elephant.dll` from [Voxengo Elephant][elephant].
 
-### Why didn't we made limiting in MATLAB?
+### Why didn't we make limiting in MATLAB?
 
 Making own quality brickwall limiting algorithm is very huge subject. And we had no time for it.
 
