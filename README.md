@@ -112,13 +112,21 @@ If our script saved your time or money, you may [support us][donate].
 ## Press About Us
 
 [MusicRadar](https://www.musicradar.com/news/tech/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others-646454)
+
 [Ask.Audio #1](https://ask.audio/articles/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes)
+
 [Ask.Audio #2](https://ask.audio/articles/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)
+
 [Rekkerd #1](https://rekkerd.org/sound-tools-intros-matchering-online-mastering-service-with-matching/)
+
 [Rekkerd #2](https://rekkerd.org/sound-tools-launches-matchering-public-beta/)
+
 [mixingroom.de #1](http://mixingroom.de/matchering-automatisiertes-online-mastering-mit-sound-tools/)
+
 [mixingroom.de #2](http://mixingroom.de/sound-tools-gibt-oeffentliche-beta-phase-von-online-mastering-service-matchering-bekannt/)
+
 [gearnews.de](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/)
+
 [Logic Loc](http://www.logiclocmusic.com/2017/01/05/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)
 
 **Thanks, guys!**
