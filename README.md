@@ -67,30 +67,30 @@ Otherwise you will get only one WAV file: not limited 32-bit floating point for 
 ## Error Codes
 
 Our `matchering.m` module returns an integer that indicates a process, a success or a specific error.
-| Code | Meaning |
-| --- | --- |
-| 2  | In queue for processing |
-| 3  | Loading and analysing |
-| 4  | Matching levels |
-| 5  | Matching frequencies |
-| 6  | Correcting levels |
-| 7  | Final processing and saving |
-| 8  | Export in various audio formats |
-| 9  | Task complete |
-| 30 | Audio stream error in both files! |
-| 31 | Audio stream error in target file! |
-| 32 | Audio stream error in reference file! |
-| 33 | Track length exceeded in both files! |
-| 34 | Track length exceeded in target file! |
-| 35 | Track length exceeded in reference file! |
-| 36 | Number of channels exceeded in both files! |
-| 37 | Number of channels exceeded in target file! |
-| 38 | Number of channels exceeded in reference file! |
-| 39 | Track length is too small in both files! |
-| 40 | Track length is too small in target file! |
-| 41 | Track length is too small in reference file! |
-| 42 | Track length exceeded in reference file and too small in target file! |
-| 43 | Track length exceeded in target file and too small in reference file! |
+| Code | Meaning                                                               |
+|------|-----------------------------------------------------------------------|
+| 2    | In queue for processing                                               |
+| 3    | Loading and analysing                                                 |
+| 4    | Matching levels                                                       |
+| 5    | Matching frequencies                                                  |
+| 6    | Correcting levels                                                     |
+| 7    | Final processing and saving                                           |
+| 8    | Export in various audio formats                                       |
+| 9    | Task complete                                                         |
+| 30   | Audio stream error in both files!                                     |
+| 31   | Audio stream error in target file!                                    |
+| 32   | Audio stream error in reference file!                                 |
+| 33   | Track length exceeded in both files!                                  |
+| 34   | Track length exceeded in target file!                                 |
+| 35   | Track length exceeded in reference file!                              |
+| 36   | Number of channels exceeded in both files!                            |
+| 37   | Number of channels exceeded in target file!                           |
+| 38   | Number of channels exceeded in reference file!                        |
+| 39   | Track length is too small in both files!                              |
+| 40   | Track length is too small in target file!                             |
+| 41   | Track length is too small in reference file!                          |
+| 42   | Track length exceeded in reference file and too small in target file! |
+| 43   | Track length exceeded in target file and too small in reference file! |
 
 ## Donate
 
