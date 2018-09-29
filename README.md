@@ -62,6 +62,7 @@ Making own quality brickwall limiting algorithm is very huge subject. And we had
 5. After processing your result file(s) will be in `pathWorkspace` folder.
 
 If you have [sound limiting][limiter] setup, you will get two WAV files: limited 24-bit and 16-bit.
+
 Otherwise you will get only one WAV file: not limited 32-bit floating point for future limiting in DAW.
 
 ## Error Codes
@@ -97,6 +98,7 @@ Our `matchering.m` module returns an integer that indicates a process, a success
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)][donate]
 If our script saved your time or money, you may [support us][donate].
+
 **Thank you!**
 
 # Our Thoughts
