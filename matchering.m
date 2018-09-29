@@ -6,7 +6,7 @@
 % All non-44100 audio will be resampled to 44100 for now
 % Only stereo and mono supported for now
 %
-% This module made in procedural style, not OPP, sorry :)
+% This module made in procedural style, not OOP, sorry :)
 %
 % ----------------------------------------------------------------
 
