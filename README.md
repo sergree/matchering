@@ -12,8 +12,8 @@ This information was at our site:
 > We developed the unique automatic flexible processing algorithm, which offers a novel online mastering experience, where you show us: how your track should sound by sending the **REFERENCE**.
 >
 > Matchering will make your track sounds like you want:
-> 1st step - To match characteristics of your **TARGET** and the **REFERENCE** tracks;
-> 2nd step - To master your **TARGET** track with the **REFERENCE** track's mastering settings.
+> - 1st step - To match characteristics of your **TARGET** and the **REFERENCE** tracks;
+> - 2nd step - To master your **TARGET** track with the **REFERENCE** track's mastering settings.
 >
 > It opens a wide range of opportunities:
 > - You can make your track instantly sounds like your favorite artist's;
