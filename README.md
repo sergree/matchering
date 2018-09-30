@@ -160,7 +160,7 @@ We believe that some *some enthusiasts* can rewrite **Matchering** on [Python]'s
 
 **Thanks, guys!**
 
-[Matchering]: https://sound.tools
+[Matchering]: http://sound.tools
 [sound limiting]: https://en.wikipedia.org/wiki/Limiter
 [MATLAB]: https://www.mathworks.com/campaigns/products/trials.html?prodcode=ML
 [Signal Processing Toolbox]: https://www.mathworks.com/campaigns/products/trials.html?prodcode=SG
