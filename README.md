@@ -132,7 +132,7 @@ Do you remember [Prisma]? **Matchering** is like **audio-Prisma** for sound opti
 
 ### Why are online [mastering] services without references useless?
 
-Online [mastering] services without possibility to upload a **REFERENCE** is a [black box]. How can it know how **your track** should sound? There are so much different *genres* and *styles*, and all of them need their individual approach to processing. And there are so much different *soundings* in them. And without a **REFERENCE** it's imposible to get good results. *It's a pure mathematics.*
+Online [mastering] services without possibility to upload a **REFERENCE** is a [black box]. How can it know how **your track** should sound? There are so much different *genres* and *styles*, and all of them need their individual approach to processing. And there are so much different *soundings* in them. And without a **REFERENCE** it's imposible to get good results. *It's pure mathematics.*
 
 ### Potential rewrite on open source platform
 
@@ -154,7 +154,9 @@ We believe that some *some enthusiasts* can rewrite **Matchering** on [Python]'s
 
 [mixingroom.de #2](http://mixingroom.de/sound-tools-gibt-oeffentliche-beta-phase-von-online-mastering-service-matchering-bekannt/)
 
-[gearnews.de](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/)
+[gearnews.de #1](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/)
+
+[gearnews.de #2](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/)
 
 [Logic Loc](http://www.logiclocmusic.com/2017/01/05/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)
 
