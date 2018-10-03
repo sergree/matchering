@@ -150,6 +150,8 @@ We believe that some *some enthusiasts* can rewrite **Matchering** on [Python]'s
 
 [Rekkerd #2](https://rekkerd.org/sound-tools-launches-matchering-public-beta/)
 
+[Rekkerd #3](https://rekkerd.org/sound-tools-matchering-mastering-service-folds-now-open-source/)
+
 [mixingroom.de #1](http://mixingroom.de/matchering-automatisiertes-online-mastering-mit-sound-tools/)
 
 [mixingroom.de #2](http://mixingroom.de/sound-tools-gibt-oeffentliche-beta-phase-von-online-mastering-service-matchering-bekannt/)
