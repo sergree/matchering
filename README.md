@@ -146,6 +146,8 @@ We believe that some *some enthusiasts* can rewrite **Matchering** on [Python]'s
 
 [Ask.Audio #2](https://ask.audio/articles/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)
 
+[Ask.Audio #3](https://ask.audio/articles/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github)
+
 [Rekkerd #1](https://rekkerd.org/sound-tools-intros-matchering-online-mastering-service-with-matching/)
 
 [Rekkerd #2](https://rekkerd.org/sound-tools-launches-matchering-public-beta/)
