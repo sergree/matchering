@@ -1,6 +1,4 @@
-
-
-# Matchering by SOUND.TOOLS
+# Matchering by Wokashi RG (ex. SOUND.TOOLS)
 
 We're glad to share source code of closed [Matchering] project by **SOUND.TOOLS** to you.
 
