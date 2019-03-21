@@ -1,4 +1,4 @@
-% Matchering DSP Module 0.86 by SOUND.TOOLS
+% Matchering DSP Module 0.86 by Wokashi RG (ex. SOUND.TOOLS)
 % https://github.com/SOUNDTOOLS
 %
 % You need to place mrswatson64.exe and activated brickwall limiter VST DLL in the folder specified in pathBin variable!
@@ -12,7 +12,7 @@
 
 function currentSessionStatus = matchering(pathWorkspace, fileTarget, fileReference, pathTemp, pathBin, fileBrickwallLimiter, maxLength, timeArea, fftSize, linLogOversampling, peakCompensationSteps)
 
-disp('Matchering DSP Module 0.86 by SOUND.TOOLS')
+disp('Matchering DSP Module 0.86 by Wokashi RG (ex. SOUND.TOOLS)')
 disp('----------------------------------------------------------------')
 
 currentSessionStatus = 2;
