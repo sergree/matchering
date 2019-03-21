@@ -1,5 +1,5 @@
-% Matchering DSP Module Runscript by SOUND.TOOLS
-% https://github.com/SOUNDTOOLS
+% Matchering DSP Module Runscript by Wokashi RG (ex. SOUND.TOOLS)
+% https://github.com/wokashi-rg
 %
 % Folder variables, you need to leave '\' in the end of all folder variables!
 % Workspace folder
