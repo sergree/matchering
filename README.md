@@ -1,6 +1,6 @@
 # Matchering by Wokashi RG (ex. SOUND.TOOLS)
 
-We're glad to share source code of closed [Matchering] project by **SOUND.TOOLS** to you.
+We're glad to share source code of closed [Matchering] project by **Wokashi RG (ex. SOUND.TOOLS)** to you.
 
 [Matchering] was a novel online [mastering] service with a *simple idea* - you should upload 2 tracks: 
 - **TARGET** (the track which you want to master, yours or not yours, you want it sounds like the reference);
