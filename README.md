@@ -172,7 +172,7 @@ We believe that some *some enthusiasts* can rewrite **Matchering** on [Python]'s
 [DAW]: https://en.wikipedia.org/wiki/Digital_audio_workstation
 [MrsWatson]: https://github.com/teragonaudio/MrsWatson
 [Voxengo Elephant]: https://www.voxengo.com/product/elephant/
-[scripts]: https://github.com/SOUNDTOOLS/Matchering/archive/master.zip
+[scripts]: https://github.com/wokashi-rg/Matchering/archive/master.zip
 [supported formats]: https://www.mathworks.com/help/matlab/import_export/supported-file-formats.html
 [donate]: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=HCZY8AJ9HNRGN&lc=US&item_name=Wokashi%2eRG%3a%20Matchering&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donate_SM%2egif%3aNonHosted
 [NumPy]: http://www.numpy.org/
