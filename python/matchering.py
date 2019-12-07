@@ -12,7 +12,7 @@ MINIMUM_FLOOR = 1e-6
 
 
 def _to_db(x):
-    return str(10 * math.log10(x)) + ' db'
+    return str(20 * math.log10(x)) + ' db'
 
 
 def _smooth(y, span):
