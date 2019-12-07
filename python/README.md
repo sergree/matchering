@@ -10,12 +10,13 @@ If this is your first time using python, we highly recommend using [Anaconda](ht
 to get started, and build your python environment.
 
 1. Open your terminal and activate a python environment.
-2. `cd Matchering/python`
-3. Install requirements.
+2. `sudo apt install libsndfile-dev`
+3. `cd Matchering/python`
+4. Install requirements.
 ```
 pip install requirements.txt
 ```
-4. Master your mix.
+5. Master your mix.
 ```
 python matchering.py your_mix.wav reference.wav
 ```
