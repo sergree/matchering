@@ -6,6 +6,7 @@ from time import time
 import os
 import math
 import argparse
+from limiter import simple_limiter
 
 LIMITED_MAXIMUM_POINT = 0.998138427734375
 MINIMUM_FLOOR = 1e-6
@@ -206,24 +207,26 @@ def main(target, ref, area_size, sr, nfft, lin_log_oversample, peak_compensation
 
     print('Stage 3 completed\n'
           '--------------------------------\n'
-          'Fianl Stage - Export')
-
+          'Final Stage - Export')
+    
+    tmp_output = simple_limiter(tmp_output, sr)
+    
     if final_amp_coef != 1:
-        print('Modifying amplitudes with final aplitude coefficient: ', final_amp_coef, '...')
+        print('Modifying amplitudes with final amplitude coefficient: ', final_amp_coef, '...')
         final_output = tmp_output * final_amp_coef
     else:
         final_output = tmp_output
 
-    normalize_scale = np.abs(final_output).max()
-    final_output /= normalize_scale
+    # normalize_scale = np.abs(final_output).max()
+    # final_output /= normalize_scale
 
-    print("Recommend adjust amplitude about", _to_db(normalize_scale))
+    # print("Recommend adjust amplitude about", _to_db(normalize_scale))
 
     # pathdir, f = os.path.split(output_filename)
-    f = '[Matchered 32-bit NO LIMITING]' + output_filename
+    f = '[Matchered 24-bit] ' + output_filename
     final_output_name = os.path.join(output_dir, f)
-    print('Saving modified target audio in WAV 32bit to ', final_output_name, '...')
-    sf.write(final_output_name, final_output, sr, 'FLOAT')
+    print('Saving modified target audio in WAV 24bit to ', final_output_name, '...')
+    sf.write(final_output_name, final_output, sr, 'PCM_24')
     print(f, ' saved')
 
     print('Final stage completed')
