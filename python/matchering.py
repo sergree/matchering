@@ -45,7 +45,7 @@ def _get_fir(target_parts, ref_parts, sr, nfft, lin_log_oversample):
     del specs
 
     grid_linear = sr * 0.5 * np.linspace(0, 1, nfft // 2 + 1)
-    grid_logarithmic = sr * 0.5 * np.logspace(np.log10(4 / nfft), 0, nfft * 0.5 * (lin_log_oversample + 1))
+    grid_logarithmic = sr * 0.5 * np.logspace(np.log10(4 / nfft), 0, nfft // 2 * (lin_log_oversample + 1))
 
     f = interpolate.interp1d(grid_linear, matching_fft, 'cubic')
     matching_fft_log = f(grid_logarithmic)

@@ -3,6 +3,7 @@ from resampy import resample
 from scipy import signal, interpolate
 import numpy as np
 import math
+from time import time
 
 MAXIMUM_VALUE = 0.998138427734375  # (2 ** 15 - 61) / 2 ** 15
 
@@ -95,14 +96,28 @@ def simple_limiter(
     """
     Simple Limiter
     """
+    
+    print('Preparing gain envelope...')
+    a = time()
     rectified = np.abs(input).max(1)
     rectified[rectified <= threshold] = threshold
     rectified /= threshold
     gain_hard_clip = flip(1. / rectified)
+    print('Done in ', time() - a, ' sec.')
     
+    print('Modifying gain envelope - attack stage...')
+    a = time()
     gain_attack, gain_hard_clip_slided = process_attack(np.copy(gain_hard_clip), sample_rate, attack)
-    gain_release = process_release(np.copy(gain_hard_clip_slided), sample_rate, hold, release)
+    print('Done in ', time() - a, ' sec.')
     
+    print('Modifying gain envelope - hold and release stage...')
+    a = time()
+    gain_release = process_release(np.copy(gain_hard_clip_slided), sample_rate, hold, release)
+    print('Done in ', time() - a, ' sec.')
+    
+    print('Finalizing gain envelope...')
+    a = time()
     gain = flip(np.maximum.reduce([gain_hard_clip, gain_attack, gain_release]))
+    print('Done in ', time() - a, ' sec.')
     
     return input * gain[:, None]
