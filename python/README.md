@@ -8,10 +8,8 @@ A python version of matchering algorithm according to original matlab source cod
 
 1. `sudo apt update && sudo apt -y install libsndfile1 python3-pip python3-venv`
 2. `git clone https://github.com/sergree/matchering && cd matchering/python`
-3. Install requirements.
-```
-python3 -m venv matchering-env && . matchering-env/bin/activate && python3 -m pip install -r requirements.txt
-```
+3. `python3 -m venv matchering-env && . matchering-env/bin/activate`
+4. `pip install wheel && python3 -m pip install -r requirements.txt`
 4. Master your mix.
 ```
 python3 matchering.py your_mix.wav reference.wav
