@@ -10,7 +10,7 @@ If this is your first time using python, we highly recommend using [Anaconda](ht
 to get started, and build your python environment.
 
 1. Open your terminal and activate a python environment.
-2. `sudo apt install libsndfile-dev`
+2. `sudo apt -y install libsndfile1`
 3. `cd Matchering/python`
 4. Install requirements.
 ```
