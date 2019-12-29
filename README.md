@@ -1,6 +1,8 @@
-### New Python version is in development [HERE](https://github.com/wokashi-rg/Matchering/tree/master/python)
+## USE NEW [MATCHERING (PYTHON VERSION)](https://github.com/sergree/matchering/tree/master/python) INSTEAD!
 
-# Matchering by Wokashi RG (ex. SOUND.TOOLS)
+### Also Matchering 2.0 & containerized web application is under development. Stay tuned.
+
+# OBSOLETE: Matchering by Wokashi RG (ex. SOUND.TOOLS)
 
 We're glad to share source code of closed [Matchering] project by **Wokashi RG (ex. SOUND.TOOLS)** to you.
 
