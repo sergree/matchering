@@ -10,7 +10,7 @@ A python version of matchering algorithm according to original matlab source cod
 2. `git clone https://github.com/sergree/matchering && cd matchering/python`
 3. Install requirements.
 ```
-python3 -m venv matchering-env && . matchering-env/bin/activate && python3 -m pip install requirements.txt
+python3 -m venv matchering-env && . matchering-env/bin/activate && python3 -m pip install -r requirements.txt
 ```
 4. Master your mix.
 ```
