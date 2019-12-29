@@ -10,10 +10,7 @@ A python version of matchering algorithm according to original matlab source cod
 2. `git clone https://github.com/sergree/matchering && cd matchering/python`
 3. `python3 -m venv matchering-env && . matchering-env/bin/activate`
 4. `pip install wheel && python3 -m pip install -r requirements.txt`
-4. Master your mix.
-```
-python3 matchering.py your_mix.wav reference.wav
-```
+5. `python3 matchering.py your_mix.wav reference.wav`
 
 ## Usage
 ```
