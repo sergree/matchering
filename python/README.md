@@ -6,12 +6,29 @@ A python version of matchering algorithm according to original matlab source cod
 
 ### Ubuntu 18.04 LTS
 
-1. `sudo apt update && sudo apt -y install libsndfile1 python3-pip python3-venv`
-2. `git clone https://github.com/sergree/matchering && cd matchering/python`
-3. `python3 -m venv matchering-env && . matchering-env/bin/activate`
-4. `python3 -m pip install wheel`
-5. `python3 -m pip install -r requirements.txt`
-5. `python3 matchering.py your_mix.wav reference.wav`
+1. Install the necessary dependencies
+
+```sudo apt update && sudo apt -y install libsndfile1 python3-pip python3-venv```
+
+2. Clone the repo and move to the directory
+
+```git clone https://github.com/sergree/matchering && cd matchering/python```
+
+3. *(Optional) Create and activate new virtual environment*
+
+```python3 -m venv matchering-env && . matchering-env/bin/activate```
+
+4. Install `wheel` for `resampy` and `pycparser` first
+
+```python3 -m pip install wheel```
+
+5. Install dependencies from `requirements.txt`
+
+```python3 -m pip install -r requirements.txt```
+
+5. Master your mix
+
+```python3 matchering.py your_mix.wav reference.wav```
 
 ## Usage
 ```
