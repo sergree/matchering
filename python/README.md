@@ -44,3 +44,11 @@ optional arguments:
   --peak_compensation_steps PEAK_COMPENSATION_STEPS
 
 ```
+
+## FAQ
+
+> _Why can't I use MP3?_
+
+It is a known **[libsndfile issue]**.
+
+[libsndfile issue]: https://github.com/erikd/libsndfile/issues/258
