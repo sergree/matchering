@@ -233,8 +233,8 @@ def main(target, ref, area_size, sr, nfft, lin_log_oversample, peak_compensation
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(usage='Matchering DSP Module 0.86 by Wokashi RG (ex. SOUND.TOOLS)\n'
-                                           'https://github.com/SOUNDTOOL\n'
+    parser = argparse.ArgumentParser(usage='Matchering DSP Module\n'
+                                           'https://github.com/sergree/matchering\n'
                                            'All non-44100 audio will be resampled to 44100 for now \n'
                                            'Only stereo and mono supported for now')
     parser.add_argument('target', type=str, help='inpurt target file, must be in .wav format')
@@ -252,7 +252,7 @@ if __name__ == '__main__':
     fixed_sr = 44100
     max_length = 15
 
-    print('Matchering DSP Module 0.86 by Wokashi RG (ex. SOUND.TOOLS)\n'
+    print('Matchering DSP Module\n'
           '----------------------------------------------------------------')
     print('Target file:', args.target)
     print('Reference file:', args.reference)
