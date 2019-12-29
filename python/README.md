@@ -1,30 +1,26 @@
-# Matchering (python ver.)
+# Matchering (Python Version)
 
 A python version of matchering algorithm according to original matlab source code using Numpy package.
 
-The limiter part is removed and make up to users personal choice.
-
 ## Quick Start
 
-If this is your first time using python, we highly recommend using [Anaconda](https://docs.anaconda.com/anaconda/user-guide/getting-started/)
-to get started, and build your python environment.
+### Ubuntu 18.04 LTS
 
-1. Open your terminal and activate a python environment.
-2. `sudo apt -y install libsndfile1`
-3. `cd Matchering/python`
-4. Install requirements.
+1. `sudo apt update && sudo apt -y install libsndfile1 python3-pip python3-venv`
+2. `git clone https://github.com/sergree/matchering && cd matchering/python`
+3. Install requirements.
 ```
-pip install requirements.txt
+python3 -m venv matchering-env && . matchering-env/bin/activate && python3 -m pip install requirements.txt
 ```
-5. Master your mix.
+4. Master your mix.
 ```
 python matchering.py your_mix.wav reference.wav
 ```
 
 ## Usage
 ```
-usage: Matchering DSP Module 0.86 by Wokashi RG (ex. SOUND.TOOLS)
-https://github.com/SOUNDTOOL
+usage: Matchering DSP Module
+https://github.com/sergree/matchering
 All non-44100 audio will be resampled to 44100 for now 
 Only stereo and mono supported for now
 
@@ -42,7 +38,6 @@ optional arguments:
   --lin_log_oversample LIN_LOG_OVERSAMPLE
                         Linear to log10 oversampling coefficient: x1, x2, x3 x4, etc.
   --peak_compensation_steps PEAK_COMPENSATION_STEPS
-
 ```
 
 ## FAQ
