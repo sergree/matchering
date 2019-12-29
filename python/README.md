@@ -14,7 +14,7 @@ python3 -m venv matchering-env && . matchering-env/bin/activate && python3 -m pi
 ```
 4. Master your mix.
 ```
-python matchering.py your_mix.wav reference.wav
+python3 matchering.py your_mix.wav reference.wav
 ```
 
 ## Usage
