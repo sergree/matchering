@@ -1,1 +1,2 @@
-from matchering.core import DSPModule, Result
+from matchering.core import DSPModule
+from matchering.results import Result

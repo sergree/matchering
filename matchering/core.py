@@ -5,24 +5,7 @@ from resampy import resample
 from time import time
 import os
 import math
-
-
-class Result:
-    def __init__(
-            self,
-            file: str,
-            subtype: str,
-            use_limiter: bool = True,
-            normalize: bool = True,
-    ):
-        _, file_ext = os.path.splitext(file)
-        file_ext = file_ext[1:].upper()
-        if not sf.check_format(file_ext, subtype):
-            raise TypeError(f'{file_ext} format doesn\'t have {subtype} subtype')
-        self.file = file
-        self.subtype = subtype
-        self.use_limiter = use_limiter
-        self.normalize = normalize
+from matchering.loader import load
 
 
 class DSPModule:
@@ -47,10 +30,15 @@ class DSPModule:
             results: list,
     ):
         # Load the target
+        target = load(target)
+
         # Check the target
+
         # Load the reference
+        reference = load(reference)
+
         # Check the reference
-        self.warning('Warning!')
-        self.info('Info!')
-        self.debug('Debug!')
-        pass
+
+        # Process
+
+        # Save
