@@ -1,4 +1,4 @@
-def load(fname: str):
+def load(fname: str, log):
     # Try to load with SoundFile
 
     # On exception try to convert with ffmpeg subprocess

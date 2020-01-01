@@ -8,6 +8,13 @@ import math
 from matchering.loader import load
 
 
+class Log:
+    def __init__(self, warning, info, debug):
+        self.warning = warning
+        self.info = info
+        self.debug = debug
+
+
 class DSPModule:
     def __init__(
             self,
@@ -15,13 +22,15 @@ class DSPModule:
             info=None,
             debug=None
     ):
-        self.warning = warning if warning else self.__dummy
-        self.info = info if info else self.__dummy
-        self.debug = debug if debug else self.__dummy
+        self.log = Log(
+            self.__check_empty(warning),
+            self.__check_empty(info),
+            self.__check_empty(debug)
+        )
 
     @staticmethod
-    def __dummy(self, *args):
-        pass
+    def __check_empty(handler):
+        return handler if handler else lambda *args: None
 
     def process(
             self,
@@ -30,12 +39,12 @@ class DSPModule:
             results: list,
     ):
         # Load the target
-        target = load(target)
+        target = load(target, self.log)
 
         # Check the target
 
         # Load the reference
-        reference = load(reference)
+        reference = load(reference, self.log)
 
         # Check the reference
 
