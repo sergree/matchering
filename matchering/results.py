@@ -19,15 +19,10 @@ class Result:
         self.use_limiter = use_limiter
         self.normalize = normalize
 
-    @staticmethod
-    def wav_16bit(file: str):
-        return Result(file, 'PCM_16')
 
-    @staticmethod
-    def wav_24bit(file: str):
-        return Result(file, 'PCM_24')
+def pcm16(file: str):
+    return Result(file, 'PCM_16')
 
-    @staticmethod
-    def wav_32bit_no_limiter(file: str):
-        return Result(file, 'FLOAT', use_limiter=False)
 
+def pcm24(file: str):
+    return Result(file, 'PCM_24')
