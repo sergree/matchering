@@ -6,6 +6,9 @@ from time import time
 import os
 import math
 from matchering.loader import load
+from matchering.log import Code
+from matchering.log import get_handler
+from matchering.exceptions import ModuleError
 
 
 class Log:
@@ -21,7 +24,8 @@ class DSPModule:
             log=None,
             warning=None,
             info=None,
-            debug=None
+            debug=None,
+            show_codes=False
     ):
         log = self.__check_empty(log, lambda *args: None)
         self.log = Log(
@@ -51,8 +55,13 @@ class DSPModule:
         # Check the reference
 
         # Process
-        self.log.warning('Warning!')
-        self.log.info('Info!')
+        # self.log.warning(Code.WARNING_TARGET_IS_CLIPPING)
+        # self.log.info(Code.INFO_CORRECTING_LEVELS)
+
+        self.log.warning(get_handler(show_codes=True)(Code.WARNING_TARGET_IS_CLIPPING))
+        self.log.info(get_handler()(Code.INFO_CORRECTING_LEVELS))
+
         self.log.debug('Debug!')
+        raise ModuleError(Code.ERROR_REFERENCE_LENGTH_LENGTH_IS_EXCEEDED)
 
         # Save

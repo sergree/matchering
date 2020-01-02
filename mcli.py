@@ -1,7 +1,7 @@
 from matchering import DSPModule
 from matchering import pcm16, pcm24, Result
 
-module = DSPModule(log=print)
+module = DSPModule(log=print, show_codes=True)
 module.process(
     target='my_mix.wav',
     reference='reference.flac',
