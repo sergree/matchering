@@ -1,15 +1,15 @@
 from .codes import Code
 
 
-def __default(code: Code):
+def __default(code: Code) -> str:
     return en[code]
 
 
-def __verbose(code: Code):
+def __verbose(code: Code) -> str:
     return f'{code}: {en[code]}'
 
 
-def get_explanation_handler(show_codes=False):
+def get_explanation_handler(show_codes: bool = False):
     return __verbose if show_codes else __default
 
 

@@ -1,5 +1,5 @@
 from .log import Code, warning, info, debug, ModuleError
-
+from . import MainConfig
 from .loader import load
 
 
@@ -7,6 +7,7 @@ def process(
         target: str,
         reference: str,
         results: list,
+        config: MainConfig = MainConfig(),
 ):
     # Load the target
     target = load(target)

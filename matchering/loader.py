@@ -1,4 +1,7 @@
-def load(fname: str):
+import numpy as np
+
+
+def load(fname: str) -> np.ndarray:
     # Try to load with SoundFile
 
     # On exception try to convert with ffmpeg subprocess

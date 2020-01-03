@@ -22,9 +22,9 @@ class Result:
         self.normalize = normalize
 
 
-def pcm16(file: str):
+def pcm16(file: str) -> Result:
     return Result(file, 'PCM_16')
 
 
-def pcm24(file: str):
+def pcm24(file: str) -> Result:
     return Result(file, 'PCM_24')
