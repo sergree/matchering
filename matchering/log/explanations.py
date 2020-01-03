@@ -1,19 +1,19 @@
-from matchering.log import Code
+from .codes import Code
 
 
 def __default(code: Code):
-    return transcript_en[code]
+    return en[code]
 
 
 def __verbose(code: Code):
-    return f'{code}: {transcript_en[code]}'
+    return f'{code}: {en[code]}'
 
 
-def get_handler(show_codes=False):
+def get_explanation_handler(show_codes=False):
     return __verbose if show_codes else __default
 
 
-transcript_en = {
+en = {
     Code.INFO_UPLOADING: 'Uploading files',
     Code.INFO_WAITING: 'Queued for processing',
     Code.INFO_LOADING: 'Loading and analysis',
@@ -35,9 +35,6 @@ transcript_en = {
                                             'It is highly recommended to use the version without a limiter',
     Code.WARNING_TARGET_IS_RESAMPLED: 'The sample rate was not 44100 Hz in the TARGET file. '
                                       'It is resampled to 44100 Hz',
-    Code.WARNING_TARGET_EQUALS_REFERENCE: 'The TARGET and REFERENCE files are the same. '
-                                          'It is highly recommended to use different files. '
-                                          'Maybe you do not understand what Matchering is?',
 
     Code.ERROR_TARGET_LOADING: 'Audio stream error in the TARGET file',
     Code.ERROR_REFERENCE_LOADING: 'Audio stream error in the REFERENCE file',
@@ -47,4 +44,6 @@ transcript_en = {
     Code.ERROR_REFERENCE_LENGTH_LENGTH_TOO_SMALL: 'The track length is too small in the REFERENCE file',
     Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED: 'The number of channels exceeded in the TARGET file',
     Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED: 'The number of channels exceeded in the REFERENCE file',
+    Code.ERROR_TARGET_EQUALS_REFERENCE: 'The TARGET and REFERENCE files are the same. '
+                                        'They must be different so that Matchering makes sense',
 }
