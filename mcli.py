@@ -1,10 +1,10 @@
 import matchering as mg
 
-mg.log(print)
+mg.log(print, show_codes=True)
 
 mg.process(
-    target='my mix.mp3',
-    reference='reference.flac',
+    target='my mix short.aif',
+    reference='my_mix.mp3',
     results=[
         mg.pcm24('result_24bit.wav'),
         mg.pcm16('result_16bit.wav'),

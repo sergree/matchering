@@ -11,8 +11,10 @@ class LimiterConfig:
 class MainConfig:
     def __init__(
             self,
-            fixed_sr=44100,
-            max_length=15*60,
+            internal_sample_rate=44100,
+            max_length=15 * 60,
+            threshold=(2**15 - 61) / 2**15,
+            min_value=1e-6,
             time_area=15,
             fft_size=4096,
             lin_log_oversample=4,
@@ -20,15 +22,23 @@ class MainConfig:
             temp_folder=None,
             limiter=LimiterConfig()
     ):
-        assert fixed_sr == 44100
-        self.fixed_sr = fixed_sr
+        assert internal_sample_rate == 44100
+        self.internal_sample_rate = internal_sample_rate
 
         assert max_length > 0
-        assert max_length > fft_size / fixed_sr
+        assert max_length > fft_size / internal_sample_rate
         self.max_length = max_length
 
+        assert threshold > min_value
+        assert threshold < 1
+        self.threshold = threshold
+
+        assert min_value > 0
+        assert min_value < 0.1
+        self.min_value = min_value
+
         assert time_area > 0
-        assert time_area > fft_size / fixed_sr
+        assert time_area > fft_size / internal_sample_rate
         assert time_area < max_length
         self.time_area = time_area
 
@@ -49,6 +59,3 @@ class MainConfig:
 
         assert isinstance(limiter, LimiterConfig)
         self.limiter = limiter
-
-
-MainConfig()

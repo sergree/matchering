@@ -5,5 +5,7 @@ __pycache__
 *.wav
 *.flac
 *.mp3
+*.aif
+*.aiff
 
 *.pyc

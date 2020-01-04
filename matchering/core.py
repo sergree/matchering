@@ -2,6 +2,7 @@ from .log import Code, warning, info, debug, ModuleError
 from . import MainConfig
 from .loader import load
 from .utils import get_temp_folder
+from .checks import check, check_equality
 
 
 def process(
@@ -17,18 +18,19 @@ def process(
 
     # Load the target
     target, target_sample_rate = load(target, 'target', temp_folder)
-
-    # Check the target
+    # Analyze the target
+    target, target_sample_rate = check(target, target_sample_rate, config, 'target')
 
     # Load the reference
-    #debug(f'Loading REFERENCE file: {reference}...')
-    #reference, reference_sample_rate = load(reference, 'reference')
-    #debug('REFERENCE file is loaded')
+    reference, reference_sample_rate = load(reference, 'reference', temp_folder)
+    # Analyze the reference
+    reference, reference_sample_rate = check(reference, reference_sample_rate, config, 'reference')
 
-    # Check the reference
+    # Analyze the target and the reference together
+    check_equality(target, reference)
 
     # Process
+    info(Code.INFO_MATCHING_LEVELS)
     result = target
 
     # Save
-    pass
