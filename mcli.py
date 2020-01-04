@@ -3,7 +3,7 @@ import matchering as mg
 mg.log(print)
 
 mg.process(
-    target='my_mix.wav',
+    target='my mix.mp3',
     reference='reference.flac',
     results=[
         mg.pcm24('result_24bit.wav'),

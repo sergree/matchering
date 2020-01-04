@@ -1,6 +1,7 @@
 from .log import Code, warning, info, debug, ModuleError
 from . import MainConfig
 from .loader import load
+from .utils import get_temp_folder
 
 
 def process(
@@ -9,21 +10,25 @@ def process(
         results: list,
         config: MainConfig = MainConfig(),
 ):
+    info(Code.INFO_LOADING)
+
+    # Get a temporary folder for converting mp3's
+    temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
+
     # Load the target
-    target = load(target)
+    target, target_sample_rate = load(target, 'target', temp_folder)
 
     # Check the target
 
     # Load the reference
-    reference = load(reference)
+    #debug(f'Loading REFERENCE file: {reference}...')
+    #reference, reference_sample_rate = load(reference, 'reference')
+    #debug('REFERENCE file is loaded')
 
     # Check the reference
-    debug('Text')
 
     # Process
-    warning(Code.WARNING_TARGET_IS_CLIPPING)
+    result = target
 
     # Save
-    info(Code.INFO_TARGET_IS_MONO)
-
-    raise ModuleError(Code.ERROR_TARGET_EQUALS_REFERENCE)
+    pass

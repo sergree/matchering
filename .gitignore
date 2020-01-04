@@ -4,5 +4,6 @@ __pycache__
 
 *.wav
 *.flac
+*.mp3
 
 *.pyc

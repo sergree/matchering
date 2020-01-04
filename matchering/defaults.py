@@ -17,6 +17,7 @@ class MainConfig:
             fft_size=4096,
             lin_log_oversample=4,
             peak_compensation_steps=5,
+            temp_folder=None,
             limiter=LimiterConfig()
     ):
         assert fixed_sr == 44100
@@ -42,6 +43,9 @@ class MainConfig:
         assert peak_compensation_steps >= 0
         assert isinstance(peak_compensation_steps, int)
         self.peak_compensation_steps = peak_compensation_steps
+
+        assert temp_folder is None or isinstance(temp_folder, str)
+        self.temp_folder = temp_folder
 
         assert isinstance(limiter, LimiterConfig)
         self.limiter = limiter
