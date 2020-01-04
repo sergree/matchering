@@ -15,10 +15,10 @@ class MainConfig:
             max_length=15 * 60,
             threshold=(2**15 - 61) / 2**15,
             min_value=1e-6,
-            time_area=15,
+            max_piece_size=15,
             fft_size=4096,
-            lin_log_oversample=4,
-            peak_compensation_steps=5,
+            lin_log_oversampling=4,
+            rms_correction_steps=5,
             temp_folder=None,
             limiter=LimiterConfig()
     ):
@@ -37,22 +37,22 @@ class MainConfig:
         assert min_value < 0.1
         self.min_value = min_value
 
-        assert time_area > 0
-        assert time_area > fft_size / internal_sample_rate
-        assert time_area < max_length
-        self.time_area = time_area
+        assert max_piece_size > 0
+        assert max_piece_size > fft_size / internal_sample_rate
+        assert max_piece_size < max_length
+        self.max_piece_size = max_piece_size * internal_sample_rate
 
         assert fft_size > 1
         assert math.log2(fft_size).is_integer()
         self.fft_size = fft_size
 
-        assert lin_log_oversample > 0
-        assert isinstance(lin_log_oversample, int)
-        self.lin_log_oversample = lin_log_oversample
+        assert lin_log_oversampling > 0
+        assert isinstance(lin_log_oversampling, int)
+        self.lin_log_oversampling = lin_log_oversampling
 
-        assert peak_compensation_steps >= 0
-        assert isinstance(peak_compensation_steps, int)
-        self.peak_compensation_steps = peak_compensation_steps
+        assert rms_correction_steps >= 0
+        assert isinstance(rms_correction_steps, int)
+        self.rms_correction_steps = rms_correction_steps
 
         assert temp_folder is None or isinstance(temp_folder, str)
         self.temp_folder = temp_folder

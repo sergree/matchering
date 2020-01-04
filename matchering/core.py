@@ -29,6 +29,9 @@ def process(
     # Analyze the target and the reference together
     check_equality(target, reference)
 
+    debug(f'The maximum size of the analyzed piece: {config.max_piece_size} samples '
+          f'or {config.max_piece_size / config.internal_sample_rate:.2f} seconds')
+
     # Process
     info(Code.INFO_MATCHING_LEVELS)
     result = target
