@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from .log import Code, warning, info, debug, ModuleError
 from . import MainConfig
-from .dsp import len_nda, is_mono, is_stereo, mono_to_stereo
+from .dsp import length_nda, is_mono, is_stereo, mono_to_stereo, count_max_peaks
 
 
 def __check_sample_rate(
@@ -29,7 +29,7 @@ def __check_length(
         error_code_max: Code,
         error_code_min: Code
 ) -> None:
-    length = len_nda(array)
+    length = length_nda(array)
     debug(f'{name} audio length: {length} samples ({timedelta(seconds=length // sample_rate)})')
     if length > max_length:
         raise ModuleError(error_code_max)
@@ -48,6 +48,21 @@ def __check_channels(
     elif not is_stereo(array):
         raise ModuleError(error_code_not_stereo)
     return array
+
+
+def __check_clipping_limiting(
+        array: np.ndarray,
+        clipping_count_threshold: int,
+        limiting_count_threshold: int,
+        warning_code_clipping: Code,
+        warning_code_limiting: Code,
+) -> None:
+    max_value, max_count = count_max_peaks(array)
+    if max_count > clipping_count_threshold:
+        if np.isclose(max_value, 1.):
+            warning(warning_code_clipping)
+        elif max_count > limiting_count_threshold:
+            warning(warning_code_limiting)
 
 
 def check(array: np.ndarray, sample_rate: int, config: MainConfig, audio_type: str) -> (np.ndarray, int):
@@ -81,10 +96,18 @@ def check(array: np.ndarray, sample_rate: int, config: MainConfig, audio_type: s
         else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED
     )
 
-    # +++
+    if audio_type == 'TARGET':
+        __check_clipping_limiting(
+            array,
+            config.clipping_count_threshold,
+            config.limiting_count_threshold,
+            Code.WARNING_TARGET_IS_CLIPPING,
+            Code.WARNING_TARGET_LIMITER_IS_APPLIED
+        )
 
     return array, sample_rate
 
 
 def check_equality(target: np.ndarray, reference: np.ndarray) -> None:
-    pass
+    if target.shape == reference.shape and np.allclose(target, reference):
+        raise ModuleError(Code.ERROR_TARGET_EQUALS_REFERENCE)

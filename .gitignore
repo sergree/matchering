@@ -7,5 +7,6 @@ __pycache__
 *.mp3
 *.aif
 *.aiff
+*.pkf
 
 *.pyc

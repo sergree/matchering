@@ -3,6 +3,7 @@ from . import MainConfig
 from .loader import load
 from .utils import get_temp_folder
 from .checks import check, check_equality
+from .dsp import channel_count, length_nda
 
 
 def process(
@@ -28,6 +29,12 @@ def process(
 
     # Analyze the target and the reference together
     check_equality(target, reference)
+
+    # Validation of the most important conditions
+    if not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)\
+            or not (channel_count(target) == channel_count(reference) == 2)\
+            or not (length_nda(target) > config.fft_size and length_nda(reference) > config.fft_size):
+        return ModuleError(Code.ERROR_VALIDATION)
 
     debug(f'The maximum size of the analyzed piece: {config.max_piece_size} samples '
           f'or {config.max_piece_size / config.internal_sample_rate:.2f} seconds')

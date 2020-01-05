@@ -13,12 +13,14 @@ class MainConfig:
             self,
             internal_sample_rate=44100,
             max_length=15 * 60,
-            threshold=(2**15 - 61) / 2**15,
-            min_value=1e-6,
             max_piece_size=15,
+            threshold=(2 ** 15 - 61) / 2 ** 15,
+            min_value=1e-6,
             fft_size=4096,
             lin_log_oversampling=4,
             rms_correction_steps=5,
+            clipping_count_threshold=8,
+            limiting_count_threshold=128,
             temp_folder=None,
             limiter=LimiterConfig()
     ):
@@ -53,6 +55,14 @@ class MainConfig:
         assert rms_correction_steps >= 0
         assert isinstance(rms_correction_steps, int)
         self.rms_correction_steps = rms_correction_steps
+
+        assert clipping_count_threshold >= 0
+        assert limiting_count_threshold > 0
+        assert limiting_count_threshold > clipping_count_threshold
+        assert isinstance(clipping_count_threshold, int)
+        assert isinstance(limiting_count_threshold, int)
+        self.clipping_count_threshold = clipping_count_threshold
+        self.limiting_count_threshold = limiting_count_threshold
 
         assert temp_folder is None or isinstance(temp_folder, str)
         self.temp_folder = temp_folder

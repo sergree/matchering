@@ -27,7 +27,6 @@ __en = {
 
     Code.INFO_TARGET_IS_MONO: 'The TARGET audio is mono. Converting it to stereo...',
     Code.INFO_REFERENCE_IS_MONO: 'The REFERENCE audio is mono. Converting it to stereo...',
-    Code.INFO_REFERENCE_IS_CLIPPING: 'Audio clipping is detected in the REFERENCE file',
     Code.INFO_REFERENCE_IS_RESAMPLED: 'The REFERENCE audio was resampled to 44100 Hz',
     Code.INFO_REFERENCE_IS_LOSSY: 'Presumably the REFERENCE audio format is lossy',
 
@@ -53,4 +52,5 @@ __en = {
     Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED: 'The number of channels exceeded in the REFERENCE file',
 
     Code.ERROR_UNKNOWN: 'Unknown error',
+    Code.ERROR_VALIDATION: 'Validation failed! Please let the developers know about this error!'
 }
