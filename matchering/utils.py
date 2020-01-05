@@ -1,6 +1,7 @@
 import os
 import random
 import string
+import math
 
 
 def get_temp_folder(results: list) -> str:
@@ -15,3 +16,11 @@ def random_str(size: int = 16) -> str:
 def random_file(prefix: str = '', extension: str = 'wav') -> str:
     prefix = f'{prefix}-' if prefix else prefix
     return f'{prefix}{random_str()}.{extension}'
+
+
+def __to_db_int(value: float) -> float:
+    return 20 * math.log10(value)
+
+
+def to_db(value: float) -> str:
+    return f'{__to_db_int(value):.2f}dB'

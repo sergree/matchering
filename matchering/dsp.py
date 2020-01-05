@@ -30,3 +30,16 @@ def count_max_peaks(array: np.ndarray) -> (float, int):
         )
     )
     return max_value, max_count
+
+
+def lr_to_ms(array: np.ndarray) -> (np.ndarray, np.ndarray):
+    array[:, 0] += array[:, 1]
+    array[:, 0] *= 0.5
+    mid = np.copy(array[:, 0])
+    array[:, 0] -= array[:, 1]
+    side = np.copy(array[:, 0])
+    return mid, side
+
+
+def ms_to_lr(mid_array: np.ndarray, side_array: np.ndarray) -> np.ndarray:
+    return np.vstack((np.copy(mid_array + side_array), np.copy(mid_array - side_array))).T
