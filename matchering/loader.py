@@ -12,7 +12,7 @@ def load(file: str, file_type: str, temp_folder: str) -> (np.ndarray, int):
     sound, sample_rate = None, None
     debug(f'Loading the {file_type} file: \'{file}\'...')
     try:
-        sound, sample_rate = sf.read(file)
+        sound, sample_rate = sf.read(file, always_2d=True)
     except RuntimeError as e:
         debug(e)
         if 'unknown format' in str(e):
@@ -42,7 +42,7 @@ def __load_with_ffmpeg(file: str, file_type: str, temp_folder: str) -> (np.ndarr
                 stdout=devnull,
                 stderr=devnull
             )
-            sound, sample_rate = sf.read(temp_file)
+            sound, sample_rate = sf.read(temp_file, always_2d=True)
             if file_type == 'TARGET':
                 warning(Code.WARNING_TARGET_IS_LOSSY)
             else:
