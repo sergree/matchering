@@ -1,4 +1,4 @@
-from .log import Code, warning, info, debug, ModuleError
+from .log import Code, warning, info, debug, debug_line, ModuleError
 from . import MainConfig
 from .loader import load
 from .stages import main
@@ -15,6 +15,8 @@ def process(
         results: list,
         config: MainConfig = MainConfig(),
 ):
+    debug('Please give us a star to help the project: https://github.com/sergree/matchering')
+    debug_line()
     info(Code.INFO_LOADING)
 
     # Get a temporary folder for converting mp3's
@@ -49,6 +51,7 @@ def process(
         need_no_limiter_normalized=any(not rr.use_limiter and rr.normalize for rr in results),
     )
 
+    debug_line()
     info(Code.INFO_EXPORTING)
 
     # Save
@@ -67,4 +70,5 @@ def process(
     # DO STUFF HERE ---> ...
     # --- Make previews from first non-null value of (result, result_no_limiter, result_no_limiter_normalized)
 
+    debug_line()
     info(Code.INFO_COMPLETED)

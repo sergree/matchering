@@ -57,3 +57,7 @@ def info(*args, **kwargs):
 
 def debug(*args, **kwargs):
     __LogHandlers.debug_handler(*args, **kwargs)
+
+
+def debug_line():
+    debug('-' * 40)

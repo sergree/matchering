@@ -1,6 +1,6 @@
 import numpy as np
 
-from .log import Code, warning, info, debug, ModuleError
+from .log import Code, warning, info, debug, debug_line, ModuleError
 from . import MainConfig
 from .utils import to_db
 from .dsp import lr_to_ms, ms_to_lr, size, unfold, batch_rms, rms, amplify
@@ -93,6 +93,7 @@ def __match_levels(
         reference: np.ndarray,
         config: MainConfig
 ) -> (np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, np.ndarray):
+    debug_line()
     info(Code.INFO_MATCHING_LEVELS)
 
     debug(f'The maximum size of the analyzed piece: {config.max_piece_size} samples '
@@ -126,6 +127,11 @@ def __match_levels(
         reference_mid_loudest_pieces, reference_side_loudest_pieces
 
 
+def __match_frequencies():
+    debug_line()
+    info(Code.INFO_MATCHING_FREQS)
+
+
 def main(
         target: np.ndarray,
         reference: np.ndarray,
@@ -140,10 +146,12 @@ def main(
         reference_mid_loudest_pieces, reference_side_loudest_pieces\
         = __match_levels(target, reference, config)
 
-    info(Code.INFO_MATCHING_FREQS)
+    __match_frequencies()
 
+    debug_line()
     info(Code.INFO_CORRECTING_LEVELS)
 
+    debug_line()
     info(Code.INFO_FINALIZING)
 
     return target_mid, target_mid, target_mid
