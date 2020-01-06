@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def length_nda(array: np.ndarray) -> int:
+def size(array: np.ndarray) -> int:
     return array.shape[0]
 
 
@@ -42,4 +42,26 @@ def lr_to_ms(array: np.ndarray) -> (np.ndarray, np.ndarray):
 
 
 def ms_to_lr(mid_array: np.ndarray, side_array: np.ndarray) -> np.ndarray:
-    return np.vstack((np.copy(mid_array + side_array), np.copy(mid_array - side_array))).T
+    return np.vstack((mid_array + side_array, mid_array - side_array)).T
+
+
+def unfold(array: np.ndarray, piece_size: int, divisions: int) -> np.ndarray:
+    # (len(array),) -> (divisions, piece_size)
+    return array[:piece_size * divisions].reshape(-1, piece_size)
+
+
+def rms(array: np.ndarray) -> float:
+    return np.sqrt(array @ array / array.shape[0])
+
+
+def batch_rms(array: np.ndarray):
+    piece_size = array.shape[1]
+    # (divisions, piece_size) -> (divisions, 1, piece_size)
+    multiplicand = array[:, None, :]
+    # (divisions, piece_size) -> (divisions, piece_size, 1)
+    multiplier = array[..., None]
+    return np.sqrt(np.squeeze(multiplicand @ multiplier) / piece_size)
+
+
+def amplify(array: np.ndarray, gain: float) -> np.ndarray:
+    return array * gain

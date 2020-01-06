@@ -4,7 +4,7 @@ from datetime import timedelta
 
 from .log import Code, warning, info, debug, ModuleError
 from . import MainConfig
-from .dsp import length_nda, is_mono, is_stereo, mono_to_stereo, count_max_peaks
+from .dsp import size, is_mono, is_stereo, mono_to_stereo, count_max_peaks
 
 
 def __check_sample_rate(
@@ -29,7 +29,7 @@ def __check_length(
         error_code_max: Code,
         error_code_min: Code
 ) -> None:
-    length = length_nda(array)
+    length = size(array)
     debug(f'{name} audio length: {length} samples ({timedelta(seconds=length // sample_rate)})')
     if length > max_length:
         raise ModuleError(error_code_max)
@@ -52,16 +52,16 @@ def __check_channels(
 
 def __check_clipping_limiting(
         array: np.ndarray,
-        clipping_count_threshold: int,
-        limiting_count_threshold: int,
+        clipping_samples_threshold: int,
+        limited_samples_threshold: int,
         warning_code_clipping: Code,
         warning_code_limiting: Code,
 ) -> None:
     max_value, max_count = count_max_peaks(array)
-    if max_count > clipping_count_threshold:
+    if max_count > clipping_samples_threshold:
         if np.isclose(max_value, 1.):
             warning(warning_code_clipping)
-        elif max_count > limiting_count_threshold:
+        elif max_count > limited_samples_threshold:
             warning(warning_code_limiting)
 
 
@@ -99,8 +99,8 @@ def check(array: np.ndarray, sample_rate: int, config: MainConfig, audio_type: s
     if audio_type == 'TARGET':
         __check_clipping_limiting(
             array,
-            config.clipping_count_threshold,
-            config.limiting_count_threshold,
+            config.clipping_samples_threshold,
+            config.limited_samples_threshold,
             Code.WARNING_TARGET_IS_CLIPPING,
             Code.WARNING_TARGET_LIMITER_IS_APPLIED
         )

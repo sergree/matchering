@@ -6,7 +6,7 @@ from .saver import save
 from .preview_maker import make_preview
 from .utils import get_temp_folder
 from .checker import check, check_equality
-from .dsp import channel_count, length_nda
+from .dsp import channel_count, size
 
 
 def process(
@@ -36,7 +36,7 @@ def process(
     # Validation of the most important conditions
     if not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)\
             or not (channel_count(target) == channel_count(reference) == 2)\
-            or not (length_nda(target) > config.fft_size and length_nda(reference) > config.fft_size):
+            or not (size(target) > config.fft_size and size(reference) > config.fft_size):
         return ModuleError(Code.ERROR_VALIDATION)
 
     # Process
