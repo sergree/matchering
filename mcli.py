@@ -4,7 +4,7 @@ mg.log(print, show_codes=True)
 
 mg.process(
     target='my mix.wav',
-    reference='my mix.mp3',
+    reference='reference.flac',
     results=[
         mg.pcm24('result_24bit.wav'),
         mg.pcm16('result_16bit.wav'),

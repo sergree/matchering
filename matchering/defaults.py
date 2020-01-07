@@ -21,6 +21,9 @@ class MainConfig:
             rms_correction_steps=5,
             clipping_samples_threshold=8,
             limited_samples_threshold=128,
+            lowess_frac=0.0375,
+            lowess_it=0,
+            lowess_delta=0.001,
             temp_folder=None,
             limiter=LimiterConfig()
     ):
@@ -63,6 +66,14 @@ class MainConfig:
         assert isinstance(limited_samples_threshold, int)
         self.clipping_samples_threshold = clipping_samples_threshold
         self.limited_samples_threshold = limited_samples_threshold
+
+        assert lowess_frac > 0
+        assert lowess_it >= 0
+        assert lowess_delta >= 0
+        assert isinstance(lowess_it, int)
+        self.lowess_frac = lowess_frac
+        self.lowess_it = lowess_it
+        self.lowess_delta = lowess_delta
 
         assert temp_folder is None or isinstance(temp_folder, str)
         self.temp_folder = temp_folder

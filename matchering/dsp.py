@@ -1,4 +1,5 @@
 import numpy as np
+import statsmodels.api as sm
 
 
 def size(array: np.ndarray) -> int:
@@ -65,3 +66,18 @@ def batch_rms(array: np.ndarray):
 
 def amplify(array: np.ndarray, gain: float) -> np.ndarray:
     return array * gain
+
+
+def smooth_lowess(
+        array: np.ndarray,
+        frac: float,
+        it: int,
+        delta: float
+) -> np.ndarray:
+    return sm.nonparametric.lowess(
+        array,
+        np.linspace(0, 1, len(array)),
+        frac=frac,
+        it=it,
+        delta=delta
+    )[:, 1]
