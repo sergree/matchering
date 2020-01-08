@@ -32,9 +32,20 @@ def __calculate_piece_sizes(
     array_size = size(array)
     divisions = int(array_size / max_piece_size) + 1
     debug(f'The {name} will be didived into {divisions} pieces')
-    part_size = int(array_size / divisions)
-    debug(f'One piece of the {name} has a length of {part_size} samples or {part_size / sample_rate:.2f} seconds')
-    return array_size, divisions, part_size
+    piece_size = int(array_size / divisions)
+    debug(f'One piece of the {name} has a length of {piece_size} samples or {piece_size / sample_rate:.2f} seconds')
+    return array_size, divisions, piece_size
+
+
+def get_lpis_and_match_rms(
+        rmses: np.ndarray,
+        average_rms: float,
+) -> (np.ndarray, float):
+    loudest_piece_idxs = np.where(rmses >= average_rms)
+    loudest_rmses = rmses[loudest_piece_idxs]
+    match_rms = rms(loudest_rmses)
+    debug(f'The current average RMS value in the loudest pieces is {to_db(match_rms)}')
+    return loudest_piece_idxs, match_rms
 
 
 def __extract_loudest_pieces(
@@ -46,19 +57,35 @@ def __extract_loudest_pieces(
 ) -> (np.ndarray, np.ndarray, float):
     debug(f'Extracting the loudest pieces of the {name} audio '
           f'with the RMS value more than average {to_db(average_rms)}...')
-    loudest_piece_idxs = np.where(rmses >= average_rms)
+
+    loudest_piece_idxs, match_rms = get_lpis_and_match_rms(rmses, average_rms)
+
     mid_loudest_pieces = unfolded_mid[loudest_piece_idxs]
     side_loudest_pieces = unfolded_side[loudest_piece_idxs]
-    loudest_rmses = rmses[loudest_piece_idxs]
-    match_rms = rms(loudest_rmses)
     return mid_loudest_pieces, side_loudest_pieces, match_rms
+
+
+def get_average_rms(
+        array: np.ndarray,
+        piece_size: int,
+        divisions: int,
+        name: str
+) -> (np.ndarray, np.ndarray, float):
+    name = name.upper()
+    unfolded_array = unfold(array, piece_size, divisions)
+    debug(f'Calculating RMSes of the {name} pieces...')
+    rmses = batch_rms(unfolded_array)
+    average_rms = rms(rmses)
+    return unfolded_array, rmses, average_rms
 
 
 def analyze_levels(
         array: np.ndarray,
         name: str,
         config: MainConfig,
-) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray, float):
+) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float, float):
+    name = name.upper()  # <--
+
     debug(f'Calculating mid and side channels of the {name}...')
     mid, side = lr_to_ms(array)
     del array
@@ -70,12 +97,8 @@ def analyze_levels(
         config.internal_sample_rate
     )
 
-    unfolded_mid = unfold(mid, piece_size, divisions)
+    unfolded_mid, rmses, average_rms = get_average_rms(mid, piece_size, divisions, name)
     unfolded_side = unfold(side, piece_size, divisions)
-
-    debug(f'Calculating RMSes of the {name} pieces...')
-    rmses = batch_rms(unfolded_mid)
-    average_rms = rms(rmses)
 
     mid_loudest_pieces, side_loudest_pieces, match_rms = __extract_loudest_pieces(
         rmses,
@@ -85,4 +108,4 @@ def analyze_levels(
         name
     )
 
-    return mid, side, mid_loudest_pieces, side_loudest_pieces, match_rms
+    return mid, side, mid_loudest_pieces, side_loudest_pieces, match_rms, divisions, piece_size

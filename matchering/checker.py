@@ -65,15 +65,15 @@ def __check_clipping_limiting(
             warning(warning_code_limiting)
 
 
-def check(array: np.ndarray, sample_rate: int, config: MainConfig, audio_type: str) -> (np.ndarray, int):
-    audio_type = audio_type.upper()
+def check(array: np.ndarray, sample_rate: int, config: MainConfig, name: str) -> (np.ndarray, int):
+    name = name.upper()
 
     array, sample_rate = __check_sample_rate(
         array,
         sample_rate,
         config.internal_sample_rate,
-        warning if audio_type == 'TARGET' else info,
-        Code.WARNING_TARGET_IS_RESAMPLED if audio_type == 'TARGET'
+        warning if name == 'TARGET' else info,
+        Code.WARNING_TARGET_IS_RESAMPLED if name == 'TARGET'
         else Code.INFO_REFERENCE_IS_RESAMPLED
     )
 
@@ -82,21 +82,21 @@ def check(array: np.ndarray, sample_rate: int, config: MainConfig, audio_type: s
         sample_rate,
         config.max_length * sample_rate,
         config.fft_size,
-        audio_type,
-        Code.ERROR_TARGET_LENGTH_IS_EXCEEDED if audio_type == 'TARGET'
+        name,
+        Code.ERROR_TARGET_LENGTH_IS_EXCEEDED if name == 'TARGET'
         else Code.ERROR_REFERENCE_LENGTH_LENGTH_IS_EXCEEDED,
-        Code.ERROR_TARGET_LENGTH_IS_TOO_SMALL if audio_type == 'TARGET'
+        Code.ERROR_TARGET_LENGTH_IS_TOO_SMALL if name == 'TARGET'
         else Code.ERROR_REFERENCE_LENGTH_LENGTH_TOO_SMALL
     )
 
     array = __check_channels(
         array,
-        Code.INFO_TARGET_IS_MONO if audio_type == 'TARGET' else Code.INFO_REFERENCE_IS_MONO,
-        Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED if audio_type == 'TARGET'
+        Code.INFO_TARGET_IS_MONO if name == 'TARGET' else Code.INFO_REFERENCE_IS_MONO,
+        Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED if name == 'TARGET'
         else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED
     )
 
-    if audio_type == 'TARGET':
+    if name == 'TARGET':
         __check_clipping_limiting(
             array,
             config.clipping_samples_threshold,

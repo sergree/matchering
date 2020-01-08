@@ -11,5 +11,5 @@ def save(
         subtype: str
 ) -> None:
     debug(f'Saving the RESULT {sample_rate} Hz Stereo {subtype} to: \'{file}\'...')
-    # sf.write(file, result, sample_rate, subtype)
+    sf.write(file, result, sample_rate, subtype)
     debug(f'\'{file}\' is saved')

@@ -18,6 +18,10 @@ def is_stereo(array: np.ndarray) -> bool:
     return array.shape[1] == 2
 
 
+def is_1d(array: np.ndarray) -> bool:
+    return len(array.shape) == 1
+
+
 def mono_to_stereo(array: np.ndarray) -> np.ndarray:
     return np.repeat(array, repeats=2, axis=1)
 
@@ -81,3 +85,7 @@ def smooth_lowess(
         it=it,
         delta=delta
     )[:, 1]
+
+
+def clip(array: np.ndarray) -> np.ndarray:
+    return np.clip(array, -1, 1)

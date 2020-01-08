@@ -18,7 +18,7 @@ class MainConfig:
             min_value=1e-6,
             fft_size=4096,
             lin_log_oversampling=4,
-            rms_correction_steps=5,
+            rms_correction_steps=4,
             clipping_samples_threshold=8,
             limited_samples_threshold=128,
             lowess_frac=0.0375,

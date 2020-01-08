@@ -89,10 +89,10 @@ def convolve(
 ) -> (np.ndarray, np.ndarray):
     debug('Convolving the TARGET audio with calculated FIRs...')
     timer = time()
-    output_mid = signal.fftconvolve(target_mid, mid_fir, 'same')
-    output_side = signal.fftconvolve(target_side, side_fir, 'same')
+    result_mid = signal.fftconvolve(target_mid, mid_fir, 'same')
+    result_side = signal.fftconvolve(target_side, side_fir, 'same')
     debug(f'The convolution is done in {time() - timer:.2f} seconds')
 
     debug('Converting MS to LR...')
-    output = ms_to_lr(output_mid, output_side)
-    return output, output_mid
+    result = ms_to_lr(result_mid, result_side)
+    return result, result_mid
