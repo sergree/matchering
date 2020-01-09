@@ -1,5 +1,5 @@
 import numpy as np
-from .log import Code, warning, info, debug, debug_line, ModuleError
+from .log import Code, info, debug, debug_line
 from . import MainConfig
 from .utils import to_db
 from .dsp import amplify, normalize, clip, rms
@@ -151,9 +151,11 @@ def main(
 ) -> (np.ndarray, np.ndarray, np.ndarray):
     target_mid, target_side, final_amplitude_coefficient,\
         target_mid_loudest_pieces, target_side_loudest_pieces,\
-        reference_mid_loudest_pieces, reference_side_loudest_pieces, \
+        reference_mid_loudest_pieces, reference_side_loudest_pieces,\
         target_divisions, target_piece_size, reference_match_rms\
         = __match_levels(target, reference, config)
+
+    del target, reference
 
     result_no_limiter, result_no_limiter_mid = __match_frequencies(
         target_mid, target_side,
@@ -162,12 +164,18 @@ def main(
         config
     )
 
+    del target_mid, target_side,\
+        target_mid_loudest_pieces, reference_mid_loudest_pieces,\
+        target_side_loudest_pieces, reference_side_loudest_pieces
+
     result_no_limiter = __correct_levels(
         result_no_limiter, result_no_limiter_mid,
         target_divisions, target_piece_size,
         reference_match_rms,
         config
     )
+
+    del result_no_limiter_mid
 
     result, result_no_limiter, result_no_limiter_normalized = __finalize(
         result_no_limiter, final_amplitude_coefficient,

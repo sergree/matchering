@@ -1,9 +1,9 @@
-from .log import Code, warning, info, debug, debug_line, ModuleError
+from .log import Code, info, debug, debug_line, ModuleError
 from . import MainConfig
 from .loader import load
 from .stages import main
 from .saver import save
-from .preview_maker import make_preview
+from .preview_creator import create_preview
 from .utils import get_temp_folder
 from .checker import check, check_equality
 from .dsp import channel_count, size
@@ -65,10 +65,11 @@ def process(
                 correct_result = result_no_limiter
         save(required_result.file, correct_result, config.internal_sample_rate, required_result.subtype)
 
-    # info(Code.INFO_MAKING_PREVIEWS)
-    # Making previews (if needed)
-    # DO STUFF HERE ---> ...
-    # --- Make previews from first non-null value of (result, result_no_limiter, result_no_limiter_normalized)
+    debug_line()
+    info(Code.INFO_MAKING_PREVIEWS)
+    # Creating a preview (if needed)
+    result = next(item for item in [result, result_no_limiter, result_no_limiter_normalized] if item is not None)
+    create_preview(target, result, config)
 
     debug_line()
     info(Code.INFO_COMPLETED)
