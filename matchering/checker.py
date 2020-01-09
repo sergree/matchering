@@ -40,7 +40,7 @@ def __check_length(
 def __check_channels(
         array: np.ndarray,
         info_code_mono: Code,
-        error_code_not_stereo: Code,
+        error_code_not_stereo: Code
 ) -> np.ndarray:
     if is_mono(array):
         info(info_code_mono)
@@ -55,7 +55,7 @@ def __check_clipping_limiting(
         clipping_samples_threshold: int,
         limited_samples_threshold: int,
         warning_code_clipping: Code,
-        warning_code_limiting: Code,
+        warning_code_limiting: Code
 ) -> None:
     max_value, max_count = count_max_peaks(array)
     if max_count > clipping_samples_threshold:

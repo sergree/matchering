@@ -43,7 +43,7 @@ def set_handlers(
         warning_handler=warning_handler,
         info_handler=info_handler,
         debug_handler=debug_handler,
-        show_codes=show_codes,
+        show_codes=show_codes
     )
 
 

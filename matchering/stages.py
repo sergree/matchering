@@ -2,37 +2,10 @@ import numpy as np
 from .log import Code, warning, info, debug, debug_line, ModuleError
 from . import MainConfig
 from .utils import to_db
-from .dsp import amplify, clip
+from .dsp import amplify, normalize, clip, rms
 from .stage_helpers import normalize_reference, analyze_levels, get_fir, \
-    convolve, get_average_rms, get_lpis_and_match_rms
-
-
-def calculate_rms_coefficient(
-        array_match_rms: float,
-        reference_match_rms: float,
-        epsilon: float
-) -> float:
-    rms_coefficient = reference_match_rms / max(epsilon, array_match_rms)
-    debug(f'The RMS coefficient is: {to_db(rms_coefficient)}')
-    return rms_coefficient
-
-
-def calculate_rmsc_and_amplify_multiple(
-        array_main: np.ndarray,
-        array_additional: np.ndarray,
-        array_main_match_rms: float,
-        reference_match_rms: float,
-        epsilon: float,
-        name: str
-) -> (float, np.ndarray, np.ndarray):
-    name = name.upper()
-    rms_coefficient = calculate_rms_coefficient(array_main_match_rms, reference_match_rms, epsilon)
-
-    debug(f'Modifying the amplitudes of the {name} audio...')
-    array_main = amplify(array_main, rms_coefficient)
-    array_additional = amplify(array_additional, rms_coefficient)
-
-    return rms_coefficient, array_main, array_additional
+    convolve, get_average_rms, get_lpis_and_match_rms, get_rms_c_and_amplify_pair
+from .limiter import limit
 
 
 def __match_levels(
@@ -44,7 +17,7 @@ def __match_levels(
     info(Code.INFO_MATCHING_LEVELS)
 
     debug(f'The maximum size of the analyzed piece: {config.max_piece_size} samples '
-          f'or {config.max_piece_size / config.internal_sample_rate:.2f} seconds')
+          f'or {config.max_piece_size / config.internal_sample_rate:.4f} seconds')
 
     reference, final_amplitude_coefficient = normalize_reference(reference, config)
 
@@ -58,7 +31,7 @@ def __match_levels(
         reference_match_rms, *_\
         = analyze_levels(reference, 'reference', config)
 
-    rms_coefficient, target_mid, target_side = calculate_rmsc_and_amplify_multiple(
+    rms_coefficient, target_mid, target_side = get_rms_c_and_amplify_pair(
         target_mid, target_side,
         target_match_rms, reference_match_rms,
         config.min_value, 'target'
@@ -81,7 +54,7 @@ def __match_frequencies(
         reference_mid_loudest_pieces: np.ndarray,
         target_side_loudest_pieces: np.ndarray,
         reference_side_loudest_pieces: np.ndarray,
-        config: MainConfig,
+        config: MainConfig
 ) -> (np.ndarray, np.ndarray):
     debug_line()
     info(Code.INFO_MATCHING_FREQS)
@@ -112,7 +85,6 @@ def __correct_levels(
 ) -> np.ndarray:
     debug_line()
     info(Code.INFO_CORRECTING_LEVELS)
-    name = 'result'
 
     for step in range(1, config.rms_correction_steps + 1):
         debug(f'Applying RMS correction #{step}...')
@@ -122,18 +94,51 @@ def __correct_levels(
             result_mid_clipped,
             target_piece_size,
             target_divisions,
-            name
+            'result'
         )
 
         _, result_mid_clipped_match_rms = get_lpis_and_match_rms(clipped_rmses, clipped_average_rms)
 
-        rms_coefficient, result_mid, result = calculate_rmsc_and_amplify_multiple(
+        rms_coefficient, result_mid, result = get_rms_c_and_amplify_pair(
             result_mid, result,
             result_mid_clipped_match_rms, reference_match_rms,
-            config.min_value, name
+            config.min_value, 'result'
         )
 
     return result
+
+
+def __finalize(
+    result_no_limiter: np.ndarray,
+    final_amplitude_coefficient: float,
+    need_default: bool,
+    need_no_limiter: bool,
+    need_no_limiter_normalized: bool,
+    config: MainConfig
+) -> (np.ndarray, np.ndarray, np.ndarray):
+    debug_line()
+    info(Code.INFO_FINALIZING)
+
+    result_no_limiter_normalized = None
+    if need_no_limiter_normalized:
+        result_no_limiter_normalized, coefficient = normalize(
+            result_no_limiter,
+            config.threshold,
+            config.min_value,
+            normalize_clipped=True
+        )
+        debug(f'The amplitude of the normalized RESULT should be adjusted by {to_db(coefficient)}')
+        if not np.isclose(final_amplitude_coefficient, 1.):
+            debug(f'And by {to_db(final_amplitude_coefficient)} after applying some brickwall limiter to it')
+
+    result = None
+    if need_default:
+        result = limit(result_no_limiter, config)
+        result = amplify(result, final_amplitude_coefficient)
+
+    result_no_limiter = result_no_limiter if need_no_limiter else None
+
+    return result, result_no_limiter, result_no_limiter_normalized
 
 
 def main(
@@ -142,32 +147,32 @@ def main(
         config: MainConfig,
         need_default: bool = True,
         need_no_limiter: bool = False,
-        need_no_limiter_normalized: bool = False,
+        need_no_limiter_normalized: bool = False
 ) -> (np.ndarray, np.ndarray, np.ndarray):
-
     target_mid, target_side, final_amplitude_coefficient,\
         target_mid_loudest_pieces, target_side_loudest_pieces,\
         reference_mid_loudest_pieces, reference_side_loudest_pieces, \
         target_divisions, target_piece_size, reference_match_rms\
         = __match_levels(target, reference, config)
 
-    result, result_mid = __match_frequencies(
+    result_no_limiter, result_no_limiter_mid = __match_frequencies(
         target_mid, target_side,
         target_mid_loudest_pieces, reference_mid_loudest_pieces,
         target_side_loudest_pieces, reference_side_loudest_pieces,
         config
     )
 
-    result = __correct_levels(
-        result,
-        result_mid,
-        target_divisions,
-        target_piece_size,
+    result_no_limiter = __correct_levels(
+        result_no_limiter, result_no_limiter_mid,
+        target_divisions, target_piece_size,
         reference_match_rms,
         config
     )
 
-    debug_line()
-    info(Code.INFO_FINALIZING)
+    result, result_no_limiter, result_no_limiter_normalized = __finalize(
+        result_no_limiter, final_amplitude_coefficient,
+        need_default, need_no_limiter, need_no_limiter_normalized,
+        config
+    )
 
-    return result, result, result
+    return result, result_no_limiter, result_no_limiter_normalized

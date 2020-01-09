@@ -65,11 +65,24 @@ def batch_rms(array: np.ndarray):
     multiplicand = array[:, None, :]
     # (divisions, piece_size) -> (divisions, piece_size, 1)
     multiplier = array[..., None]
-    return np.sqrt(np.squeeze(multiplicand @ multiplier) / piece_size)
+    return np.sqrt(np.squeeze(multiplicand @ multiplier, axis=(1, 2)) / piece_size)
 
 
 def amplify(array: np.ndarray, gain: float) -> np.ndarray:
     return array * gain
+
+
+def normalize(
+        array: np.ndarray,
+        threshold: float,
+        epsilon: float,
+        normalize_clipped: bool
+):
+    coefficient = 1.
+    max_value = np.abs(array).max()
+    if max_value < threshold or normalize_clipped:
+        coefficient = max(epsilon, max_value / threshold)
+    return array / coefficient, coefficient
 
 
 def smooth_lowess(
@@ -89,3 +102,21 @@ def smooth_lowess(
 
 def clip(array: np.ndarray) -> np.ndarray:
     return np.clip(array, -1, 1)
+
+
+def flip(array: np.ndarray) -> np.ndarray:
+    return 1. - array
+
+
+def rectify(
+        array: np.ndarray,
+        threshold: float
+) -> np.ndarray:
+    rectified = np.abs(array).max(1)
+    rectified[rectified <= threshold] = threshold
+    rectified /= threshold
+    return rectified
+
+
+def max_mix(*args) -> np.ndarray:
+    return np.maximum.reduce(args)

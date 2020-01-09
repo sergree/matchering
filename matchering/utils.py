@@ -23,4 +23,12 @@ def __to_db_int(value: float) -> float:
 
 
 def to_db(value: float) -> str:
-    return f'{__to_db_int(value):.2f}dB'
+    return f'{__to_db_int(value):.4f}dB'
+
+
+def ms_to_samples(value: float, sample_rate: int) -> int:
+    return int(sample_rate * value * 1e-3)
+
+
+def make_odd(value: int) -> int:
+    return value + 1 if not value & 1 else value

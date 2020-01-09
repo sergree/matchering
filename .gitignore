@@ -1,6 +1,7 @@
 .idea
 .DS_Store
 __pycache__
+desktop.ini
 
 *.wav
 *.flac

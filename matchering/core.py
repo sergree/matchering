@@ -13,7 +13,7 @@ def process(
         target: str,
         reference: str,
         results: list,
-        config: MainConfig = MainConfig(),
+        config: MainConfig = MainConfig()
 ):
     debug('Please give us a star to help the project: https://github.com/sergree/matchering')
     debug_line()

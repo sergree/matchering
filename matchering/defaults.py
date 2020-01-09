@@ -3,31 +3,61 @@ import math
 
 class LimiterConfig:
     def __init__(
-            self
+            self,
+            attack: float = 1,
+            hold: float = 1,
+            release: float = 3000,
+            attack_filter_coefficient: float = -2,
+            hold_filter_order: int = 1,
+            hold_filter_coefficient: float = 7,
+            release_filter_order: int = 1,
+            release_filter_coefficient: float = 800
     ):
-        pass
+        assert attack > 0
+        self.attack = attack
+
+        assert hold > 0
+        self.hold = hold
+
+        assert release > 0
+        self.release = release
+
+        self.attack_filter_coefficient = attack_filter_coefficient
+
+        assert hold_filter_order > 0
+        assert isinstance(hold_filter_order, int)
+        self.hold_filter_order = hold_filter_order
+
+        self.hold_filter_coefficient = hold_filter_coefficient
+
+        assert release_filter_order > 0
+        assert isinstance(release_filter_order, int)
+        self.release_filter_order = release_filter_order
+
+        self.release_filter_coefficient = release_filter_coefficient
 
 
 class MainConfig:
     def __init__(
             self,
-            internal_sample_rate=44100,
-            max_length=15 * 60,
-            max_piece_size=15,
-            threshold=(2 ** 15 - 61) / 2 ** 15,
-            min_value=1e-6,
-            fft_size=4096,
-            lin_log_oversampling=4,
-            rms_correction_steps=4,
-            clipping_samples_threshold=8,
-            limited_samples_threshold=128,
-            lowess_frac=0.0375,
-            lowess_it=0,
-            lowess_delta=0.001,
-            temp_folder=None,
-            limiter=LimiterConfig()
+            internal_sample_rate: int = 44100,
+            max_length: float = 15 * 60,
+            max_piece_size: float = 15,
+            threshold: float = (2 ** 15 - 61) / 2 ** 15,
+            min_value: float = 1e-6,
+            fft_size: int = 4096,
+            lin_log_oversampling: int = 4,
+            rms_correction_steps: int = 4,
+            clipping_samples_threshold: int = 8,
+            limited_samples_threshold: int = 128,
+            lowess_frac: float = 0.0375,
+            lowess_it: int = 0,
+            lowess_delta: float = 0.001,
+            temp_folder: str = None,
+            limiter: LimiterConfig = LimiterConfig()
     ):
-        assert internal_sample_rate == 44100
+        assert internal_sample_rate > 0
+        assert isinstance(internal_sample_rate, int)
         self.internal_sample_rate = internal_sample_rate
 
         assert max_length > 0

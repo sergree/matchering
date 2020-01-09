@@ -8,7 +8,7 @@ class Result:
             file: str,
             subtype: str,
             use_limiter: bool = True,
-            normalize: bool = True,
+            normalize: bool = True
     ):
         _, file_ext = os.path.splitext(file)
         file_ext = file_ext[1:].upper()

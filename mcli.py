@@ -3,8 +3,8 @@ import matchering as mg
 mg.log(print, show_codes=True)
 
 mg.process(
-    target='my mix.wav',
-    reference='reference.flac',
+    target='audio/my mix.wav',
+    reference='audio/reference.flac',
     results=[
         mg.pcm24('result_24bit.wav'),
         mg.pcm16('result_16bit.wav'),
