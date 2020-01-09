@@ -59,7 +59,7 @@ def rms(array: np.ndarray) -> float:
     return np.sqrt(array @ array / array.shape[0])
 
 
-def batch_rms(array: np.ndarray):
+def batch_rms(array: np.ndarray) -> np.ndarray:
     piece_size = array.shape[1]
     # (divisions, piece_size) -> (divisions, 1, piece_size)
     multiplicand = array[:, None, :]
@@ -120,3 +120,21 @@ def rectify(
 
 def max_mix(*args) -> np.ndarray:
     return np.maximum.reduce(args)
+
+
+def strided_app_2d(matrix: np.ndarray, batch_size: int, step: int) -> np.ndarray:
+    matrix_length = matrix.shape[0]
+    matrix_width = matrix.shape[1]
+    if batch_size > matrix_length:
+        return np.expand_dims(matrix, axis=0)
+    batch_count = ((matrix_length - batch_size) // step) + 1
+    stride_length, stride_width = matrix.strides
+    return np.lib.stride_tricks.as_strided(
+        matrix,
+        shape=(batch_count, batch_size, matrix_width),
+        strides=(step * stride_length, stride_length, stride_width)
+    )
+
+
+def batch_rms_2d(array: np.ndarray) -> np.ndarray:
+    return batch_rms(array.reshape(array.shape[0], array.shape[1] * array.shape[2]))

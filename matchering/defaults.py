@@ -37,19 +37,6 @@ class LimiterConfig:
         self.release_filter_coefficient = release_filter_coefficient
 
 
-class PreviewConfig:
-    def __init__(
-            self,
-            length: float = 30,
-            analysis_step: float = 5
-    ):
-        assert length > 0
-        self.length = length
-
-        assert analysis_step > 0
-        self.analysis_step = analysis_step
-
-
 class MainConfig:
     def __init__(
             self,
@@ -66,9 +53,10 @@ class MainConfig:
             lowess_frac: float = 0.0375,
             lowess_it: int = 0,
             lowess_delta: float = 0.001,
+            preview_size: float = 30,
+            preview_analysis_step: float = 5,
             temp_folder: str = None,
             limiter: LimiterConfig = LimiterConfig(),
-            preview: PreviewConfig = PreviewConfig()
     ):
         assert internal_sample_rate > 0
         assert isinstance(internal_sample_rate, int)
@@ -119,11 +107,13 @@ class MainConfig:
         self.lowess_it = lowess_it
         self.lowess_delta = lowess_delta
 
+        assert preview_size > 5
+        assert preview_analysis_step > 1
+        self.preview_size = preview_size * internal_sample_rate
+        self.preview_analysis_step = preview_analysis_step * internal_sample_rate
+
         assert temp_folder is None or isinstance(temp_folder, str)
         self.temp_folder = temp_folder
 
         assert isinstance(limiter, LimiterConfig)
         self.limiter = limiter
-
-        assert isinstance(preview, PreviewConfig)
-        self.preview = preview
