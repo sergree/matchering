@@ -2,7 +2,7 @@ import numpy as np
 from .log import Code, info, debug, debug_line
 from . import MainConfig
 from .utils import to_db
-from .dsp import amplify, normalize, clip, rms
+from .dsp import amplify, normalize, clip
 from .stage_helpers import normalize_reference, analyze_levels, get_fir, \
     convolve, get_average_rms, get_lpis_and_match_rms, get_rms_c_and_amplify_pair
 from .limiter import limit

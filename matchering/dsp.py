@@ -38,6 +38,7 @@ def count_max_peaks(array: np.ndarray) -> (float, int):
 
 
 def lr_to_ms(array: np.ndarray) -> (np.ndarray, np.ndarray):
+    array = np.copy(array)
     array[:, 0] += array[:, 1]
     array[:, 0] *= 0.5
     mid = np.copy(array[:, 0])
@@ -138,3 +139,12 @@ def strided_app_2d(matrix: np.ndarray, batch_size: int, step: int) -> np.ndarray
 
 def batch_rms_2d(array: np.ndarray) -> np.ndarray:
     return batch_rms(array.reshape(array.shape[0], array.shape[1] * array.shape[2]))
+
+
+def fade(array: np.ndarray, fade_size: int) -> np.ndarray:
+    array = np.copy(array)
+    fade_in = np.linspace(0, 1, fade_size)
+    fade_out = fade_in[::-1]
+    array[:fade_size].T[:] *= fade_in
+    array[size(array) - fade_size:].T[:] *= fade_out
+    return array

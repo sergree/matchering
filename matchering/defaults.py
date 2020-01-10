@@ -55,6 +55,8 @@ class MainConfig:
             lowess_delta: float = 0.001,
             preview_size: float = 30,
             preview_analysis_step: float = 5,
+            preview_fade_size: float = 1,
+            preview_fade_coefficient: float = 8,
             temp_folder: str = None,
             limiter: LimiterConfig = LimiterConfig(),
     ):
@@ -109,8 +111,12 @@ class MainConfig:
 
         assert preview_size > 5
         assert preview_analysis_step > 1
+        assert preview_fade_size > 0
+        assert preview_fade_coefficient >= 2
         self.preview_size = preview_size * internal_sample_rate
         self.preview_analysis_step = preview_analysis_step * internal_sample_rate
+        self.preview_fade_size = preview_fade_size * internal_sample_rate
+        self.preview_fade_coefficient = preview_fade_coefficient
 
         assert temp_folder is None or isinstance(temp_folder, str)
         self.temp_folder = temp_folder

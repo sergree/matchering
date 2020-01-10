@@ -3,8 +3,8 @@ import matchering as mg
 mg.log(print, show_codes=True)
 
 mg.process(
-    target='audio/qtar.mp3',
-    reference='audio/qref.mp3',
+    target='audio/my mix.wav',
+    reference='audio/reference.flac',
     results=[
         mg.pcm24('result_24bit.wav'),
         mg.pcm16('result_16bit.wav'),
@@ -20,5 +20,7 @@ mg.process(
             use_limiter=False,
             normalize=False
         ),
-    ]
+    ],
+    preview_target=mg.pcm16('prev-target.flac'),
+    preview_result=mg.pcm16('prev-result.flac')
 )

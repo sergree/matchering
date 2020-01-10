@@ -1,5 +1,5 @@
 from .log import Code, info, debug, debug_line, ModuleError
-from . import MainConfig
+from . import MainConfig, Result
 from .loader import load
 from .stages import main
 from .saver import save
@@ -13,11 +13,16 @@ def process(
         target: str,
         reference: str,
         results: list,
-        config: MainConfig = MainConfig()
+        config: MainConfig = MainConfig(),
+        preview_target: Result = None,
+        preview_result: Result = None
 ):
     debug('Please give us a star to help the project: https://github.com/sergree/matchering')
     debug_line()
     info(Code.INFO_LOADING)
+
+    if not results:
+        raise RuntimeError(f'The result list is empty')
 
     # Get a temporary folder for converting mp3's
     temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
@@ -65,11 +70,10 @@ def process(
                 correct_result = result_no_limiter
         save(required_result.file, correct_result, config.internal_sample_rate, required_result.subtype)
 
-    debug_line()
-    info(Code.INFO_MAKING_PREVIEWS)
     # Creating a preview (if needed)
-    result = next(item for item in [result, result_no_limiter, result_no_limiter_normalized] if item is not None)
-    create_preview(target, result, config)
+    if preview_target or preview_result:
+        result = next(item for item in [result, result_no_limiter, result_no_limiter_normalized] if item is not None)
+        create_preview(target, result, config, preview_target, preview_result)
 
     debug_line()
     info(Code.INFO_COMPLETED)
