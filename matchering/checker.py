@@ -5,6 +5,7 @@ from datetime import timedelta
 from .log import Code, warning, info, debug, ModuleError
 from . import MainConfig
 from .dsp import size, is_mono, is_stereo, mono_to_stereo, count_max_peaks
+from .utils import time_str
 
 
 def __check_sample_rate(
@@ -30,7 +31,7 @@ def __check_length(
         error_code_min: Code
 ) -> None:
     length = size(array)
-    debug(f'{name} audio length: {length} samples ({timedelta(seconds=length // sample_rate)})')
+    debug(f'{name} audio length: {length} samples ({time_str(length, sample_rate)})')
     if length > max_length:
         raise ModuleError(error_code_max)
     elif length < min_length:

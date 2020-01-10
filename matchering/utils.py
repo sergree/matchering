@@ -2,6 +2,7 @@ import os
 import random
 import string
 import math
+from datetime import timedelta
 
 
 def get_temp_folder(results: list) -> str:
@@ -23,7 +24,7 @@ def __to_db_int(value: float) -> float:
 
 
 def to_db(value: float) -> str:
-    return f'{__to_db_int(value):.4f}dB'
+    return f'{__to_db_int(value):.4f} dB'
 
 
 def ms_to_samples(value: float, sample_rate: int) -> int:
@@ -32,3 +33,7 @@ def ms_to_samples(value: float, sample_rate: int) -> int:
 
 def make_odd(value: int) -> int:
     return value + 1 if not value & 1 else value
+
+
+def time_str(length, sample_rate) -> str:
+    return str(timedelta(seconds=length // sample_rate))

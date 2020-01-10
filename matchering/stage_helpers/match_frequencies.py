@@ -91,7 +91,7 @@ def convolve(
     timer = time()
     result_mid = signal.fftconvolve(target_mid, mid_fir, 'same')
     result_side = signal.fftconvolve(target_side, side_fir, 'same')
-    debug(f'The convolution is done in {time() - timer:.4f} seconds')
+    debug(f'The convolution is done in {time() - timer:.2f} seconds')
 
     debug('Converting MS to LR...')
     result = ms_to_lr(result_mid, result_side)

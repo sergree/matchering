@@ -17,7 +17,7 @@ def __match_levels(
     info(Code.INFO_MATCHING_LEVELS)
 
     debug(f'The maximum size of the analyzed piece: {config.max_piece_size} samples '
-          f'or {config.max_piece_size / config.internal_sample_rate:.4f} seconds')
+          f'or {config.max_piece_size / config.internal_sample_rate:.2f} seconds')
 
     reference, final_amplitude_coefficient = normalize_reference(reference, config)
 

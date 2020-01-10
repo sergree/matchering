@@ -39,7 +39,7 @@ def __calculate_piece_sizes(
     debug(f'The {name} will be didived into {divisions} pieces')
 
     piece_size = int(array_size / divisions)
-    debug(f'One piece of the {name} has a length of {piece_size} samples or {piece_size / sample_rate:.4f} seconds')
+    debug(f'One piece of the {name} has a length of {piece_size} samples or {piece_size / sample_rate:.2f} seconds')
 
     return array_size, divisions, piece_size
 
