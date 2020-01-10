@@ -1,6 +1,6 @@
 from .log.handlers import set_handlers as log
 from .results import Result, pcm16, pcm24
-from .defaults import MainConfig
+from .defaults import Config
 from .core import process
 
 __title__ = 'matchering'

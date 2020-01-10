@@ -3,7 +3,7 @@ from time import time
 from scipy import signal, interpolate
 
 from ..log import debug
-from .. import MainConfig
+from .. import Config
 from ..dsp import ms_to_lr, smooth_lowess
 
 
@@ -26,7 +26,7 @@ def __average_fft(
 
 def __smooth_exponentially(
         matching_fft: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> np.ndarray:
     grid_linear = config.internal_sample_rate * 0.5 * np.linspace(
         0,
@@ -63,7 +63,7 @@ def get_fir(
         target_loudest_pieces: np.ndarray,
         reference_loudest_pieces: np.ndarray,
         name: str,
-        config: MainConfig
+        config: Config
 ) -> np.ndarray:
     debug(f'Calculating the {name} FIR for the matching EQ...')
 

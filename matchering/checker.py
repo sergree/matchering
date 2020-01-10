@@ -1,9 +1,8 @@
 import numpy as np
 from resampy import resample
-from datetime import timedelta
 
 from .log import Code, warning, info, debug, ModuleError
-from . import MainConfig
+from . import Config
 from .dsp import size, is_mono, is_stereo, mono_to_stereo, count_max_peaks
 from .utils import time_str
 
@@ -12,10 +11,12 @@ def __check_sample_rate(
         array: np.ndarray,
         sample_rate: int,
         required_sample_rate: int,
+        name: str,
         log_handler,
         log_code: Code
 ) -> (np.ndarray, int):
     if sample_rate != required_sample_rate:
+        debug(f'Resampling {name} audio from {sample_rate} Hz to {required_sample_rate} Hz...')
         array = resample(array, sample_rate, required_sample_rate, axis=0)
         log_handler(log_code)
     return array, required_sample_rate
@@ -66,23 +67,14 @@ def __check_clipping_limiting(
             warning(warning_code_limiting)
 
 
-def check(array: np.ndarray, sample_rate: int, config: MainConfig, name: str) -> (np.ndarray, int):
+def check(array: np.ndarray, sample_rate: int, config: Config, name: str) -> (np.ndarray, int):
     name = name.upper()
-
-    array, sample_rate = __check_sample_rate(
-        array,
-        sample_rate,
-        config.internal_sample_rate,
-        warning if name == 'TARGET' else info,
-        Code.WARNING_TARGET_IS_RESAMPLED if name == 'TARGET'
-        else Code.INFO_REFERENCE_IS_RESAMPLED
-    )
 
     __check_length(
         array,
         sample_rate,
         config.max_length * sample_rate,
-        config.fft_size,
+        config.fft_size * sample_rate // config.internal_sample_rate,
         name,
         Code.ERROR_TARGET_LENGTH_IS_EXCEEDED if name == 'TARGET'
         else Code.ERROR_REFERENCE_LENGTH_LENGTH_IS_EXCEEDED,
@@ -95,6 +87,16 @@ def check(array: np.ndarray, sample_rate: int, config: MainConfig, name: str) ->
         Code.INFO_TARGET_IS_MONO if name == 'TARGET' else Code.INFO_REFERENCE_IS_MONO,
         Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED if name == 'TARGET'
         else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED
+    )
+
+    array, sample_rate = __check_sample_rate(
+        array,
+        sample_rate,
+        config.internal_sample_rate,
+        name,
+        warning if name == 'TARGET' else info,
+        Code.WARNING_TARGET_IS_RESAMPLED if name == 'TARGET'
+        else Code.INFO_REFERENCE_IS_RESAMPLED
     )
 
     if name == 'TARGET':

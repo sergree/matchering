@@ -1,5 +1,5 @@
 from .log import Code, info, debug, debug_line, ModuleError
-from . import MainConfig, Result
+from . import Config, Result
 from .loader import load
 from .stages import main
 from .saver import save
@@ -13,7 +13,7 @@ def process(
         target: str,
         reference: str,
         results: list,
-        config: MainConfig = MainConfig(),
+        config: Config = Config(),
         preview_target: Result = None,
         preview_result: Result = None
 ):
@@ -44,7 +44,7 @@ def process(
     if not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)\
             or not (channel_count(target) == channel_count(reference) == 2)\
             or not (size(target) > config.fft_size and size(reference) > config.fft_size):
-        return ModuleError(Code.ERROR_VALIDATION)
+        raise ModuleError(Code.ERROR_VALIDATION)
 
     # Process
     result, result_no_limiter, result_no_limiter_normalized = main(

@@ -1,14 +1,14 @@
 import numpy as np
 
 from ..log import debug
-from .. import MainConfig
+from .. import Config
 from ..utils import to_db
 from ..dsp import lr_to_ms, size, unfold, batch_rms, rms, amplify, normalize
 
 
 def normalize_reference(
         reference: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> (np.ndarray, float):
     debug('Normalizing the REFERENCE...')
 
@@ -121,7 +121,7 @@ def get_rms_c_and_amplify_pair(
 def analyze_levels(
         array: np.ndarray,
         name: str,
-        config: MainConfig
+        config: Config
 ) -> (np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float, float):
     name = name.upper()
     debug(f'Calculating mid and side channels of the {name}...')

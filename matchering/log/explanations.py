@@ -27,15 +27,15 @@ __en = {
 
     Code.INFO_TARGET_IS_MONO: 'The TARGET audio is mono. Converting it to stereo...',
     Code.INFO_REFERENCE_IS_MONO: 'The REFERENCE audio is mono. Converting it to stereo...',
-    Code.INFO_REFERENCE_IS_RESAMPLED: 'The REFERENCE audio was resampled to 44100 Hz',
+    Code.INFO_REFERENCE_IS_RESAMPLED: 'The REFERENCE audio was resampled',
     Code.INFO_REFERENCE_IS_LOSSY: 'Presumably the REFERENCE audio format is lossy',
 
     Code.WARNING_TARGET_IS_CLIPPING: 'Audio clipping is detected in the TARGET file. '
                                      'It is highly recommended to use the non-clipping version',
     Code.WARNING_TARGET_LIMITER_IS_APPLIED: 'The applied limiter is detected in the TARGET file. '
                                             'It is highly recommended to use the version without a limiter',
-    Code.WARNING_TARGET_IS_RESAMPLED: 'The sample rate was not 44100 Hz in the TARGET file. '
-                                      'It is resampled to 44100 Hz',
+    Code.WARNING_TARGET_IS_RESAMPLED: 'The TARGET audio sample rate and internal sample rate were different. '
+                                      'The TARGET audio was resampled',
     Code.WARNING_TARGET_IS_LOSSY: 'Presumably the TARGET audio format is lossy. '
                                   'It is highly recommended to use lossless audio formats (WAV, FLAC, AIFF)',
 

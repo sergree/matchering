@@ -2,7 +2,7 @@ import numpy as np
 
 from .log import Code, info, debug, debug_line
 from .dsp import size, strided_app_2d, batch_rms_2d, fade
-from . import MainConfig, Result
+from . import Config, Result
 from .saver import save
 from .utils import time_str
 
@@ -10,7 +10,7 @@ from .utils import time_str
 def create_preview(
         target: np.ndarray,
         result: np.ndarray,
-        config: MainConfig,
+        config: Config,
         preview_target: Result,
         preview_result: Result
 ) -> None:

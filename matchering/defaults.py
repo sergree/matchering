@@ -1,4 +1,5 @@
 import math
+from .log import debug
 
 
 class LimiterConfig:
@@ -37,7 +38,7 @@ class LimiterConfig:
         self.release_filter_coefficient = release_filter_coefficient
 
 
-class MainConfig:
+class Config:
     def __init__(
             self,
             internal_sample_rate: int = 44100,
@@ -62,6 +63,9 @@ class MainConfig:
     ):
         assert internal_sample_rate > 0
         assert isinstance(internal_sample_rate, int)
+        if internal_sample_rate != 44100:
+            debug('Using an internal sample rate other than 44100 has not been tested properly! '
+                  'Use it at your own risk!')
         self.internal_sample_rate = internal_sample_rate
 
         assert max_length > 0

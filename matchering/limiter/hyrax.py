@@ -3,7 +3,7 @@ import math
 from scipy import signal
 from scipy.ndimage.filters import maximum_filter1d
 
-from .. import MainConfig
+from .. import Config
 from ..log import debug
 from ..dsp import rectify, flip, max_mix
 from ..utils import make_odd, ms_to_samples
@@ -24,7 +24,7 @@ def __sliding_window_fast(
 
 def __process_attack(
         array: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> (np.ndarray, np.ndarray):
     attack = ms_to_samples(config.limiter.attack, config.internal_sample_rate)
 
@@ -40,7 +40,7 @@ def __process_attack(
 
 def __process_release(
         array: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> np.ndarray:
     hold = ms_to_samples(config.limiter.hold, config.internal_sample_rate)
 
@@ -65,7 +65,7 @@ def __process_release(
 
 def limit(
         array: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> np.ndarray:
 
     debug('The limiter is started. Preparing the gain envelope...')

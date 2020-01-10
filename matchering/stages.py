@@ -1,6 +1,6 @@
 import numpy as np
 from .log import Code, info, debug, debug_line
-from . import MainConfig
+from . import Config
 from .utils import to_db
 from .dsp import amplify, normalize, clip
 from .stage_helpers import normalize_reference, analyze_levels, get_fir, \
@@ -11,7 +11,7 @@ from .limiter import limit
 def __match_levels(
         target: np.ndarray,
         reference: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> (np.ndarray, np.ndarray, float, np.ndarray, np.ndarray, np.ndarray, np.ndarray, float, float):
     debug_line()
     info(Code.INFO_MATCHING_LEVELS)
@@ -54,7 +54,7 @@ def __match_frequencies(
         reference_mid_loudest_pieces: np.ndarray,
         target_side_loudest_pieces: np.ndarray,
         reference_side_loudest_pieces: np.ndarray,
-        config: MainConfig
+        config: Config
 ) -> (np.ndarray, np.ndarray):
     debug_line()
     info(Code.INFO_MATCHING_FREQS)
@@ -81,7 +81,7 @@ def __correct_levels(
         target_divisions: int,
         target_piece_size: int,
         reference_match_rms: float,
-        config: MainConfig
+        config: Config
 ) -> np.ndarray:
     debug_line()
     info(Code.INFO_CORRECTING_LEVELS)
@@ -114,7 +114,7 @@ def __finalize(
     need_default: bool,
     need_no_limiter: bool,
     need_no_limiter_normalized: bool,
-    config: MainConfig
+    config: Config
 ) -> (np.ndarray, np.ndarray, np.ndarray):
     debug_line()
     info(Code.INFO_FINALIZING)
@@ -144,7 +144,7 @@ def __finalize(
 def main(
         target: np.ndarray,
         reference: np.ndarray,
-        config: MainConfig,
+        config: Config,
         need_default: bool = True,
         need_no_limiter: bool = False,
         need_no_limiter_normalized: bool = False
