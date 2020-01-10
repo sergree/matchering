@@ -2,6 +2,8 @@ from .log.handlers import set_handlers as log
 from .results import Result, pcm16, pcm24
 from .defaults import Config
 from .core import process
+from .loader import load
+from .checker import check
 
 __title__ = 'matchering'
 
