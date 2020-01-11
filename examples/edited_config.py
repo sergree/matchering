@@ -17,7 +17,7 @@ mg.process(
         max_length=30 * 60,
         # Increase the internal and resulting sample rate to 96 kHz from the default value of 44.1 kHz
         internal_sample_rate=96000,
-        # Change the threshold value (float, not db) from the default value of 0.9981 (-0.01 dB)
+        # Change the threshold value (float, not dB) from the default value of 0.9981 (-0.01 dB)
         threshold=0.7079,  # -3 dB
         # Change the temp folder to work with ffmpeg
         temp_folder='/tmp',
