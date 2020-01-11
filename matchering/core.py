@@ -38,7 +38,8 @@ def process(
     reference, reference_sample_rate = check(reference, reference_sample_rate, config, 'reference')
 
     # Analyze the target and the reference together
-    check_equality(target, reference)
+    if not config.allow_equality:
+        check_equality(target, reference)
 
     # Validation of the most important conditions
     if not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)\

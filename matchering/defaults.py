@@ -51,6 +51,7 @@ class Config:
             rms_correction_steps: int = 4,
             clipping_samples_threshold: int = 8,
             limited_samples_threshold: int = 128,
+            allow_equality: bool = False,
             lowess_frac: float = 0.0375,
             lowess_it: int = 0,
             lowess_delta: float = 0.001,
@@ -104,6 +105,9 @@ class Config:
         assert isinstance(limited_samples_threshold, int)
         self.clipping_samples_threshold = clipping_samples_threshold
         self.limited_samples_threshold = limited_samples_threshold
+
+        assert isinstance(allow_equality, bool)
+        self.allow_equality = allow_equality
 
         assert lowess_frac > 0
         assert lowess_it >= 0
