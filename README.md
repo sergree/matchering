@@ -2,7 +2,7 @@
 
 ### Matching + Mastering = ❤️
 
-**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python library]** for audio matching and [mastering].
+**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python library](https://pypi.org/project/matchering)** for audio matching and [mastering].
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
@@ -24,15 +24,16 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library]**.
+If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
 
-## Docker IMAGE - The Easiest Way
+## ~~Docker Image - The Easiest Way~~
+
+### Coming soon! Stay tuned.
 
 ## Python Library - For Developers
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
-[Python Library]: https://pypi.org/project/matchering
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [RMS]: https://en.wikipedia.org/wiki/Root_mean_square
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
@@ -41,6 +42,5 @@ If you are a music producer or an audio engineer, choose the ~~**[Docker Image](
 [MATLAB]: https://www.mathworks.com/products/matlab.html
 [Python 3]: https://www.python.org/
 [brickwall limiter]: https://en.wikipedia.org/wiki/Dynamic_range_compression#Limiting
-[the Python world]: https://pypi.org/
 
 [mpv1]: https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta
