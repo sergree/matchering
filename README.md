@@ -16,7 +16,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can make your music instantly sound like your favorite artist's music
 - You can make all the tracks on your new album sound the same very quickly
 - You can find new aspects of your sound in experiments
-- You can do everything as you want! Because of **[Your References, Your Rules.™][mpv1]** *(just a little nostalgic note)* 🤭
+- You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
 
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
@@ -125,9 +125,9 @@ If our package saved your time or money, you may:
 
 ## Links
 
-- Our Limiter Quality Test
-- Log Codes Overview
-- Our Thoughts
+- [Our Limiter Quality Test](https://github.com/sergree/matchering/blob/master/LIMITER_TEST.md)
+- [Log Codes Overview]()
+- [Our Thoughts]()
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
@@ -147,5 +147,3 @@ If our package saved your time or money, you may:
 [FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
 [matchering-cli]: https://github.com/sergree/matchering-cli
 [examples directory]: https://github.com/sergree/matchering/tree/master/examples
-
-[mpv1]: https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta
