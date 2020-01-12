@@ -48,7 +48,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ### python3-pip
 
-On some Linux distributions, **python3-pip** is not installed by default. For example use this command in Ubuntu Linux to fix this:
+On some Linux distributions, **python3-pip** is not installed by default. For example use this command on Ubuntu Linux to fix this:
 
 ```sudo apt -y install python3-pip```
 
