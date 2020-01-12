@@ -1,3 +1,5 @@
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
+
 # Matchering 2.0
 
 ### Matching + Mastering = ❤️
@@ -43,6 +45,8 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 ## Quick Example
 
 ## Buy Me A Coffee
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
 # Our Thoughts?
 
