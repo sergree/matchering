@@ -46,15 +46,15 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ```sudo apt update && sudo apt -y install libsndfile1```
 
-### *(Optional) FFmpeg*
+### python3-pip
 
-If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg]** library. For example use this command on Ubuntu Linux:
+On some Linux distributions, **python3-pip** is not installed by default. For example use this command in Ubuntu Linux to fix this:
 
-```sudo apt -y install ffmpeg```
-
-Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
+```sudo apt -y install python3-pip```
 
 ### Matchering Python Package
+
+Finally, install our `matchering` package:
 
 ```
 # Linux / macOS
@@ -63,6 +63,14 @@ python3 -m pip install -U matchering
 # Windows
 py -3 -m pip install -U matchering
 ```
+
+### *(Optional) FFmpeg*
+
+If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg]** library. For example use this command on Ubuntu Linux:
+
+```sudo apt -y install ffmpeg```
+
+Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
 
 ## Quick Example
 
