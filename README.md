@@ -20,7 +20,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 > - Completely rewritten in [Python 3], no more [MATLAB]
 > - Our own open source [brickwall limiter] was implemented for it
 > - Processing speed and accuracy have been increased
-> - Now it's [a library][Python Library] that can be connected to **everything** in the Python world
+> - Now it's [a library][Python Library] that can be connected to __**everything**__ in **the Python world**
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
