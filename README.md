@@ -19,7 +19,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can do everything as you want! Because of **[Your References, Your Rules.™][mpv1]** *(just a little nostalgic note)* 🤭
 
 > Differences from the previous major version:
-> - Completely rewritten in [Python 3], no more [MATLAB]
+> - Completely rewritten in [Python 3], open source tech stack only (no more [MATLAB])
 > - Our own open source [brickwall limiter] was implemented for it
 > - Processing speed and accuracy have been increased
 > - Now it's [a library][PyPI] that can be connected to **everything** in **the Python world**
