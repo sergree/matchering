@@ -24,13 +24,35 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
+If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. 
 
-## ~~Docker Image - The Easiest Way~~
+If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
+
+# ~~Docker Image - The Easiest Way~~
 
 ### Coming soon! Stay tuned.
 
-## Python Library - For Developers
+# Python Library - For Developers
+
+**Python 3.6.0 or higher is required**
+
+## Installation
+
+### sndfile & ffmpeg
+
+## Quick Example
+
+## Buy Me A Coffee
+
+# Our Thoughts?
+
+## Links?
+
+### Codes?
+
+### Our Mastering Limiter Quality Test?
+
+## Press About Us
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
