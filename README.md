@@ -97,21 +97,25 @@ mg.process(
 
 You can find more examples in the **[examples directory]**.
 
-Or you can use premade **Matchering 2.0 Command Line Application**: **[matchering-cli]**.
+### Or you can use premade **Matchering 2.0 Command Line Application**: **[matchering-cli]**.
 
-## Buy Me A Coffee
+## A Coffee
+
+If our package saved your time or money, you may:
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
-# Our Thoughts?
+**Thank you!**
+
+## Press About Us
 
 ## Links?
 
-### Codes?
-
 ### Our Mastering Limiter Quality Test?
 
-## Press About Us
+### Codes?
+
+### Our Thoughts?
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
