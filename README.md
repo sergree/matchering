@@ -38,7 +38,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ## Installation
 
-**Python 3.6.0 or higher is required**
+**[Python 3.6.0 or higher][Python 3] is required**
 
 ### libsndfile
 
@@ -52,7 +52,17 @@ If you would like to enable *MP3 loading support*, you need to install the **[FF
 
 ```sudo apt -y install ffmpeg```
 
-Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac]
+Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
+
+### Matchering Python Package
+
+```
+# Linux / macOS
+python3 -m pip install -U matchering
+
+# Windows
+py -3 -m pip install -U matchering
+```
 
 ## Quick Example
 
