@@ -4,7 +4,7 @@
 
 ### Matching + Mastering = ❤️
 
-**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python library][PyPI]** for audio matching and [mastering].
+**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python Library][PyPI]** for audio matching and [mastering].
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
