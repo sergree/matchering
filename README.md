@@ -24,7 +24,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker_image_-_the_easiest_way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library]**.
+If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library]**.
 
 ## Docker IMAGE - The Easiest Way
 
