@@ -21,7 +21,6 @@ __license__ = 'GPLv3'
 __copyright__ = 'Copyright (C) 2016-2020 Sergree'
 
 __version__ = '2.0.0'
-__status__ = 'Development'
 
 from .log.handlers import set_handlers as log
 from .results import Result, pcm16, pcm24
