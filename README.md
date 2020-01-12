@@ -10,7 +10,7 @@ It follows a *simple idea* - you take TWO audio files and feed them into **Match
 
 Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
 
-So **Matchering 2.0** will make your song sound the way you want! It opens up a wide range of possibilities:
+So **Matchering 2.0** will make your song sound the way you want! It opens up a wide range of opportunities:
 - You can make your music instantly sound like your favorite artist's music
 - You can make all the tracks on your new album sound the same very quickly
 - You can find new aspects of your sound in experiments
