@@ -127,7 +127,7 @@ If our package saved your time or money, you may:
 
 - [Our Limiter Quality Test](https://github.com/sergree/matchering/blob/master/LIMITER_TEST.md)
 - [Log Codes Overview]()
-- [Our Thoughts]()
+- [Our Thoughts](https://github.com/sergree/matchering/blob/master/THOUGHTS.md)
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
