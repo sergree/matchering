@@ -2,7 +2,7 @@
 
 ### Matching + Mastering = ❤️
 
-**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python Library]** for audio matching and [mastering].
+**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python library]** for audio matching and [mastering].
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
@@ -21,6 +21,14 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 > - Our own open source [brickwall limiter] was implemented for it
 > - Processing speed and accuracy have been increased
 > - Now it's [a library][Python Library] that can be connected to **everything** in **the Python world**
+
+# Installation and Usage
+
+If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker_image_-_the_easiest_way)**~~ *(coming soon!)*. If you are a developer, choose the **[Python Library]**.
+
+## Docker IMAGE - The Easiest Way
+
+## Python Library - For Developers
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
