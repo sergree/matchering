@@ -8,7 +8,7 @@ It follows a *simple idea* - you take TWO audio files and feed them into **Match
 - **TARGET** (the track you want to master, you want it to sound like the reference)
 - **REFERENCE** (another track, like some kind of "wet" popular song, you want your target to sound like it)
 
-Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude], [stereo width] as the **REFERENCE** track has.
+Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
