@@ -46,7 +46,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ```sudo apt update && sudo apt -y install libsndfile1```
 
-### *FFmpeg (Optional)*
+### *(Optional) FFmpeg*
 
 If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg]** library. For example use this command on Ubuntu Linux:
 
