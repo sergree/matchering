@@ -36,11 +36,23 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 # Python Library - For Developers
 
-**Python 3.6.0 or higher is required**
-
 ## Installation
 
-### sndfile & ffmpeg
+**Python 3.6.0 or higher is required**
+
+### libsndfile
+
+**Matchering 2.0** depends on the **[SoundFile library]**, which depends on the system library **[libsndfile]**. On Windows and macOS, it installs automatically. On Linux, you need to install **[libsndfile]** using your distribution's package manager, for example:
+
+```sudo apt update && sudo apt -y install libsndfile1```
+
+### *FFmpeg (Optional)*
+
+If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg]** library. For example use this command on Ubuntu Linux:
+
+```sudo apt -y install ffmpeg```
+
+Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac]
 
 ## Quick Example
 
@@ -69,5 +81,10 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 [Python 3]: https://www.python.org/
 [brickwall limiter]: https://en.wikipedia.org/wiki/Dynamic_range_compression#Limiting
 [PyPI]: https://pypi.org/project/matchering
+[SoundFile library]: https://github.com/bastibe/SoundFile#installation
+[libsndfile]: http://www.mega-nerd.com/libsndfile/
+[FFmpeg]: https://www.ffmpeg.org/download.html
+[FFmpeg-win]: https://video.stackexchange.com/questions/20495/how-do-i-set-up-and-use-ffmpeg-in-windows
+[FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
 
 [mpv1]: https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta
