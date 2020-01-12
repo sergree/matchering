@@ -16,6 +16,12 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™][mpv1]** *(just a little nostalgic note)* 🤭
 
+> Differences from the previous major version:
+> - Completely rewritten in [Python 3], no more [MATLAB]
+> - Our own open source [brickwall limiter] was implemented for it
+> - Processing speed and accuracy have been increased
+> - Now it's [a library][Python Library] that can be connected to **everything** in the Python world
+
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
 [Python Library]: https://pypi.org/project/matchering
@@ -24,5 +30,9 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
 [peak amplitude]: https://en.wikipedia.org/wiki/Amplitude
 [stereo width]: https://en.wikipedia.org/wiki/Stereo_imaging
+[MATLAB]: https://www.mathworks.com/products/matlab.html
+[Python 3]: https://www.python.org/
+[brickwall limiter]: https://en.wikipedia.org/wiki/Dynamic_range_compression#Limiting
+[the Python world]: https://pypi.org/
 
 [mpv1]: https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta
