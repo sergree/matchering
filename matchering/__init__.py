@@ -14,5 +14,5 @@ __email__ = 'wokashi.rg@gmail.com'
 __license__ = 'GPL'
 __copyright__ = 'Copyright 2016-2020, sergree'
 
-__version__ = '2.0.0rc1'
+__version__ = '2.0.0'
 __status__ = 'Development'
