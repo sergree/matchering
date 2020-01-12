@@ -61,7 +61,7 @@ Finally, install our `matchering` package:
 python3 -m pip install -U matchering
 
 # Windows
-py -3 -m pip install -U matchering
+python -m pip install -U matchering
 ```
 
 ### *(Optional) FFmpeg*
