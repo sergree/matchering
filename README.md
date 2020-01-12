@@ -22,7 +22,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
 > - Our own open source [brickwall limiter] was implemented for it
 > - Processing speed and accuracy have been increased
-> - Now it's [a library][PyPI] that can be connected to **everything** in **the Python world**
+> - Now it is [the library][PyPI] that can be connected to **everything** in **the Python world**
 
 # Installation and Usage
 
@@ -42,7 +42,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ### libsndfile
 
-**Matchering 2.0** depends on the **[SoundFile library]**, which depends on the system library **[libsndfile]**. On Windows and macOS, it installs automatically. On Linux, you need to install **[libsndfile]** using your distribution's package manager, for example:
+**Matchering 2.0** depends on the **[SoundFile]** library, which depends on the system library **[libsndfile]**. On Windows and macOS, it installs automatically. On Linux, you need to install **[libsndfile]** using your distribution's package manager, for example:
 
 ```sudo apt update && sudo apt -y install libsndfile1```
 
@@ -66,7 +66,7 @@ py -3 -m pip install -U matchering
 
 ### *(Optional) FFmpeg*
 
-If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg]** library. For example use this command on Ubuntu Linux:
+If you would like to enable *MP3 loading support*, you need to install the **[FFmpeg][FFmpeg]** library. For example use this command on Ubuntu Linux:
 
 ```sudo apt -y install ffmpeg```
 
@@ -99,7 +99,7 @@ Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
 [Python 3]: https://www.python.org/
 [brickwall limiter]: https://en.wikipedia.org/wiki/Dynamic_range_compression#Limiting
 [PyPI]: https://pypi.org/project/matchering
-[SoundFile library]: https://github.com/bastibe/SoundFile#installation
+[SoundFile]: https://github.com/bastibe/SoundFile#installation
 [libsndfile]: http://www.mega-nerd.com/libsndfile/
 [FFmpeg]: https://www.ffmpeg.org/download.html
 [FFmpeg-win]: https://video.stackexchange.com/questions/20495/how-do-i-set-up-and-use-ffmpeg-in-windows
