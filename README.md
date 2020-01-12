@@ -123,13 +123,11 @@ If our package saved your time or money, you may:
 
 - **Logic Loc: [#1](http://www.logiclocmusic.com/2017/01/05/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)**
 
-## Links?
+## Links
 
-### Our Mastering Limiter Quality Test?
-
-### Codes?
-
-### Our Thoughts?
+- Our Limiter Quality Test
+- Log Codes Overview
+- Our Thoughts
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
