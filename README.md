@@ -74,6 +74,31 @@ Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
 
 ## Quick Example
 
+```python
+import matchering as mg
+
+# Sending all log messages to the default print function
+# Just delete the following line to work silently
+mg.log(print)
+
+mg.process(
+    # The track you want to master
+    target='my_song.wav',
+    # Some "wet" reference track
+    reference='some_popular_song.wav',
+    # Where and how to save your results
+    results=[
+        mg.pcm16('my_song_master_16bit.wav'),
+        mg.pcm24('my_song_master_24bit.wav'),
+    ]
+)
+
+```
+
+You can find more examples in the **[examples directory]**.
+
+Or you can use premade **Matchering 2.0 Command Line Application**: **[matchering-cli]**.
+
 ## Buy Me A Coffee
 
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
@@ -104,5 +129,7 @@ Or follow these instructions: [Windows][FFmpeg-win], [macOS][FFmpeg-mac].
 [FFmpeg]: https://www.ffmpeg.org/download.html
 [FFmpeg-win]: https://video.stackexchange.com/questions/20495/how-do-i-set-up-and-use-ffmpeg-in-windows
 [FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
+[matchering-cli]: https://github.com/sergree/matchering-cli
+[examples directory]: https://github.com/sergree/matchering/tree/master/examples
 
 [mpv1]: https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta
