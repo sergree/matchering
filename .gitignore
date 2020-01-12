@@ -1,0 +1,16 @@
+.idea
+.DS_Store
+__pycache__
+desktop.ini
+
+*.wav
+*.flac
+*.mp3
+*.aif
+*.aiff
+*.pkf
+*.mat
+*.mat5
+
+*.pyc
+mg_cli.py
