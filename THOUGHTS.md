@@ -1,33 +1,33 @@
-# Our Thoughts (2018)
+# Our Thoughts
 
-### Why can't such online service be succeed nowadays?
+### Why can't such an online service be successful nowadays?
 
-- Very little potential audience. Let's explain: **all audio people** (100%) minus **audio novices who don't know about mastering** (40%) minus **pro audio guys who can make mastering by themselves** (20%) minus **guys who don't believe in automated mastering** (30%), the remaining 10% is **the group of people who open to novel things**, but this group is too small
-- Mastering engineers think such services will replace them => no support from **pro audio guys** like [KVR community]
+- Very small potential audience. Let's explain: **all audio people** (100%) minus **audio beginners who don't know about mastering** (40%) minus **pro audio guys who can do mastering on their own** (20%) minus **guys who don't believe in automated mastering** (30%), the remaining 10% are **the group of people who are open to novel things**, but this group is too small
+- Mastering engineers think that such services will replace them => no support from **pro audio guys** like [KVR community]
 
-### It's just numbers!
+### These are just numbers!
 
-We have bad news for you, if you think that good audio [mastering] can be done only with very expensive analog studio equipment. It's **a myth** that brings money to *a certain group of people*. The times of [vinyl] and [cassettes] are passed. All [audio] is digital now: it's all about [bytes] - [integers] and [floats]. All modern [audio] can be processed via [DSP techniques][DSP]. And [everything][DSPApps] can be done by [it][DSP]. Just use **good audio software and plug-ins** or learn [DSP] with *some suitable programming languages* to make **your own stuff**. 😉
+We have bad news for you if you think that good audio [mastering] can only be done with very expensive analog studio equipment. This is **a myth** that brings money to *a certain group of people*. The days of [vinyl] and [cassettes] are over. All [audio] is now digital, it's all about [bytes]: [integers] and [floats]. All modern [audio] can be processed using [DSP techniques][DSP]. And you can do [anything][DSPApps] with [it][DSP]. Just use **good audio software and plug-ins** or learn [DSP] with *some suitable programming languages* to make **your own stuff**. 😉
 
-### Why did original [Matchering] web service close?
+### Why did the original Matchering web service shut down?
 
-- Too much marketing investments needed to convince people that **Matchering** works. And it works with more precision than handmade [mastering] *in most cases*
-- Too much investments in hardware needed before going **paid**:
-  - ~~Paid online service needs to keep all done masterings at user's personal area => **too many HDDs needed**~~
-  - ~~Also it needs to be quickly accessible anywhere in the world => **too many VPSes from different suppliers needed**~~
-  - ☝️ And we didn't know anything about [DevOps methodology] and [Cloud Computing Services] 😂
-  - Also it needs **highly qualified support service** for clients => **salary payments needed**
+- Too much marketing investment is required to convince people that our algorithm works. And it works with more precision than manual [mastering] *in most cases*
+- Too much investment in hardware is required before going **paid**:
+  - ~~Paid online service is obliged to store all completed mastering in the user's personal account => **too many hard drives are required**~~
+  - ~~It should also be quickly accessible anywhere in the world => **too many VPS from different vendors are required**~~
+  - ☝️ And we didn't know anything about [DevOps methodology] and [cloud computing] 😂
+  - It also needs a highly qualified customer support service => **salary payments are required**
   - Etc.
 
-*This amount of money was unaffordable for three ordinary students from Russian Federation*.
+*This amount of money was unaffordable for three ordinary students from the Russian Federation.*
 
-### Why was it supposed to be successful? (As we thought)
+### Why should it be successful? (As we thought)
 
-Do you remember [Prisma]? **Matchering** is like **audio-Prisma** for sound options like [RMS], [FR], [peak amplitude] and [stereo width].
+Do you remember the [Prisma] app? **Matchering** resembles it for sound parameters such as [RMS], [FR], [peak amplitude] and [stereo width].
 
-### Why are online [mastering] services without references useless?
+### Why are automated non-reference mastering services useless?
 
-Online [mastering] services without possibility to upload a **REFERENCE** is a [black box]. How can it know how **your track** should sound? There are so much different *genres* and *styles*, and all of them need their individual approach to processing. And there are so much different *soundings* in them. And without a **REFERENCE** it's imposible to get good results. *It's pure mathematics.*
+Online [mastering] services without the ability to upload a **REFERENCE** track is a [black box]. How can it know what **your track** should sound like? There are so many different *genres* and *styles*, and all of them need an individual approach to processing. And without a **REFERENCE** track, it is impossible to achieve good results. *This is pure math.*
 
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [DSP]: https://en.wikipedia.org/wiki/Digital_signal_processing
@@ -47,4 +47,4 @@ Online [mastering] services without possibility to upload a **REFERENCE** is a [
 [peak amplitude]: https://en.wikipedia.org/wiki/Amplitude
 [stereo width]: https://en.wikipedia.org/wiki/Stereo_imaging
 [DevOps methodology]: https://en.wikipedia.org/wiki/DevOps
-[Cloud Computing Services]: https://en.wikipedia.org/wiki/Cloud_computing
+[cloud computing]: https://en.wikipedia.org/wiki/Cloud_computing
