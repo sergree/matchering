@@ -98,7 +98,7 @@ def normalize(
         threshold: float,
         epsilon: float,
         normalize_clipped: bool
-):
+) -> (np.ndarray, float):
     coefficient = 1.
     max_value = np.abs(array).max()
     if max_value < threshold or normalize_clipped:
@@ -121,8 +121,11 @@ def smooth_lowess(
     )[:, 1]
 
 
-def clip(array: np.ndarray) -> np.ndarray:
-    return np.clip(array, -1, 1)
+def clip(
+        array: np.ndarray,
+        to: float = 1
+) -> np.ndarray:
+    return np.clip(array, -to, to)
 
 
 def flip(array: np.ndarray) -> np.ndarray:

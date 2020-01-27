@@ -21,7 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import numpy as np
 
 from .log import Code, info, debug, debug_line
-from .dsp import size, strided_app_2d, batch_rms_2d, fade, clip, normalize
+from .dsp import size, strided_app_2d, batch_rms_2d, fade, clip
 from . import Config, Result
 from .saver import save
 from .utils import time_str
@@ -37,12 +37,7 @@ def create_preview(
     debug_line()
     info(Code.INFO_MAKING_PREVIEWS)
 
-    target, _ = normalize(
-        clip(target),
-        config.threshold,
-        config.min_value,
-        normalize_clipped=True
-    )
+    target = clip(target, config.threshold)
 
     debug(f'The maximum duration of the preview is {config.preview_size / config.internal_sample_rate} seconds, '
           f'with the analysis step of {config.preview_analysis_step / config.internal_sample_rate} seconds')
