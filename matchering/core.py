@@ -77,6 +77,10 @@ def process(
         need_no_limiter_normalized=any(not rr.use_limiter and rr.normalize for rr in results),
     )
 
+    del reference
+    if not (preview_target or preview_result):
+        del target
+
     debug_line()
     info(Code.INFO_EXPORTING)
 

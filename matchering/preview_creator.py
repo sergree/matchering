@@ -47,8 +47,10 @@ def create_preview(
 
     result_loudest_piece_idx = np.argmax(batch_rms_2d(result_pieces))
 
-    target_piece = target_pieces[result_loudest_piece_idx]
-    result_piece = result_pieces[result_loudest_piece_idx]
+    target_piece = target_pieces[result_loudest_piece_idx].copy()
+    result_piece = result_pieces[result_loudest_piece_idx].copy()
+
+    del target, target_pieces, result_pieces
 
     debug_sample_begin = config.preview_analysis_step * int(result_loudest_piece_idx)
     debug_sample_end = debug_sample_begin + size(result_piece)

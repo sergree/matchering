@@ -90,6 +90,9 @@ def __match_frequencies(
         config
     )
 
+    del target_mid_loudest_pieces, reference_mid_loudest_pieces, \
+        target_side_loudest_pieces, reference_side_loudest_pieces
+
     result, result_mid = convolve(target_mid, mid_fir, target_side, side_fir)
 
     return result, result_mid
