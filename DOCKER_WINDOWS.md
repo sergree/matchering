@@ -19,7 +19,7 @@
    Go to **Resouces > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
-4. Run the container
+4. Press <kbd>![Windows Key][oldwinlogo]</kbd>+<kbd>R</kbd> to open **Run box**. Type `cmd` and then click **OK**
 
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
@@ -34,3 +34,4 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 [Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/
+[oldwinlogo]: http://i.stack.imgur.com/T0oPO.png
