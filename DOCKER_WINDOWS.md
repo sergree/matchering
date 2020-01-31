@@ -19,17 +19,11 @@
    Go to **Resouces > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
-4. Press <kbd>![Windows Key][oldwinlogo]</kbd>+<kbd>R</kbd> to open **Run box**. Type `cmd` and then click **OK**
+4. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open **Run box**. Type `cmd` and then hit <kbd>↵ Enter</kbd>
 
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
 ```
-
-1. Item 1
-2. Item 2
-3. Item 3
-   - Item 3a
-   - Item 3b
 
 
 [Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
