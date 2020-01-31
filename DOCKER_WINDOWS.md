@@ -10,7 +10,7 @@
 
    - Open the **Docker Desktop** menu by clicking the **Docker taskbar icon**
    - Select **Settings**
-   - Go to **Resouces > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
+   - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
 4. Wait for **Docker** to load again: its taskbar icon will stop moving
