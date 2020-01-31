@@ -14,7 +14,7 @@
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
 4. Wait for **Docker** to load again: its taskbar icon will stop moving
-5. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open **Run box**. Type `cmd` and then hit <kbd>↵ Enter</kbd>
+5. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run dialog box**. Type `cmd` and then hit <kbd>↵ Enter</kbd>
 
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
