@@ -1,6 +1,6 @@
 # macOS - Matchering 2.0 Docker Image
 
-**[Docker Desktop for Mac]** requires **Apple Mac OS Sierra 10.12** or above. 
+**[Docker Desktop for Mac]** requires **Apple macOS Sierra 10.12** or above. 
 
 ###### For previous versions get **[Docker Toolbox]**.
 
