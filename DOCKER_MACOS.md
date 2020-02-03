@@ -26,7 +26,7 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 ## Updating
 
-1. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Run** dialog box. Type `Terminal` and then hit <kbd>↵ Return</kbd>
+1. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Spotlight** menu. Type `Terminal` and then hit <kbd>↵ Return</kbd>
 2. Run these commands in a row:
 - `docker stop mgw-app`
 - `docker rm mgw-app`
