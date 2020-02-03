@@ -1,32 +1,23 @@
-# Windows - Matchering 2.0 Docker Image
+# Linux - Matchering 2.0 Docker Image
 
-**[Docker Desktop for Windows]** requires **Microsoft Windows 10 Professional** or **Enterprise 64-bit**. 
-
-###### For previous versions get **[Docker Toolbox]**.
-
-1. Download and install **[Docker Desktop for Windows]**. Use the **Docker Desktop** shortcut if it didn't start automatically
-2. Wait for **Docker** to load: its taskbar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
-3. **IMPORTANT**: Increase the amount of **Memory** used by **Docker** from **2.00 GB** to **4.00 GB**:
-
-   - Open the **Docker Desktop** menu by clicking the **Docker taskbar icon**
-   - Select **Settings**
-   - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
-   
-   ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
-4. Wait for **Docker** to load again
-5. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
-6. Copy and paste this command into the **Command Prompt**, then press <kbd>↵ Enter</kbd>:
+1. Install **Docker Engine - Community** for:
+- [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
+- [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
+- [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
+- [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
+- [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
+2. *(Optional) Follow **[Post-installation steps for Linux](https://docs.docker.com/install/linux/linux-postinstall/)***
+3. Run this command in the terminal:
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
 ```
-7. Wait for **Matchering 2.0** to load. It will print `Status: Downloaded newer image...`
-8. Enjoy your **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉 It will also run automatically at startup
+4. Enjoy your **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉 It will also run automatically at startup
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
 ## Updating
 
-1. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
+1. Open the terminal
 2. Run these commands in a row:
 - `docker stop mgw-app`
 - `docker rm mgw-app`
@@ -38,6 +29,4 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 ```
 4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
 
-[Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
-[Docker Toolbox]: https://docs.docker.com/toolbox/overview/
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy
