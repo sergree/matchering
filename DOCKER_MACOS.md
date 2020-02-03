@@ -14,8 +14,8 @@
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
 4. Wait for **Docker** to load again
-5. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
-6. Copy and paste this command into the **Command Prompt**, then press <kbd>↵ Enter</kbd>:
+5. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Run** dialog box. Type `Terminal` and then hit <kbd>↵ Return</kbd>
+6. Copy and paste this command into the **Terminal**, then press <kbd>↵ Return</kbd>:
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
 ```
@@ -26,7 +26,7 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 ## Updating
 
-1. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
+1. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Run** dialog box. Type `Terminal` and then hit <kbd>↵ Return</kbd>
 2. Run these commands in a row:
 - `docker stop mgw-app`
 - `docker rm mgw-app`
