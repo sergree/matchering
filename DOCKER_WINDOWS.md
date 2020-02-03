@@ -22,8 +22,23 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 7. Wait for **Matchering 2.0** to load. It will print `Status: Downloaded newer image...`
 8. Enjoy your **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉 It will also run automatically at startup
 
+### IMPORTANT: Read the [Keep the Privacy] if you would like to host our web application publicly!
 
+## Updating
+
+1. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
+2. Run these commands in a row:
+- `docker stop mgw-app`
+- `docker rm mgw-app`
+- `docker volume rm mgw-data`
+- `docker pull sergree/matchering-web`
+3. Finally, run the updated container:
+```
+docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
+```
+8. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
 
 [Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/
 [oldwinlogo]: http://i.stack.imgur.com/T0oPO.png
+[Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy
