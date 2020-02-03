@@ -1,6 +1,6 @@
 # Matchering 2.0 Docker Image
 
-**[Docker Desktop for Windows]** requires **Microsoft Windows 10 Professional** or **Enterprise 64-bit**. 
+**[Docker Desktop for Mac]** requires **Apple Mac OS Sierra 10.12** or above. 
 
 ###### For previous versions get **[Docker Toolbox]**.
 
@@ -38,7 +38,6 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 ```
 8. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
 
-[Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
+[Docker Desktop for Mac]: https://download.docker.com/mac/stable/Docker.dmg
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/
-[oldwinlogo]: http://i.stack.imgur.com/T0oPO.png
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy
