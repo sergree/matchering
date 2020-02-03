@@ -4,12 +4,12 @@
 
 ###### For previous versions get **[Docker Toolbox]**.
 
-1. Download and install **[Docker Desktop for Windows]**. Use the **Docker Desktop** shortcut if it didn't start automatically
-2. Wait for **Docker** to load: its taskbar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
+1. Download and install **[Docker Desktop for Mac]**. Use the **Docker Desktop** shortcut if it didn't start automatically
+2. Wait for **Docker** to load: its menu bar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
 3. **IMPORTANT**: Increase the amount of **Memory** used by **Docker** from **2.00 GB** to **4.00 GB**:
 
-   - Open the **Docker Desktop** menu by clicking the **Docker taskbar icon**
-   - Select **Settings**
+   - Open the **Docker Desktop** menu by clicking the **Docker menu bar icon**
+   - Select **Preferences**
    - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
