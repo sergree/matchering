@@ -1,11 +1,11 @@
 # Linux - Matchering 2.0 Docker Image
 
 1. Install **Docker Engine - Community** for:
-- [CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)
-- [Debian](https://docs.docker.com/install/linux/docker-ce/debian/)
-- [Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)
-- [Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)
-- [Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)
+   - **[CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)**
+   - **[Debian](https://docs.docker.com/install/linux/docker-ce/debian/)**
+   - **[Fedora](https://docs.docker.com/install/linux/docker-ce/fedora/)**
+   - **[Ubuntu](https://docs.docker.com/install/linux/docker-ce/ubuntu/)**
+   - **[Binaries](https://docs.docker.com/install/linux/docker-ce/binaries/)**
 2. *(Optional) Follow **[Post-installation steps for Linux](https://docs.docker.com/install/linux/linux-postinstall/)***
 3. Run this command in the terminal:
 ```
