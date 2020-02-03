@@ -40,5 +40,4 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 [Docker Desktop for Windows]: https://download.docker.com/win/stable/Docker%20Desktop%20Installer.exe
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/
-[oldwinlogo]: http://i.stack.imgur.com/T0oPO.png
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy
