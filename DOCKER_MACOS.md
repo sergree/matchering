@@ -14,7 +14,7 @@
    
    ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
 4. Wait for **Docker** to load again
-5. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Run** dialog box. Type `Terminal` and then hit <kbd>↵ Return</kbd>
+5. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Spotlight** menu. Type `Terminal` and then hit <kbd>↵ Return</kbd>
 6. Copy and paste this command into the **Terminal**, then press <kbd>↵ Return</kbd>:
 ```
 docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
