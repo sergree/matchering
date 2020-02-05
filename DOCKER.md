@@ -8,4 +8,4 @@
 ### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
 
-###### Or [return to the main page](https://github.com/sergree/matchering)...
+*Or [return to the main page](https://github.com/sergree/matchering)...*
