@@ -1,6 +1,6 @@
 # Supporters
 
-You keep your ship afloat:
+You keep our ship afloat:
 
 - *(your name goes here)* 🙏
 
