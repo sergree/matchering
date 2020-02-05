@@ -44,6 +44,8 @@ Our app works on all major platforms using **Docker**. Choose yours:
 ### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
 
+***
+
 # Python Library - For Developers
 
 ## Installation
