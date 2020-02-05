@@ -48,8 +48,6 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 # Python Library - For Developers
 
-If you are not a developer, choose the **[Docker Image]**.
-
 ## Installation
 
 **[Python 3.6.0 or higher][Python 3] is required**
