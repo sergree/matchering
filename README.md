@@ -40,13 +40,11 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 Our app works on all major platforms using **Docker**.
 
-## ❗ Choose yours ❗
+## Choose yours
 
 ### [Windows](https://github.com/sergree/matchering/blob/develop/DOCKER_WINDOWS.md)
 ### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
-
-***
 
 # Python Library - For Developers
 
