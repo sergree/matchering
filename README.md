@@ -50,6 +50,8 @@ Our app works on all major platforms using **Docker**.
 
 # Python Library - For Developers
 
+If you are not a developer, choose the **[Docker Image]**.
+
 ## Installation
 
 **[Python 3.6.0 or higher][Python 3] is required**
