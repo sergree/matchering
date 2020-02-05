@@ -1,6 +1,6 @@
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
-![Matchering 2.0 Logo](https://github.com/sergree/matchering/blob/develop/images/logo.png)
+![Matchering 2.0](https://github.com/sergree/matchering/blob/develop/images/logo.png)
 
 [![PyPI version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
