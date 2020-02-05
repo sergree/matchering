@@ -2,6 +2,8 @@
 
 ![Matchering 2.0 Logo](https://github.com/sergree/matchering/blob/develop/images/logo.png)
 
+[![PyPI version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 ### Matching + Mastering = ❤️
 
 **[Matchering 2.0]** is a novel **[Containerized Web Application][Docker Image]** and **[Python Library][PyPI]** for audio matching and [mastering].
