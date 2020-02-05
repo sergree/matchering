@@ -2,7 +2,10 @@
 
 ![Matchering 2.0](https://github.com/sergree/matchering/blob/develop/images/logo.png)
 
-[![PyPI version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![License](https://img.shields.io/pypi/l/matchering.svg)](https://pypi.python.org/pypi/matchering/)
+[![PyPI Version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering)
+[![PyPI Downloads](https://img.shields.io/pypi/dm/matchering.svg)](https://pypi.python.org/pypi/matchering/)
+[![PyPI Python Versions](https://img.shields.io/pypi/pyversions/matchering.svg)](https://pypi.python.org/pypi/matchering/)
 
 ## Matching + Mastering = ❤️
 
