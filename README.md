@@ -18,6 +18,8 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
 
+![Matchering WEB](https://github.com/sergree/matchering/blob/develop/images/animation.gif)
+
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
 > - Our own open source [brickwall limiter] was implemented for it
