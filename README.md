@@ -111,8 +111,8 @@ If our package saved your time or money, you may:
 
 ## Links
 
-- [Press About Us](https://github.com/sergree/matchering/blob/master/PRESS.md)
-- [Supporters](https://github.com/sergree/matchering/blob/master/SUPPORTERS.md)
+- [Press About Us](https://github.com/sergree/matchering/blob/develop/PRESS.md)
+- [Supporters](https://github.com/sergree/matchering/blob/develop/SUPPORTERS.md)
 - [Our Limiter Quality Test](https://github.com/sergree/matchering/blob/master/LIMITER_TEST.md)
 - [Log Codes Overview](https://github.com/sergree/matchering/blob/master/LOG_CODES.md)
 - [Our Thoughts](https://github.com/sergree/matchering/blob/master/THOUGHTS.md)
