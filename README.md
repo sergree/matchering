@@ -4,7 +4,7 @@
 
 ### Matching + Mastering = ❤️
 
-**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python Library][PyPI]** for audio matching and [mastering].
+**[Matchering 2.0]** is a novel **[Containerized Web Application][Docker Image]** and **[Python Library][PyPI]** for audio matching and [mastering].
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
@@ -18,6 +18,8 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
 
+![Matchering WEB](https://github.com/sergree/matchering/blob/develop/images/animation.gif)
+
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
 > - Our own open source [brickwall limiter] was implemented for it
@@ -26,13 +28,17 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. 
+If you are a music producer or an audio engineer, choose the **[Docker Image]**. 
 
 If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
 
-# ~~Docker Image - The Easiest Way~~
+# Docker Image - The Easiest Way
 
-### Coming soon! Stay tuned.
+Our app works on all major platforms using **Docker**. Choose yours:
+
+### [Windows](https://github.com/sergree/matchering/blob/develop/DOCKER_WINDOWS.md)
+### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
+### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
 
 # Python Library - For Developers
 
@@ -119,6 +125,7 @@ If our package saved your time or money, you may:
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
+[Docker Image]: #docker-image---the-easiest-way
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [RMS]: https://en.wikipedia.org/wiki/Root_mean_square
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
