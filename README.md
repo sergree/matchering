@@ -1,6 +1,6 @@
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
-![Matchering 2.0 Logo](https://github.com/sergree/matchering/blob/develop/images/logo.png)
+[![Matchering 2.0 Logo](https://github.com/sergree/matchering/blob/develop/images/logo.png)](#)
 
 ### Matching + Mastering = ❤️
 
