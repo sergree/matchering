@@ -12,7 +12,7 @@ You keep our ship afloat:
 
 [![JetBrains](https://github.com/sergree/matchering/blob/develop/images/JetBrains.png)](https://www.jetbrains.com)
 
-**Matchering 2.0** was created using these **[JetBrains]** IDEs:
+**Matchering 2.0** was created using awesome **[JetBrains]** IDEs:
 
 [PyCharm] | [WebStorm]
 :-------------------------:|:-------------------------:
