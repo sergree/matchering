@@ -46,9 +46,9 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ## Choose yours
 
-### [Windows](https://github.com/sergree/matchering/blob/develop/DOCKER_WINDOWS.md)
-### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
-### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
+### [Windows](https://github.com/sergree/matchering/blob/master/DOCKER_WINDOWS.md)
+### [macOS](https://github.com/sergree/matchering/blob/master/DOCKER_MACOS.md)
+### [Linux](https://github.com/sergree/matchering/blob/master/DOCKER_LINUX.md)
 
 # Python Library - For Developers
 
