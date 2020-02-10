@@ -12,7 +12,7 @@
    - Select **Settings**
    - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
-   ![Docker Memory](https://github.com/sergree/matchering/blob/master/images/docker-4gb.png)
+   ![Docker Memory](https://raw.githubusercontent.com/sergree/matchering/master/images/docker-4gb.png)
 4. Wait for **Docker** to load again
 5. Press <kbd>❖ Windows</kbd> + <kbd>R</kbd> to open the **Run** dialog box. Type `cmd` and then hit <kbd>↵ Enter</kbd>
 6. Copy and paste this command into the **Command Prompt**, then press <kbd>↵ Enter</kbd>:
