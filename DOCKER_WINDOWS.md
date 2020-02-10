@@ -24,7 +24,7 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 If you have any problems, watch the video:
 
-[![](http://img.youtube.com/vi/rVv23yXkW9g/0.jpg)](http://www.youtube.com/watch?v=rVv23yXkW9g "Matchering 2.0 - Installation (Windows)")
+[![Matchering 2.0 - Installation (Windows)](http://img.youtube.com/vi/rVv23yXkW9g/0.jpg)](http://www.youtube.com/watch?v=rVv23yXkW9g "Matchering 2.0 - Installation (Windows)")
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
