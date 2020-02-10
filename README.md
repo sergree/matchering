@@ -1,10 +1,14 @@
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
-# Matchering 2.0
+![Matchering 2.0](https://github.com/sergree/matchering/blob/develop/images/logo.png)
 
-### Matching + Mastering = ❤️
+[![License](https://img.shields.io/pypi/l/matchering.svg)](https://pypi.python.org/pypi/matchering/)
+[![PyPI Version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering)
+[![PyPI Python Versions](https://img.shields.io/pypi/pyversions/matchering.svg)](https://pypi.python.org/pypi/matchering/)
 
-**[Matchering 2.0]** is a novel ~~**Containerized Web Application**~~ *(coming soon!)* and **[Python Library][PyPI]** for audio matching and [mastering].
+## Matching + Mastering = ❤️
+
+**[Matchering 2.0]** is a novel **[Containerized Web Application][Docker Image]** and **[Python Library][PyPI]** for audio matching and [mastering].
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
@@ -12,11 +16,17 @@ It follows a *simple idea* - you take TWO audio files and feed them into **Match
 
 Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
 
+Watch **[the video][Video]**:
+
+[![Matchering 2.0 Promo Video](http://img.youtube.com/vi/8Su5STDYfcA/0.jpg)][Video]
+
 So **Matchering 2.0** will make your song sound the way you want! It opens up a wide range of opportunities:
 - You can make your music instantly sound like your favorite artist's music
 - You can make all the tracks on your new album sound the same very quickly
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
+
+![Matchering WEB GIF Animation](https://github.com/sergree/matchering/blob/develop/images/animation.gif "Matchering WEB")
 
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
@@ -26,13 +36,19 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the ~~**[Docker Image](#docker-image---the-easiest-way)**~~ *(coming soon!)*. 
+If you are a music producer or an audio engineer, choose the **[Docker Image]**. 
 
 If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
 
-# ~~Docker Image - The Easiest Way~~
+# Docker Image - The Easiest Way
 
-### Coming soon! Stay tuned.
+**Matchering 2.0** works on all major platforms using **Docker**.
+
+## Choose yours
+
+### [Windows](https://github.com/sergree/matchering/blob/develop/DOCKER_WINDOWS.md)
+### [macOS](https://github.com/sergree/matchering/blob/develop/DOCKER_MACOS.md)
+### [Linux](https://github.com/sergree/matchering/blob/develop/DOCKER_LINUX.md)
 
 # Python Library - For Developers
 
@@ -109,30 +125,17 @@ If our package saved your time or money, you may:
 
 **Thank you!**
 
-## Press About Us
-
-- **MusicRadar: [#1](https://www.musicradar.com/news/tech/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others-646454)**
-
-- **Ask.Audio: [#1](https://ask.audio/articles/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes) [#2](https://ask.audio/articles/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta) [#3](https://ask.audio/articles/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github)**
-
-- **Rekkerd: [#1](https://rekkerd.org/sound-tools-intros-matchering-online-mastering-service-with-matching/) [#2](https://rekkerd.org/sound-tools-launches-matchering-public-beta/) [#3](https://rekkerd.org/sound-tools-matchering-mastering-service-folds-now-open-source/)**
-
-- **macProVideo.com: [#1](https://macprovideo.com/article/audio-software/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes) [#2](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta) [#3](https://macprovideo.com/article/audio-software/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github)**
-
-- **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/)**
-
-- **Logic Loc: [#1](http://www.logiclocmusic.com/2017/01/05/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)**
-
-**Thanks, guys!**
-
 ## Links
 
+- [Press About Us](https://github.com/sergree/matchering/blob/develop/PRESS.md)
+- [Supporters](https://github.com/sergree/matchering/blob/develop/SUPPORTERS.md)
 - [Our Limiter Quality Test](https://github.com/sergree/matchering/blob/master/LIMITER_TEST.md)
 - [Log Codes Overview](https://github.com/sergree/matchering/blob/master/LOG_CODES.md)
 - [Our Thoughts](https://github.com/sergree/matchering/blob/master/THOUGHTS.md)
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
+[Docker Image]: #docker-image---the-easiest-way
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [RMS]: https://en.wikipedia.org/wiki/Root_mean_square
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
@@ -149,3 +152,4 @@ If our package saved your time or money, you may:
 [FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
 [matchering-cli]: https://github.com/sergree/matchering-cli
 [examples directory]: https://github.com/sergree/matchering/tree/master/examples
+[Video]: http://www.youtube.com/watch?v=8Su5STDYfcA "Matchering 2.0 - Open Source Audio Matching and Mastering"
