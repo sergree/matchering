@@ -1,6 +1,6 @@
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
 
-![Matchering 2.0](https://github.com/sergree/matchering/blob/develop/images/logo.png)
+![Matchering 2.0](https://github.com/sergree/matchering/blob/master/images/logo.png)
 
 [![License](https://img.shields.io/pypi/l/matchering.svg)](https://pypi.python.org/pypi/matchering/)
 [![PyPI Version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering)
@@ -26,7 +26,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
 
-![Matchering WEB GIF Animation](https://github.com/sergree/matchering/blob/develop/images/animation.gif "Matchering WEB")
+![Matchering WEB GIF Animation](https://github.com/sergree/matchering/blob/master/images/animation.gif "Matchering WEB")
 
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
