@@ -16,13 +16,17 @@ It follows a *simple idea* - you take TWO audio files and feed them into **Match
 
 Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
 
+Watch **[the video][Video]**:
+
+[![Matchering 2.0 Promo Video](http://img.youtube.com/vi/8Su5STDYfcA/0.jpg)][Video]
+
 So **Matchering 2.0** will make your song sound the way you want! It opens up a wide range of opportunities:
 - You can make your music instantly sound like your favorite artist's music
 - You can make all the tracks on your new album sound the same very quickly
 - You can find new aspects of your sound in experiments
 - You can do everything as you want! Because of **[Your References, Your Rules.™](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta)** *(just a little nostalgic note)* 🤭
 
-![Matchering WEB](https://github.com/sergree/matchering/blob/develop/images/animation.gif)
+![Matchering WEB GIF Animation](https://github.com/sergree/matchering/blob/develop/images/animation.gif "Matchering WEB")
 
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
@@ -148,3 +152,4 @@ If our package saved your time or money, you may:
 [FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
 [matchering-cli]: https://github.com/sergree/matchering-cli
 [examples directory]: https://github.com/sergree/matchering/tree/master/examples
+[Video]: http://www.youtube.com/watch?v=8Su5STDYfcA "Matchering 2.0 - Open Source Audio Matching and Mastering"
