@@ -10,13 +10,13 @@ You keep our ship afloat:
 
 ## JetBrains
 
-[![JetBrains](https://github.com/sergree/matchering/blob/master/images/JetBrains.png)](https://www.jetbrains.com)
+[![JetBrains](https://raw.githubusercontent.com/sergree/matchering/master/images/JetBrains.png)](https://www.jetbrains.com)
 
 **Matchering 2.0** was created using awesome **[JetBrains]** IDEs:
 
 [PyCharm] | [WebStorm]
 :-------------------------:|:-------------------------:
-[![](https://github.com/sergree/matchering/blob/master/images/PyCharm.png)][PyCharm] | [![](https://github.com/sergree/matchering/blob/master/images/WebStorm.png)][WebStorm]
+[![](https://raw.githubusercontent.com/sergree/matchering/master/images/PyCharm.png)][PyCharm] | [![](https://raw.githubusercontent.com/sergree/matchering/master/images/WebStorm.png)][WebStorm]
 
 **Thank you for the Open Source License!**
 
