@@ -12,7 +12,7 @@
    - Select **Preferences**
    - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
-   ![Docker Memory](https://github.com/sergree/matchering/blob/develop/images/docker-4gb.png)
+   ![Docker Memory](https://github.com/sergree/matchering/blob/master/images/docker-4gb.png)
 4. Wait for **Docker** to load again
 5. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Spotlight** menu. Type `Terminal` and then hit <kbd>↵ Return</kbd>
 6. Copy and paste this command into the **Terminal**, then press <kbd>↵ Return</kbd>:
