@@ -4,7 +4,8 @@
 
 You keep our ship afloat:
 
-- *(your name goes here)* 🙏
+- **[EQM](https://vk.com/endless.shf.quest)**
+- **[Hoducoma](https://soundcloud.com/hoducoma)**
 
 **Thank you!**
 
