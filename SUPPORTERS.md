@@ -4,6 +4,8 @@
 
 You keep our ship afloat:
 
+- **[Somnia](https://soundcloud.com/somnia)**
+- **[Re-Twin](https://soundcloud.com/re-twin/)**
 - **[EQM](https://soundcloud.com/endque)**
 - **[Hoducoma](https://soundcloud.com/hoducoma)**
 - **[Georgy Om](https://soundcloud.com/georgy-om)**
