@@ -6,6 +6,7 @@ You keep our ship afloat:
 
 - **[EQM](https://vk.com/endless.shf.quest)**
 - **[Hoducoma](https://soundcloud.com/hoducoma)**
+- **[Georgy Om](https://soundcloud.com/georgy-om)**
 
 **Thank you!**
 
