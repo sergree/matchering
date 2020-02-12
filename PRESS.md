@@ -8,8 +8,8 @@
 
 - **macProVideo.com: [#1](https://macprovideo.com/article/audio-software/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes) [#2](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta) [#3](https://macprovideo.com/article/audio-software/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github)**
 
-- **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/)**
+- **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/) [#4](https://www.gearnews.de/matchering-2-0-erlaubt-kostenloses-mastering-auf-open-source-basis/)**
 
-- **Logic Loc: [#1](http://www.logiclocmusic.com/2017/01/05/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)**
+- **bonedo: [#1](https://www.bonedo.de/artikel/einzelansicht/matchering-20-erlaubt-kostenloses-mastering-auf-open-source-basis.html)**
 
 **Thanks, guys!**
