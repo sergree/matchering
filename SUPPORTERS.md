@@ -4,6 +4,7 @@
 
 You keep our ship afloat:
 
+- **[cubase.ninja](https://cubase.ninja/)**
 - **[Beat Hackers](https://soundcloud.com/beat-hackers)**
 - **[Somnia](https://soundcloud.com/somnia)**
 - **[Re-Twin](https://soundcloud.com/re-twin/)**
