@@ -4,6 +4,7 @@
 
 You keep our ship afloat:
 
+- **[Beat Hackers](https://soundcloud.com/beat-hackers)**
 - **[Somnia](https://soundcloud.com/somnia)**
 - **[Re-Twin](https://soundcloud.com/re-twin/)**
 - **[EQM](https://soundcloud.com/endque)**
