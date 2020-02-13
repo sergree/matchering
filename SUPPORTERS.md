@@ -28,6 +28,6 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 
 **Thank you for the Open Source License!**
 
-[JetBrains]: https://www.jetbrains.com
-[PyCharm]: https://www.jetbrains.com/pycharm/
-[WebStorm]: https://www.jetbrains.com/webstorm/
+[JetBrains]: https://www.jetbrains.com/?from=Matchering
+[PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
+[WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
