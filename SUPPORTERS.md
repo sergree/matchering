@@ -12,6 +12,8 @@ You keep our ship afloat:
 - **[Hoducoma](https://soundcloud.com/hoducoma)**
 - **[Georgy Om](https://soundcloud.com/georgy-om)**
 
+Special thanks to the members and the staff of the **[AudioSEX - Professional Audio Forum](https://audiosex.pro/)**.
+
 **Thank you!**
 
 ## JetBrains
