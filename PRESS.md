@@ -10,6 +10,6 @@
 
 - **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/) [#4](https://www.gearnews.de/matchering-2-0-erlaubt-kostenloses-mastering-auf-open-source-basis/)**
 
-- **bonedo: [#1](https://www.bonedo.de/artikel/einzelansicht/matchering-20-erlaubt-kostenloses-mastering-auf-open-source-basis.html)**
+- **Bonedo: [#1](https://www.bonedo.de/artikel/einzelansicht/matchering-20-erlaubt-kostenloses-mastering-auf-open-source-basis.html)**
 
 **Thanks, guys!**
