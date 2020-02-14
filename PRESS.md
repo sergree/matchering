@@ -8,6 +8,8 @@
 
 - **macProVideo.com: [#1](https://macprovideo.com/article/audio-software/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes) [#2](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta) [#3](https://macprovideo.com/article/audio-software/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github) [#4](https://macprovideo.com/article/audio-software/want-to-master-your-music-in-twoclicks-check-out-matchering-20)**
 
+- **KVR Audio: [#1](https://www.kvraudio.com/news/sergree-releases-matchering-2-0---open-source-audio-matching-and-mastering-47747)**
+
 - **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/) [#4](https://www.gearnews.de/matchering-2-0-erlaubt-kostenloses-mastering-auf-open-source-basis/)**
 
 - **Bonedo: [#1](https://www.bonedo.de/artikel/einzelansicht/matchering-20-erlaubt-kostenloses-mastering-auf-open-source-basis.html)**
