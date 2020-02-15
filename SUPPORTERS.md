@@ -2,7 +2,7 @@
 
 # Supporters
 
-You keep our ship afloat:
+You keep our ship afloat.
 
 ## Coffee
 
