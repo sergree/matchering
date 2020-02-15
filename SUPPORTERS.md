@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][BMC]
 
 # Supporters
 
@@ -6,7 +6,8 @@ You keep our ship afloat.
 
 ## Coffee
 
-- **[Anonymous](https://www.buymeacoffee.com/sergree)** ☕
+- **[drb][BMC]** ☕ *Excellent results from initial testing. Please, think about porting it to Win executable file.*
+- **[Anonymous][BMC]** ☕
 
 **Thank you!**
 
@@ -39,3 +40,4 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [JetBrains]: https://www.jetbrains.com/?from=Matchering
 [PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
 [WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
+[BMC]: https://www.buymeacoffee.com/sergree
