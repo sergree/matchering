@@ -16,6 +16,8 @@
 
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
+- **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
+
 - **Nice Disport: [#1](https://nice-disport.seesaa.net/article/473588359.html)**
 
 **Thanks, guys!**
