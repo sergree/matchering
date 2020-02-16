@@ -17,6 +17,7 @@ You keep our ship afloat.
 - **[Beat Hackers](https://soundcloud.com/beat-hackers)**
 - **[Somnia](https://soundcloud.com/somnia)**
 - **[Re-Twin](https://soundcloud.com/re-twin/)**
+- **[The_One Community](https://vk.com/the_one_community)**
 - **[EQM](https://soundcloud.com/endque)**
 - **[Hoducoma](https://soundcloud.com/hoducoma)**
 - **[Georgy Om](https://soundcloud.com/georgy-om)**
