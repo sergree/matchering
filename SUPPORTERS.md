@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[q80vV][BMC]** ☕
 - **[drb][BMC]** ☕ *Excellent results from initial testing. Please, think about porting it to Win executable file.*
 - **[Anonymous][BMC]** ☕
 
