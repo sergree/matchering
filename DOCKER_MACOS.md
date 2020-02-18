@@ -2,7 +2,7 @@
 
 **[Docker Desktop for Mac]** requires **Apple macOS Sierra 10.12 or above**. 
 
-###### For previous versions get **[Docker Toolbox]**.
+<!--- ###### For previous versions get **[Docker Toolbox]**. -->
 
 1. Download and install **[Docker Desktop for Mac]**. Use the **Docker Desktop** shortcut if it didn't start automatically
 2. Wait for **Docker** to load: its menu bar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
