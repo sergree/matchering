@@ -1,6 +1,6 @@
 # Windows - Matchering 2.0 Docker Image
 
-**[Docker Desktop for Windows]** requires **Microsoft Windows 10 Professional** or **Enterprise 64-bit**. 
+**[Docker Desktop for Windows]** requires **Microsoft Windows 10 64-bit: Pro, Enterprise, or Education**. 
 
 ###### For previous versions get **[Docker Toolbox]**.
 
