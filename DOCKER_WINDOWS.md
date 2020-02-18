@@ -2,7 +2,7 @@
 
 **[Docker Desktop for Windows]** requires **Microsoft Windows 10 64-bit: Pro, Enterprise, or Education**. 
 
-###### For previous versions get **[Docker Toolbox]**.
+<!--- ###### For previous versions get **[Docker Toolbox]**. -->
 
 1. Download and install **[Docker Desktop for Windows]**. Use the **Docker Desktop** shortcut if it didn't start automatically
 2. Wait for **Docker** to load: its taskbar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
