@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Someone][BMC]** ☕ *Thanks for your good work!*
 - **[Someone][BMC]** ☕
 - **[q80vV][BMC]** ☕
 - **[drb][BMC]** ☕ *Excellent results from initial testing. Please, think about porting it to Win executable file.*
