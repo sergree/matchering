@@ -54,7 +54,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 
 ## Installation
 
-**[Python 3.6.0 or higher][Python 3] is required**
+**4 GB RAM machine and [Python 3.6.0 or higher][Python 3] are required**
 
 ### libsndfile
 
