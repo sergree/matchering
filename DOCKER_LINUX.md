@@ -1,5 +1,7 @@
 # Linux - Matchering 2.0 Docker Image
 
+Make sure that your machine has at least **4 GB of RAM**.
+
 1. Install **Docker Engine - Community** for:
    - **[CentOS](https://docs.docker.com/install/linux/docker-ce/centos/)**
    - **[Debian](https://docs.docker.com/install/linux/docker-ce/debian/)**
