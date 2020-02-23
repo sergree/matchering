@@ -24,4 +24,6 @@
 
 - **Nice Disport: [#1](https://nice-disport.seesaa.net/article/473588359.html)**
 
+- **LOGIC LOC: [#1](http://www.logiclocmusic.com/the-matchering-online-mastering-service-promises-to-make-your-tracks-sound-like-others/)**
+
 **Thanks, guys!**
