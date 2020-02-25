@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[D3GO][BMC]** ☕ *Großartige Arbeit*
 - **[MADEVIL RECORDS](https://www.youtube.com/channel/UCpmVeMJDrfHI56FEbMQ10zg)** ☕☕☕☕ *A revolutionary thing!*
 - **[Someone][BMC]** ☕ *Thanks for your good work!*
 - **[Someone][BMC]** ☕
