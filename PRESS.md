@@ -18,6 +18,8 @@
 
 - **Bonedo: [#1](https://www.bonedo.de/artikel/einzelansicht/matchering-20-erlaubt-kostenloses-mastering-auf-open-source-basis.html)**
 
+- **Beat: [#1](https://www.beat.de/news/mastering-matching-kostenlos-eigenen-rechner-10075944.html)**
+
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
