@@ -20,6 +20,8 @@
 
 - **Beat: [#1](https://www.beat.de/news/mastering-matching-kostenlos-eigenen-rechner-10075944.html)**
 
+- **Давай Запишем!: [#1](https://www.youtube.com/watch?v=-wWGIJ-hoz4)**
+
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
