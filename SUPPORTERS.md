@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Someone][BMC]** ☕☕☕ *Amazing tool!! very useful for audio idiots like me*
 - **[D3GO][BMC]** ☕ *Großartige Arbeit*
 - **[MADEVIL RECORDS](https://www.youtube.com/channel/UCpmVeMJDrfHI56FEbMQ10zg)** ☕☕☕☕ *A revolutionary thing!*
 - **[Someone][BMC]** ☕ *Thanks for your good work!*
