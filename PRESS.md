@@ -22,6 +22,8 @@
 
 - **Давай Запишем!: [#1](https://www.youtube.com/watch?v=-wWGIJ-hoz4)**
 
+- **Universe Zen: [#1](https://www.youtube.com/watch?v=aM6dmg4R8D0)**
+
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
