@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Dajis][BMC]** ☕
 - **[Someone][BMC]** ☕
 - **[Mattia Moraldi][BMC]** ☕ *Thank you very much!!*
 - **[Someone][BMC]** ☕
