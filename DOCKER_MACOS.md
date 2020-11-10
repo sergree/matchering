@@ -24,20 +24,6 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
-## Updating
-
-1. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Spotlight** menu. Type `Terminal` and then hit <kbd>↵ Return</kbd>
-2. Run these commands in a row:
-- `docker stop mgw-app`
-- `docker rm mgw-app`
-- `docker volume rm mgw-data`
-- `docker pull sergree/matchering-web`
-3. Finally, run the updated container:
-```
-docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
-4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
-
 [Docker Desktop for Mac]: https://download.docker.com/mac/stable/Docker.dmg
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy

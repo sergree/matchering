@@ -52,6 +52,10 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 ### [macOS](https://github.com/sergree/matchering/blob/master/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/master/DOCKER_LINUX.md)
 
+## Updating
+
+If you need to update the version of the installed **Docker Image**, follow **[these instructions](https://github.com/sergree/matchering/blob/master/DOCKER_UPDATING.md)**.
+
 # Python Library - For Developers
 
 ## Installation

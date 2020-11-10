@@ -17,18 +17,4 @@ sudo docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart alw
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
-## Updating
-
-1. Open the terminal
-2. Run these commands in a row:
-- `sudo docker stop mgw-app`
-- `sudo docker rm mgw-app`
-- `sudo docker volume rm mgw-data`
-- `sudo docker pull sergree/matchering-web`
-3. Finally, run the updated container:
-```
-sudo docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
-4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
-
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy
