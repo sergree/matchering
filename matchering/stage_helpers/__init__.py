@@ -6,7 +6,7 @@ Matchering Stages
 
 Internal Matchering processing stage helpers.
 
-:copyright: (C) 2016-2020 Sergree
+:copyright: (C) 2016-2021 Sergree
 :license: GPLv3, see LICENSE for more details.
 
 """

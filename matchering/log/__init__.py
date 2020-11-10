@@ -6,7 +6,7 @@ Matchering Log
 
 Internal Matchering logging module that can be bound to any text stream.
 
-:copyright: (C) 2016-2020 Sergree
+:copyright: (C) 2016-2021 Sergree
 :license: GPLv3, see LICENSE for more details.
 
 """

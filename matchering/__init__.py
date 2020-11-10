@@ -6,7 +6,7 @@ Matchering
 
 Audio Matching and Mastering Python Library
 
-:copyright: (C) 2016-2020 Sergree
+:copyright: (C) 2016-2021 Sergree
 :license: GPLv3, see LICENSE for more details.
 
 """
@@ -18,7 +18,7 @@ __credits__ = ['Sergey Grishakov', 'Igor Isaev', 'Chin Yun Yu', 'Elizaveta Grish
 __maintainer__ = 'Sergree'
 __email__ = 'wokashi.rg@gmail.com'
 __license__ = 'GPLv3'
-__copyright__ = 'Copyright (C) 2016-2020 Sergree'
+__copyright__ = 'Copyright (C) 2016-2021 Sergree'
 
 __version__ = '2.0.3'
 
