@@ -7,9 +7,9 @@
 - `docker volume rm mgw-data`
 - `docker pull sergree/matchering-web`
 3. Finally, run the updated container:
-```
-docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
+   ```
+   docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
+   ```
 4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
 
 ## macOS Updating
@@ -21,9 +21,9 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 - `docker volume rm mgw-data`
 - `docker pull sergree/matchering-web`
 3. Finally, run the updated container:
-```
-docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
+   ```
+   docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
+   ```
 4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
 
 ## Linux Updating
@@ -35,7 +35,7 @@ docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always s
 - `sudo docker volume rm mgw-data`
 - `sudo docker pull sergree/matchering-web`
 3. Finally, run the updated container:
-```
-sudo docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
+   ```
+   sudo docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
+   ```
 4. Enjoy your updated **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉
