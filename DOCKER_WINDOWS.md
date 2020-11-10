@@ -47,7 +47,7 @@
 
 10. Enjoy your **Matchering 2.0** at 🎉 **http://127.0.0.1:8360** 🎉 It will also run automatically at startup
 
-   ![Win Step 11](https://raw.githubusercontent.com/sergree/matchering/master/images/win_step_11.png)
+    ![Win Step 11](https://raw.githubusercontent.com/sergree/matchering/master/images/win_step_11.png)
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
