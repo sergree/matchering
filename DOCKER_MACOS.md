@@ -1,6 +1,6 @@
 # macOS - Matchering 2.0 Docker Image
 
-**[Docker Desktop for Mac]** requires **Apple macOS Sierra 10.12 or above**. 
+**[Docker Desktop for Mac]** requires **Apple macOS Mojave 10.14 or newer**. 
 
 1. Download and install **[Docker Desktop for Mac]**. Use the **Docker Desktop** shortcut if it didn't start automatically
 2. Wait for **Docker** to load: its menu bar icon will stop flashing. You can simply close the **Login with your Docker ID** window when it appears
@@ -11,6 +11,8 @@
    - Go to **Resources > Advanced** tab, increase **Memory** to **4.00 GB** and click **Apply & Restart**
    
    ![Docker Memory](https://raw.githubusercontent.com/sergree/matchering/master/images/docker-4gb.png)
+   
+   *If you don't have **Advanced** tab, that's fine. Just keep going*
 4. Wait for **Docker** to load again
 5. Press <kbd>⌘ Command</kbd> + <kbd>Space</kbd> to open the **Spotlight** menu. Type `Terminal` and then hit <kbd>↵ Return</kbd>
 6. Copy and paste this command into the **Terminal**, then press <kbd>↵ Return</kbd>:
