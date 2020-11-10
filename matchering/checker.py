@@ -28,31 +28,33 @@ from .utils import time_str
 
 
 def __check_sample_rate(
-        array: np.ndarray,
-        sample_rate: int,
-        required_sample_rate: int,
-        name: str,
-        log_handler,
-        log_code: Code
+    array: np.ndarray,
+    sample_rate: int,
+    required_sample_rate: int,
+    name: str,
+    log_handler,
+    log_code: Code,
 ) -> (np.ndarray, int):
     if sample_rate != required_sample_rate:
-        debug(f'Resampling {name} audio from {sample_rate} Hz to {required_sample_rate} Hz...')
+        debug(
+            f"Resampling {name} audio from {sample_rate} Hz to {required_sample_rate} Hz..."
+        )
         array = resample(array, sample_rate, required_sample_rate, axis=0)
         log_handler(log_code)
     return array, required_sample_rate
 
 
 def __check_length(
-        array: np.ndarray,
-        sample_rate: int,
-        max_length: int,
-        min_length: int,
-        name: str,
-        error_code_max: Code,
-        error_code_min: Code
+    array: np.ndarray,
+    sample_rate: int,
+    max_length: int,
+    min_length: int,
+    name: str,
+    error_code_max: Code,
+    error_code_min: Code,
 ) -> None:
     length = size(array)
-    debug(f'{name} audio length: {length} samples ({time_str(length, sample_rate)})')
+    debug(f"{name} audio length: {length} samples ({time_str(length, sample_rate)})")
     if length > max_length:
         raise ModuleError(error_code_max)
     elif length < min_length:
@@ -60,9 +62,7 @@ def __check_length(
 
 
 def __check_channels(
-        array: np.ndarray,
-        info_code_mono: Code,
-        error_code_not_stereo: Code
+    array: np.ndarray, info_code_mono: Code, error_code_not_stereo: Code
 ) -> np.ndarray:
     if is_mono(array):
         info(info_code_mono)
@@ -73,21 +73,23 @@ def __check_channels(
 
 
 def __check_clipping_limiting(
-        array: np.ndarray,
-        clipping_samples_threshold: int,
-        limited_samples_threshold: int,
-        warning_code_clipping: Code,
-        warning_code_limiting: Code
+    array: np.ndarray,
+    clipping_samples_threshold: int,
+    limited_samples_threshold: int,
+    warning_code_clipping: Code,
+    warning_code_limiting: Code,
 ) -> None:
     max_value, max_count = count_max_peaks(array)
     if max_count > clipping_samples_threshold:
-        if np.isclose(max_value, 1.):
+        if np.isclose(max_value, 1.0):
             warning(warning_code_clipping)
         elif max_count > limited_samples_threshold:
             warning(warning_code_limiting)
 
 
-def check(array: np.ndarray, sample_rate: int, config: Config, name: str) -> (np.ndarray, int):
+def check(
+    array: np.ndarray, sample_rate: int, config: Config, name: str
+) -> (np.ndarray, int):
     name = name.upper()
 
     __check_length(
@@ -96,17 +98,20 @@ def check(array: np.ndarray, sample_rate: int, config: Config, name: str) -> (np
         config.max_length * sample_rate,
         config.fft_size * sample_rate // config.internal_sample_rate,
         name,
-        Code.ERROR_TARGET_LENGTH_IS_EXCEEDED if name == 'TARGET'
+        Code.ERROR_TARGET_LENGTH_IS_EXCEEDED
+        if name == "TARGET"
         else Code.ERROR_REFERENCE_LENGTH_LENGTH_IS_EXCEEDED,
-        Code.ERROR_TARGET_LENGTH_IS_TOO_SMALL if name == 'TARGET'
-        else Code.ERROR_REFERENCE_LENGTH_LENGTH_TOO_SMALL
+        Code.ERROR_TARGET_LENGTH_IS_TOO_SMALL
+        if name == "TARGET"
+        else Code.ERROR_REFERENCE_LENGTH_LENGTH_TOO_SMALL,
     )
 
     array = __check_channels(
         array,
-        Code.INFO_TARGET_IS_MONO if name == 'TARGET' else Code.INFO_REFERENCE_IS_MONO,
-        Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED if name == 'TARGET'
-        else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED
+        Code.INFO_TARGET_IS_MONO if name == "TARGET" else Code.INFO_REFERENCE_IS_MONO,
+        Code.ERROR_TARGET_NUM_OF_CHANNELS_IS_EXCEEDED
+        if name == "TARGET"
+        else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED,
     )
 
     array, sample_rate = __check_sample_rate(
@@ -114,18 +119,19 @@ def check(array: np.ndarray, sample_rate: int, config: Config, name: str) -> (np
         sample_rate,
         config.internal_sample_rate,
         name,
-        warning if name == 'TARGET' else info,
-        Code.WARNING_TARGET_IS_RESAMPLED if name == 'TARGET'
-        else Code.INFO_REFERENCE_IS_RESAMPLED
+        warning if name == "TARGET" else info,
+        Code.WARNING_TARGET_IS_RESAMPLED
+        if name == "TARGET"
+        else Code.INFO_REFERENCE_IS_RESAMPLED,
     )
 
-    if name == 'TARGET':
+    if name == "TARGET":
         __check_clipping_limiting(
             array,
             config.clipping_samples_threshold,
             config.limited_samples_threshold,
             Code.WARNING_TARGET_IS_CLIPPING,
-            Code.WARNING_TARGET_LIMITER_IS_APPLIED
+            Code.WARNING_TARGET_LIMITER_IS_APPLIED,
         )
 
     return array, sample_rate

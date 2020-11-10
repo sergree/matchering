@@ -25,13 +25,9 @@ from .log import debug
 
 
 def save(
-        file: str,
-        result: np.ndarray,
-        sample_rate: int,
-        subtype: str,
-        name: str = 'result'
+    file: str, result: np.ndarray, sample_rate: int, subtype: str, name: str = "result"
 ) -> None:
     name = name.upper()
-    debug(f'Saving the {name} {sample_rate} Hz Stereo {subtype} to: \'{file}\'...')
+    debug(f"Saving the {name} {sample_rate} Hz Stereo {subtype} to: '{file}'...")
     sf.write(file, result, sample_rate, subtype)
-    debug(f'\'{file}\' is saved')
+    debug(f"'{file}' is saved")

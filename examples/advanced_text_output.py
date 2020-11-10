@@ -5,35 +5,31 @@ from datetime import datetime
 
 # Let's define a basic text output function that will also output the current datetime
 def my_print(text):
-    print(f'{datetime.now()}: {text}')
+    print(f"{datetime.now()}: {text}")
 
 
 # The information output will be marked with a prefix
 def info(text):
-    my_print(f'INFO: {text}')
+    my_print(f"INFO: {text}")
 
 
 # The warning output will be highlighted with exclamation marks on both sides
 def warning(text):
-    my_print('!' * 20)
-    my_print(f'! WARNING: {text}')
-    my_print('!' * 20)
+    my_print("!" * 20)
+    my_print(f"! WARNING: {text}")
+    my_print("!" * 20)
 
 
 # Set new handlers
-mg.log(
-    warning_handler=warning,
-    info_handler=info,
-    debug_handler=my_print
-)
+mg.log(warning_handler=warning, info_handler=info, debug_handler=my_print)
 
 mg.process(
-    target='my_song.wav',
-    reference='some_popular_song.wav',
+    target="my_song.wav",
+    reference="some_popular_song.wav",
     results=[
-        mg.pcm16('my_song_master_16bit.wav'),
-        mg.pcm24('my_song_master_24bit.wav'),
-    ]
+        mg.pcm16("my_song_master_16bit.wav"),
+        mg.pcm24("my_song_master_24bit.wav"),
+    ],
 )
 
 # These settings will result in the following text output:

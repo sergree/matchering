@@ -24,15 +24,15 @@ from .log import debug
 
 class LimiterConfig:
     def __init__(
-            self,
-            attack: float = 1,
-            hold: float = 1,
-            release: float = 3000,
-            attack_filter_coefficient: float = -2,
-            hold_filter_order: int = 1,
-            hold_filter_coefficient: float = 7,
-            release_filter_order: int = 1,
-            release_filter_coefficient: float = 800
+        self,
+        attack: float = 1,
+        hold: float = 1,
+        release: float = 3000,
+        attack_filter_coefficient: float = -2,
+        hold_filter_order: int = 1,
+        hold_filter_coefficient: float = 7,
+        release_filter_order: int = 1,
+        release_filter_coefficient: float = 800,
     ):
         assert attack > 0
         self.attack = attack
@@ -60,33 +60,35 @@ class LimiterConfig:
 
 class Config:
     def __init__(
-            self,
-            internal_sample_rate: int = 44100,
-            max_length: float = 15 * 60,
-            max_piece_size: float = 15,
-            threshold: float = (2 ** 15 - 61) / 2 ** 15,
-            min_value: float = 1e-6,
-            fft_size: int = 4096,
-            lin_log_oversampling: int = 4,
-            rms_correction_steps: int = 4,
-            clipping_samples_threshold: int = 8,
-            limited_samples_threshold: int = 128,
-            allow_equality: bool = False,
-            lowess_frac: float = 0.0375,
-            lowess_it: int = 0,
-            lowess_delta: float = 0.001,
-            preview_size: float = 30,
-            preview_analysis_step: float = 5,
-            preview_fade_size: float = 1,
-            preview_fade_coefficient: float = 8,
-            temp_folder: str = None,
-            limiter: LimiterConfig = LimiterConfig(),
+        self,
+        internal_sample_rate: int = 44100,
+        max_length: float = 15 * 60,
+        max_piece_size: float = 15,
+        threshold: float = (2 ** 15 - 61) / 2 ** 15,
+        min_value: float = 1e-6,
+        fft_size: int = 4096,
+        lin_log_oversampling: int = 4,
+        rms_correction_steps: int = 4,
+        clipping_samples_threshold: int = 8,
+        limited_samples_threshold: int = 128,
+        allow_equality: bool = False,
+        lowess_frac: float = 0.0375,
+        lowess_it: int = 0,
+        lowess_delta: float = 0.001,
+        preview_size: float = 30,
+        preview_analysis_step: float = 5,
+        preview_fade_size: float = 1,
+        preview_fade_coefficient: float = 8,
+        temp_folder: str = None,
+        limiter: LimiterConfig = LimiterConfig(),
     ):
         assert internal_sample_rate > 0
         assert isinstance(internal_sample_rate, int)
         if internal_sample_rate != 44100:
-            debug('Using an internal sample rate other than 44100 has not been tested properly! '
-                  'Use it at your own risk!')
+            debug(
+                "Using an internal sample rate other than 44100 has not been tested properly! "
+                "Use it at your own risk!"
+            )
         self.internal_sample_rate = internal_sample_rate
 
         assert max_length > 0

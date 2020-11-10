@@ -37,12 +37,12 @@ class __LogHandlers:
 
     @classmethod
     def set_handlers(
-            cls,
-            default_handler=None,
-            warning_handler=None,
-            info_handler=None,
-            debug_handler=None,
-            show_codes=False
+        cls,
+        default_handler=None,
+        warning_handler=None,
+        info_handler=None,
+        debug_handler=None,
+        show_codes=False,
     ):
         default_handler = cls.__check_empty(default_handler, cls.__dummy)
         cls.warning_handler = cls.__check_empty(warning_handler, default_handler)
@@ -52,18 +52,18 @@ class __LogHandlers:
 
 
 def set_handlers(
-        default_handler=None,
-        warning_handler=None,
-        info_handler=None,
-        debug_handler=None,
-        show_codes=False
+    default_handler=None,
+    warning_handler=None,
+    info_handler=None,
+    debug_handler=None,
+    show_codes=False,
 ):
     __LogHandlers.set_handlers(
         default_handler=default_handler,
         warning_handler=warning_handler,
         info_handler=info_handler,
         debug_handler=debug_handler,
-        show_codes=show_codes
+        show_codes=show_codes,
     )
 
 
@@ -80,4 +80,4 @@ def debug(*args, **kwargs):
 
 
 def debug_line():
-    debug('-' * 40)
+    debug("-" * 40)

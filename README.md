@@ -6,6 +6,7 @@
 [![PyPI Version](https://badge.fury.io/py/matchering.svg)](https://badge.fury.io/py/matchering)
 [![PyPI Python Versions](https://img.shields.io/pypi/pyversions/matchering.svg)](https://pypi.python.org/pypi/matchering/)
 [![Mentioned in Awesome Python](https://awesome.re/mentioned-badge.svg)](https://github.com/vinta/awesome-python)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ## Matching + Mastering = ❤️
 
@@ -100,16 +101,14 @@ mg.log(print)
 
 mg.process(
     # The track you want to master
-    target='my_song.wav',
-
+    target="my_song.wav",
     # Some "wet" reference track
-    reference='some_popular_song.wav',
-
+    reference="some_popular_song.wav",
     # Where and how to save your results
     results=[
-        mg.pcm16('my_song_master_16bit.wav'),
-        mg.pcm24('my_song_master_24bit.wav'),
-    ]
+        mg.pcm16("my_song_master_16bit.wav"),
+        mg.pcm24("my_song_master_24bit.wav"),
+    ],
 )
 
 ```

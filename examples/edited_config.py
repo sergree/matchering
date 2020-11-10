@@ -4,11 +4,11 @@ import matchering as mg
 # mg.log(print)
 
 mg.process(
-    target='my_song.wav',
-    reference='some_popular_song.wav',
+    target="my_song.wav",
+    reference="some_popular_song.wav",
     results=[
-        mg.pcm16('my_song_master_16bit.wav'),
-        mg.pcm24('my_song_master_24bit.wav'),
+        mg.pcm16("my_song_master_16bit.wav"),
+        mg.pcm24("my_song_master_24bit.wav"),
     ],
     # Create a custom Config instance to edit matchering configuration
     # Think twice before you change something here
@@ -20,7 +20,7 @@ mg.process(
         # Change the threshold value (float, not dB) from the default value of 0.9981 (-0.01 dB)
         threshold=0.7079,  # -3 dB
         # Change the temp folder to work with ffmpeg
-        temp_folder='/tmp',
+        temp_folder="/tmp",
         # Lower the preview length to 15 seconds from the default value of 30
         preview_size=15,
         # Allow matchering to accept the same files (useless in fact)
@@ -28,5 +28,5 @@ mg.process(
         # Etc...
         # The remaining parameters will be filled with default values
         # Examine defaults.py to find other parameters
-    )
+    ),
 )

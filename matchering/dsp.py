@@ -49,10 +49,7 @@ def mono_to_stereo(array: np.ndarray) -> np.ndarray:
 def count_max_peaks(array: np.ndarray) -> (float, int):
     max_value = np.abs(array).max()
     max_count = np.count_nonzero(
-        np.logical_or(
-            np.isclose(array, max_value),
-            np.isclose(array, -max_value)
-        )
+        np.logical_or(np.isclose(array, max_value), np.isclose(array, -max_value))
     )
     return max_value, max_count
 
@@ -73,7 +70,7 @@ def ms_to_lr(mid_array: np.ndarray, side_array: np.ndarray) -> np.ndarray:
 
 def unfold(array: np.ndarray, piece_size: int, divisions: int) -> np.ndarray:
     # (len(array),) -> (divisions, piece_size)
-    return array[:piece_size * divisions].reshape(-1, piece_size)
+    return array[: piece_size * divisions].reshape(-1, piece_size)
 
 
 def rms(array: np.ndarray) -> float:
@@ -94,48 +91,30 @@ def amplify(array: np.ndarray, gain: float) -> np.ndarray:
 
 
 def normalize(
-        array: np.ndarray,
-        threshold: float,
-        epsilon: float,
-        normalize_clipped: bool
+    array: np.ndarray, threshold: float, epsilon: float, normalize_clipped: bool
 ) -> (np.ndarray, float):
-    coefficient = 1.
+    coefficient = 1.0
     max_value = np.abs(array).max()
     if max_value < threshold or normalize_clipped:
         coefficient = max(epsilon, max_value / threshold)
     return array / coefficient, coefficient
 
 
-def smooth_lowess(
-        array: np.ndarray,
-        frac: float,
-        it: int,
-        delta: float
-) -> np.ndarray:
+def smooth_lowess(array: np.ndarray, frac: float, it: int, delta: float) -> np.ndarray:
     return sm.nonparametric.lowess(
-        array,
-        np.linspace(0, 1, len(array)),
-        frac=frac,
-        it=it,
-        delta=delta
+        array, np.linspace(0, 1, len(array)), frac=frac, it=it, delta=delta
     )[:, 1]
 
 
-def clip(
-        array: np.ndarray,
-        to: float = 1
-) -> np.ndarray:
+def clip(array: np.ndarray, to: float = 1) -> np.ndarray:
     return np.clip(array, -to, to)
 
 
 def flip(array: np.ndarray) -> np.ndarray:
-    return 1. - array
+    return 1.0 - array
 
 
-def rectify(
-        array: np.ndarray,
-        threshold: float
-) -> np.ndarray:
+def rectify(array: np.ndarray, threshold: float) -> np.ndarray:
     rectified = np.abs(array).max(1)
     rectified[rectified <= threshold] = threshold
     rectified /= threshold
@@ -156,7 +135,7 @@ def strided_app_2d(matrix: np.ndarray, batch_size: int, step: int) -> np.ndarray
     return np.lib.stride_tricks.as_strided(
         matrix,
         shape=(batch_count, batch_size, matrix_width),
-        strides=(step * stride_length, stride_length, stride_width)
+        strides=(step * stride_length, stride_length, stride_width),
     )
 
 
@@ -169,5 +148,5 @@ def fade(array: np.ndarray, fade_size: int) -> np.ndarray:
     fade_in = np.linspace(0, 1, fade_size)
     fade_out = fade_in[::-1]
     array[:fade_size].T[:] *= fade_in
-    array[size(array) - fade_size:].T[:] *= fade_out
+    array[size(array) - fade_size :].T[:] *= fade_out
     return array

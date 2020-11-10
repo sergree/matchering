@@ -31,12 +31,12 @@ def get_temp_folder(results: list) -> str:
 
 
 def random_str(size: int = 16) -> str:
-    return ''.join(random.choices(string.ascii_lowercase + string.digits, k=size))
+    return "".join(random.choices(string.ascii_lowercase + string.digits, k=size))
 
 
-def random_file(prefix: str = '', extension: str = 'wav') -> str:
-    prefix = f'{prefix}-' if prefix else prefix
-    return f'{prefix}{random_str()}.{extension}'
+def random_file(prefix: str = "", extension: str = "wav") -> str:
+    prefix = f"{prefix}-" if prefix else prefix
+    return f"{prefix}{random_str()}.{extension}"
 
 
 def __to_db_int(value: float) -> float:
@@ -44,7 +44,7 @@ def __to_db_int(value: float) -> float:
 
 
 def to_db(value: float) -> str:
-    return f'{__to_db_int(value):.4f} dB'
+    return f"{__to_db_int(value):.4f} dB"
 
 
 def ms_to_samples(value: float, sample_rate: int) -> int:
