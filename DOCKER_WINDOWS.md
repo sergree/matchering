@@ -35,9 +35,9 @@
    ![Win Step 8](https://raw.githubusercontent.com/sergree/matchering/master/images/win_step_8.png)
 
 8. Copy and paste this command into the **Command Prompt**, then press <kbd>↵ Enter</kbd>:
-```
-docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
-```
+   ```
+   docker run -dp 8360:8360 -v mgw-data:/app/data --name mgw-app --restart always sergree/matchering-web
+   ```
 
    ![Win Step 9](https://raw.githubusercontent.com/sergree/matchering/master/images/win_step_9.png)
 
