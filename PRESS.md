@@ -6,6 +6,8 @@
 
 - **Rekkerd: [#1](https://rekkerd.org/sound-tools-intros-matchering-online-mastering-service-with-matching/) [#2](https://rekkerd.org/sound-tools-launches-matchering-public-beta/) [#3](https://rekkerd.org/sound-tools-matchering-mastering-service-folds-now-open-source/) [#4](https://rekkerd.org/matchering-open-source-audio-matching-and-mastering-updated-to-2-0/)**
 
+- **Audio Ordeal: [#1](https://audioordeal.co.uk/this-open-source-mastering-tool-is-free-and-it-actually-works-great/)**
+
 - **macProVideo.com: [#1](https://macprovideo.com/article/audio-software/this-new-online-service-uses-reference-track-to-instantly-master-your-mixes) [#2](https://macprovideo.com/article/audio-software/sound-tools-instant-online-mastering-with-reference-matching-now-in-open-beta) [#3](https://macprovideo.com/article/audio-software/soundtools-online-sound-mastering-algorithm-source-code-available-free-on-github) [#4](https://macprovideo.com/article/audio-software/want-to-master-your-music-in-twoclicks-check-out-matchering-20)**
 
 - **KVR Audio: [#1](https://www.kvraudio.com/news/sergree-releases-matchering-2-0---open-source-audio-matching-and-mastering-47747) [#2](https://www.kvraudio.com/news/sergree-updates-matchering-to-2-0-3---open-source-audio-matching-and-mastering-50127)**
