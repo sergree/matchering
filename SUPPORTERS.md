@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[@rcrath](https://twitter.com/rcrath)** ☕ *just mixed a piece to sound like a combo of Miles Davis's "So What" and Lou Reed's "Walk on the Wild Side" by mastering two versions with each target, then mixing them together in Audacity. Came out great!THank you Sergey!*
 - **[Andre][BMC]** ☕ *Very nice results! Thanks.*
 - **[Unknown][BMC]** ☕☕☕
 - **[Dajis][BMC]** ☕ *Thank you! its saved me  lots of time*
