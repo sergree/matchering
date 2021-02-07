@@ -26,6 +26,8 @@
 
 - **Universe Zen: [#1](https://www.youtube.com/watch?v=aM6dmg4R8D0)**
 
+- **NiceChord 好和弦: [#1](https://wiwi.video/videos/watch/33b410ee-1040-46db-9256-86454df83385)**
+
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
