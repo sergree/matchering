@@ -37,6 +37,7 @@ You keep our ship afloat.
 
 ## Social Media
 
+- **[Cristian Vogel](https://twitter.com/neverenginelabs)**
 - **[cubase.ninja](https://cubase.ninja/)**
 - **[Beat Hackers](https://soundcloud.com/beat-hackers)**
 - **[Somnia](https://soundcloud.com/somnia)**
