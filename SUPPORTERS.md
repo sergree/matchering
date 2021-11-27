@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Michel Rodriguez][BMC]** ☕☕ *Thanks a lot for that, it's a really nice app, i used it on several tracks and gives very good results ! :-)*
 - **[Wolfram][BMC]** ☕☕ *Very impressive - I think I'll use this very often! Thank you!*
 - **[adamsouthside][BMC]** ☕☕ *Thanks very much I think this is helpful to make a better mastered sound ... Great work!*
 - **[Torsten Torsten](https://www.buymeacoffee.com/torstentorsten)** ☕☕☕
