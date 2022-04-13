@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/sergree)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://qiwi.com/n/SERGREE)
 
 ![Matchering 2.0](https://raw.githubusercontent.com/sergree/matchering/master/images/logo.png)
 
