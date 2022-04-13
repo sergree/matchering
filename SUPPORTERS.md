@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][BMC]
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][QIWI]
 
 # Supporters
 
@@ -70,4 +70,5 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [JetBrains]: https://www.jetbrains.com/?from=Matchering
 [PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
 [WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
-[BMC]: https://qiwi.com/n/SERGREE
+[BMC]: https://www.buymeacoffee.com/sergree
+[QIWI]: https://qiwi.com/n/SERGREE
