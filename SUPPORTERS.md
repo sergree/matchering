@@ -70,4 +70,4 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [JetBrains]: https://www.jetbrains.com/?from=Matchering
 [PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
 [WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
-[BMC]: https://www.buymeacoffee.com/sergree
+[BMC]: https://qiwi.com/n/SERGREE
