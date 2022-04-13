@@ -35,7 +35,8 @@ def load(file: str, file_type: str, temp_folder: str) -> (np.ndarray, int):
         sound, sample_rate = sf.read(file, always_2d=True)
     except RuntimeError as e:
         debug(e)
-        if "unknown format" in str(e):
+        e = str(e)
+        if "unknown format" in e or "Format not recognised" in e:
             sound, sample_rate = __load_with_ffmpeg(file, file_type, temp_folder)
     if sound is None or sample_rate is None:
         if file_type == "TARGET":
