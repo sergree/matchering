@@ -62,7 +62,7 @@ If you need to update the version of the installed **Docker Image**, follow **[t
 
 ## Installation
 
-**4 GB RAM machine with [Python 3.6.0 or higher][Python 3] is required**
+**4 GB RAM machine with [Python 3.8.0 or higher][Python 3] is required**
 
 ### libsndfile
 
