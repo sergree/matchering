@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="matchering",
-    version="2.0.5",
+    version="2.0.6",
     author="Sergree",
     author_email="sergree@vk.com",
     description="Audio Matching and Mastering Python Library",
