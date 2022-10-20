@@ -12,7 +12,7 @@
 
 - **KVR Audio: [#1](https://www.kvraudio.com/news/sergree-releases-matchering-2-0---open-source-audio-matching-and-mastering-47747) [#2](https://www.kvraudio.com/news/sergree-updates-matchering-to-2-0-3---open-source-audio-matching-and-mastering-50127)**
 
-- **SAMESOUND: [#1](https://samesound.ru/n/softnews/119022-matchering-2-0-online-mastering-free-service)**
+- **SAMESOUND: [#1](https://samesound.ru/n/softnews/119022-matchering-2-0-online-mastering-free-service) [#2](https://samesound.ru/soft/167269-onlajn-mastering-na-osnove-rossijskogo-algoritma-matchering-2-0-nazvan-ugrozoj-muzykalnoj-industrii)**
 
 - **TorrentFreak: [#1](https://torrentfreak.com/riaa-flags-artificial-intelligence-music-mixer-as-emerging-copyright-threat-221017/)**
 
