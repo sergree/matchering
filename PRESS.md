@@ -18,6 +18,8 @@
 
 - **Slashdot: [#1](https://yro.slashdot.org/story/22/10/20/2131224/riaa-flags-artificial-intelligence-music-mixer-as-emerging-copyright-threat)**
 
+- **Xataka: [#1](https://www.xataka.com/robotica-e-ia/industria-musical-antes-tenia-miedo-torrents-ahora-tiene-miedo-musica-generada-ia)**
+
 - **Simple Green Tech: [#1](https://www.youtube.com/watch?v=NFbjLyaWjqg)**
 
 - **gearnews.de: [#1](https://www.gearnews.de/online-mastering-und-matching-der-naechste-versuch-mit-extra-sound-tools/) [#2](https://www.gearnews.de/online-mastering-sound-tools-geht-in-public-beta-phase/) [#3](https://www.gearnews.de/mastering-algorithmus-matchering-von-sound-tools-jetzt-auf-github/) [#4](https://www.gearnews.de/matchering-2-0-erlaubt-kostenloses-mastering-auf-open-source-basis/) [#5](https://www.gearnews.de/gemeinsam-jam-quarantaene-virtuell-meeting-kollaboration-covid19-coronavirus/)**
