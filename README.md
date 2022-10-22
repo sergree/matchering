@@ -18,7 +18,7 @@ It follows a *simple idea* - you take TWO audio files and feed them into **Match
 
 Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
 
-You can try out **Matchering** yourself without having to install it, thanks to the hosting provided by **[Moises.ai](https://moises.ai/)**.
+You can try out **Matchering** yourself without having to install it, thanks to the hosting provided by **[Songmastr](https://www.songmastr.com/)** and **[Moises](https://moises.ai/)**.
 
 Watch **[the video][Video]**:
 
