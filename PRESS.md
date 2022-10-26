@@ -14,7 +14,7 @@
 
 - **SAMESOUND: [#1](https://samesound.ru/n/softnews/119022-matchering-2-0-online-mastering-free-service) [#2](https://samesound.ru/soft/167269-onlajn-mastering-na-osnove-rossijskogo-algoritma-matchering-2-0-nazvan-ugrozoj-muzykalnoj-industrii)**
 
-- **TorrentFreak: [#1](https://torrentfreak.com/riaa-flags-artificial-intelligence-music-mixer-as-emerging-copyright-threat-221017/)**
+- **TorrentFreak: [#1](https://torrentfreak.com/riaa-flags-artificial-intelligence-music-mixer-as-emerging-copyright-threat-221017/) [#2](https://torrentfreak.com/ai-powered-music-mixer-responds-to-riaas-copyright-infringement-claims-221026/)**
 
 - **Slashdot: [#1](https://yro.slashdot.org/story/22/10/20/2131224/riaa-flags-artificial-intelligence-music-mixer-as-emerging-copyright-threat)**
 
