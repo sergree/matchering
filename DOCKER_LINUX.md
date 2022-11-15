@@ -17,4 +17,12 @@ Make sure that your machine has at least **4 GB of RAM**.
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
+## 💓 WhatBPM
+
+Looking for the perfect BPM or key for a new EDM track?
+
+**[Check out WhatBPM!](https://sergree.github.io/whatbpm)**
+
+A completely free open-source web service from the author of Matchering.
+
 [Keep the Privacy]: https://github.com/sergree/matchering/wiki/Keep-the-Privacy

@@ -51,6 +51,14 @@
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
+## 💓 WhatBPM
+
+Looking for the perfect BPM or key for a new EDM track?
+
+**[Check out WhatBPM!](https://sergree.github.io/whatbpm)**
+
+A completely free open-source web service from the author of Matchering.
+
 [Docker Desktop for Windows]: https://hub.docker.com/editions/community/docker-ce-desktop-windows
 [Docker Desktop for Windows 10]: https://desktop.docker.com/win/stable/amd64/Docker%20Desktop%20Installer.exe
 [Docker Toolbox]: https://docs.docker.com/toolbox/overview/

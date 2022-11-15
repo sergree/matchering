@@ -24,6 +24,14 @@
 
 ### IMPORTANT: Read the [Keep the Privacy] page if you would like to host our web application publicly!
 
+## 💓 WhatBPM
+
+Looking for the perfect BPM or key for a new EDM track?
+
+**[Check out WhatBPM!](https://sergree.github.io/whatbpm)**
+
+A completely free open-source web service from the author of Matchering.
+
 [Docker Desktop for Mac]: https://hub.docker.com/editions/community/docker-ce-desktop-mac
 [Docker Desktop for Mac with Intel Chip]: https://desktop.docker.com/mac/stable/amd64/Docker.dmg
 [Docker Desktop for Mac with Apple M1 Chip]: https://desktop.docker.com/mac/stable/arm64/Docker.dmg
