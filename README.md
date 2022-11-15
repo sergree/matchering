@@ -123,6 +123,14 @@ You can find more examples in the **[examples directory]**.
 
 ### Or you can use premade **Matchering 2.0 Command Line Application**: **[matchering-cli]**.
 
+## 💓 WhatBPM
+
+Looking for the perfect BPM or key for a new EDM track?
+
+**[Check out WhatBPM!](https://sergree.github.io/whatbpm)**
+
+A completely free open-source web service from the author of Matchering.
+
 ## A Coffee
 
 If our package saved your time or money, you may:
