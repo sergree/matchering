@@ -38,6 +38,8 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 > - Processing speed and accuracy have been increased
 > - Now it is [the library][PyPI] that can be connected to **everything** in **the Python world**
 
+If you are looking for a **Matchering paper**, you can read **[this Habr article](https://habr.com/ru/post/709120/)**.
+
 # Installation and Usage
 
 If you are a music producer or an audio engineer, choose the **[Docker Image]**. 
