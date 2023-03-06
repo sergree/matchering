@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][Boosty]
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][PIPME]
 
 # Supporters
 
@@ -72,4 +72,4 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
 [WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
 [BMC]: https://www.buymeacoffee.com/sergree
-[Boosty]: https://boosty.to/sergree
+[PIPME]: https://pip.me/sergree
