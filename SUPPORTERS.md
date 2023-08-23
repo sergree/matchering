@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[lil tizzy][Boosty]** ☕
 - **[oxy63n.me](https://oxy63n.me/)** ☕☕
 - **[Someone][BMC]** ☕
 - **[Michel Rodriguez][BMC]** ☕☕ *Thanks a lot for that, it's a really nice app, i used it on several tracks and gives very good results ! :-)*
@@ -73,4 +74,5 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [PyCharm]: https://www.jetbrains.com/pycharm/?from=Matchering
 [WebStorm]: https://www.jetbrains.com/webstorm/?from=Matchering
 [BMC]: https://www.buymeacoffee.com/sergree
+[Boosty]: https://boosty.to/sergree
 [PIPME]: https://pip.me/sergree
