@@ -56,6 +56,7 @@ If you are a developer, choose the **[Python Library](#python-library---for-deve
 ### [Windows](https://github.com/sergree/matchering/blob/master/DOCKER_WINDOWS.md)
 ### [macOS](https://github.com/sergree/matchering/blob/master/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/master/DOCKER_LINUX.md)
+### [NEW! ComfyUI](https://github.com/MuziekMagie/ComfyUI-Matchering)
 
 ## Updating
 
