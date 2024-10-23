@@ -38,6 +38,8 @@
 
 - **NiceChord 好和弦: [#1](https://www.youtube.com/watch?v=ZvfgJuIGAKM)**
 
+- **LinuxCreative: [#1](https://www.youtube.com/watch?v=V9xosEWywic)**
+
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
 - **Spawn Shepherd: [#1](https://www.youtube.com/watch?v=JVPu6Wol_js)**
