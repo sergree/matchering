@@ -40,6 +40,8 @@
 
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
 
+- **Spawn Shepherd: [#1](https://www.youtube.com/watch?v=JVPu6Wol_js)**
+
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
 
 - **Nice Disport: [#1](https://nice-disport.seesaa.net/article/473588359.html)**
