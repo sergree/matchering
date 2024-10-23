@@ -42,6 +42,8 @@
 
 - **Spawn Shepherd: [#1](https://www.youtube.com/watch?v=JVPu6Wol_js)**
 
+- **Aba Synthphony: [#1](https://www.youtube.com/watch?v=I9oXE2p-cF8)**
+
 - **midifan: [#1](https://www.midifan.com/modulenews-detailview-35643.htm)**
 
 - **Nice Disport: [#1](https://nice-disport.seesaa.net/article/473588359.html)**
