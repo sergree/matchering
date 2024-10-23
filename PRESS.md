@@ -22,6 +22,8 @@
 
 - **Habr: [#1](https://habr.com/ru/post/709120/)**
 
+- **Benn Jordan: [#1](https://www.youtube.com/watch?v=wZRV2H4PK0Q)**
+
 - **Korben: [#1](https://korben.info/mastering-audio-gratuit.html)**
 
 - **Simple Green Tech: [#1](https://www.youtube.com/watch?v=NFbjLyaWjqg)**
