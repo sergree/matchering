@@ -10,13 +10,24 @@
 
 ## Matching + Mastering = ❤️
 
-**[Matchering 2.0]** is a novel **[Containerized Web Application][Docker Image]** and **[Python Library][PyPI]** for audio matching and [mastering].
+**[Matchering 2.0]** is a novel **[Containerized Web Application](#docker-image)**, **[Python Library][PyPI]**, and **[ComfyUI Node](#comfyui-node)** for audio matching and [mastering].
+
+🔥 Also integrated in the **[UVR5 Desktop App](https://ultimatevocalremover.com/)**!
 
 It follows a *simple idea* - you take TWO audio files and feed them into **Matchering**: 
 - **TARGET** (the track you want to master, you want it to sound like the reference)
 - **REFERENCE** (another track, like some kind of "wet" popular song, you want your target to sound like it)
 
 Our algorithm matches both of these tracks and provides you the mastered **TARGET** track with the same [RMS], [FR], [peak amplitude] and [stereo width] as the **REFERENCE** track has.
+
+🔥 **[Benn Jordan Matchering review][BennVideo]**:
+> - ***Matchering 2.0 beating all other AI's**! (note: by carefully selecting a proper song as reference)*
+> - *Ranking it no.3 (out of 12) right behind 2 professional master engineers*
+> - *Seems a rock-solid study with 472 judged entries*
+> 
+> *(Thanks to [@bascurtiz](https://github.com/bascurtiz) for [the find](https://github.com/sergree/matchering/issues/59))*
+
+[![Benn Jordan Review Video](http://i3.ytimg.com/vi/wZRV2H4PK0Q/hqdefault.jpg)][BennVideo]
 
 You can try out **Matchering** yourself without having to install it, thanks to the hosting provided by **[Songmastr](https://www.songmastr.com/)** and **[Moises](https://moises.ai/)**.
 
@@ -42,21 +53,28 @@ If you are looking for a **Matchering paper**, you can read **[this Habr article
 
 # Installation and Usage
 
-If you are a music producer or an audio engineer, choose the **[Docker Image]**. 
+If you are a music producer or an audio engineer, choose the **[Desktop App](#desktop-app---the-easiest-way)** or **[ComfyUI Node](#comfyui-node)**. 
+
+If you are an AI mastering startup, choose the **[Docker Image](#docker-image)**. 
 
 If you are a developer, choose the **[Python Library](#python-library---for-developers)**.
 
-# Docker Image - The Easiest Way
+# Desktop App - The Easiest Way
 
-**Matchering 2.0** works on all major platforms using **Docker**.
+### [NEW! Matchering @ UVR5 Desktop App](https://ultimatevocalremover.com/)
+You can find Matchering under `Choose Process Method > Audio Tools & Choose Audio Tool > Matchering`.
 
-## Choose yours
+### [Or try WITHOUT Installation](https://www.youtube.com/watch?v=Aw0nH6QqAck)
 
-### [NEW! Try WITHOUT Installation](https://www.youtube.com/watch?v=Aw0nH6QqAck)
+# ComfyUI Node
+
+### [ComfyUI-Matchering](https://github.com/MuziekMagie/ComfyUI-Matchering)
+
+# Docker Image
+
 ### [Windows](https://github.com/sergree/matchering/blob/master/DOCKER_WINDOWS.md)
 ### [macOS](https://github.com/sergree/matchering/blob/master/DOCKER_MACOS.md)
 ### [Linux](https://github.com/sergree/matchering/blob/master/DOCKER_LINUX.md)
-### [NEW! ComfyUI](https://github.com/MuziekMagie/ComfyUI-Matchering)
 
 ## Updating
 
@@ -153,7 +171,6 @@ If our package saved your time or money, you may:
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
-[Docker Image]: #docker-image---the-easiest-way
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [RMS]: https://en.wikipedia.org/wiki/Root_mean_square
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
@@ -171,3 +188,4 @@ If our package saved your time or money, you may:
 [matchering-cli]: https://github.com/sergree/matchering-cli
 [examples directory]: https://github.com/sergree/matchering/tree/master/examples
 [Video]: http://www.youtube.com/watch?v=8Su5STDYfcA "Matchering 2.0 - Open Source Audio Matching and Mastering"
+[BennVideo]: https://www.youtube.com/watch?v=wZRV2H4PK0Q "Benn Jordan Matchering 2.0 Review"
