@@ -144,6 +144,7 @@ mg.process(
 You can find more examples in the **[examples directory]**.
 
 ### Or you can use premade **Matchering 2.0 Command Line Application**: **[matchering-cli]**.
+### Or its enhanced fork: **[kubinka0505/matchering-cli]**.
 
 ## 💓 WhatBPM
 
@@ -186,6 +187,7 @@ If our package saved your time or money, you may:
 [FFmpeg-win]: https://video.stackexchange.com/questions/20495/how-do-i-set-up-and-use-ffmpeg-in-windows
 [FFmpeg-mac]: https://superuser.com/questions/624561/install-ffmpeg-on-os-x
 [matchering-cli]: https://github.com/sergree/matchering-cli
+[kubinka0505/matchering-cli]: https://github.com/kubinka0505/matchering-cli
 [examples directory]: https://github.com/sergree/matchering/tree/master/examples
 [Video]: http://www.youtube.com/watch?v=8Su5STDYfcA "Matchering 2.0 - Open Source Audio Matching and Mastering"
 [BennVideo]: https://www.youtube.com/watch?v=wZRV2H4PK0Q "Benn Jordan Matchering 2.0 Review"
