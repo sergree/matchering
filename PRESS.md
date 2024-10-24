@@ -40,6 +40,8 @@
 
 - **NiceChord 好和弦: [#1](https://www.youtube.com/watch?v=ZvfgJuIGAKM)**
 
+- **Charlie Root: [#1](https://www.youtube.com/watch?v=_3m-xYk1bPg)**
+
 - **LinuxCreative: [#1](https://www.youtube.com/watch?v=V9xosEWywic)**
 
 - **Sound & Recording: [#1](https://www.youtube.com/watch?v=vQnrvBJPstI)**
