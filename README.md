@@ -45,7 +45,7 @@ So **Matchering 2.0** will make your song sound the way you want! It opens up a 
 
 > Differences from the previous major version:
 > - Completely rewritten in [Python 3], based on open source tech stack (no more [MATLAB])
-> - Our own open source [brickwall limiter] was implemented for it
+> - Our own open source [Hyrax] [brickwall limiter] was implemented for it
 > - Processing speed and accuracy have been increased
 > - Now it is [the library][PyPI] that can be connected to **everything** in **the Python world**
 
@@ -167,11 +167,13 @@ If our package saved your time or money, you may:
 - [Press About Us](https://github.com/sergree/matchering/blob/master/PRESS.md)
 - [Supporters](https://github.com/sergree/matchering/blob/master/SUPPORTERS.md)
 - [Our Limiter Quality Test](https://github.com/sergree/matchering/blob/master/LIMITER_TEST.md)
+- [Matchering Hyrax Limiter JSFX clone by Tokyo Dawn Labs](https://github.com/JClones/JSFXClones/blob/master/JClones_Hyrax.md)
 - [Log Codes Overview](https://github.com/sergree/matchering/blob/master/LOG_CODES.md)
 - [Our Thoughts](https://github.com/sergree/matchering/blob/master/THOUGHTS.md)
 
 [Matchering]: https://github.com/sergree/matchering
 [Matchering 2.0]: https://github.com/sergree/matchering
+[Hyrax]: https://github.com/sergree/matchering/tree/master/matchering/limiter
 [mastering]: https://en.wikipedia.org/wiki/Audio_mastering
 [RMS]: https://en.wikipedia.org/wiki/Root_mean_square
 [FR]: https://en.wikipedia.org/wiki/Frequency_response
