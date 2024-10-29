@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Alexey Galinsky][Boosty]** ☕
 - **[Peter Kilgour][Boosty]** ☕☕☕☕
 - **[Bruno Unna][Boosty]** ☕☕
 - **[lil tizzy][Boosty]** ☕
