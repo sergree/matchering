@@ -22,7 +22,7 @@
 
 - **Xataka: [#1](https://www.xataka.com/robotica-e-ia/industria-musical-antes-tenia-miedo-torrents-ahora-tiene-miedo-musica-generada-ia)**
 
-- **Habr: [#1](https://habr.com/ru/post/709120/)**
+- **Habr: [#1](https://habr.com/ru/post/709120/) [#2](https://habr.com/ru/articles/854764/)**
 
 - **Benn Jordan: [#1](https://www.youtube.com/watch?v=wZRV2H4PK0Q)**
 
