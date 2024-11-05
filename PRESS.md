@@ -36,6 +36,8 @@
 
 - **Beat: [#1](https://www.beat.de/news/mastering-matching-kostenlos-eigenen-rechner-10075944.html)**
 
+- **Future Crew: [#1](https://t.me/Fu1ureCrew/666)**
+
 - **Давай Запишем!: [#1](https://www.youtube.com/watch?v=-wWGIJ-hoz4)**
 
 - **Universe Zen: [#1](https://www.youtube.com/watch?v=aM6dmg4R8D0)**
