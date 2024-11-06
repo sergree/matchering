@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][PIPME]
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)][Tribute]
 
 # Supporters
 
@@ -79,3 +79,4 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [BMC]: https://www.buymeacoffee.com/sergree
 [Boosty]: https://boosty.to/sergree
 [PIPME]: https://pip.me/sergree
+[Tribute]: https://t.me/tribute/app?startapp=de85

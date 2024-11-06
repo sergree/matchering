@@ -1,4 +1,4 @@
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://pip.me/sergree)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://t.me/tribute/app?startapp=de85)
 
 ![Matchering 2.0](https://raw.githubusercontent.com/sergree/matchering/master/images/logo.png)
 
@@ -158,7 +158,7 @@ A completely free open-source web service from the author of Matchering.
 
 If our package saved your time or money, you may:
 
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://pip.me/sergree)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://t.me/tribute/app?startapp=de85)
 
 **Thank you!**
 
