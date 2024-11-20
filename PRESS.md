@@ -40,6 +40,8 @@
 
 - **Давай Запишем!: [#1](https://www.youtube.com/watch?v=-wWGIJ-hoz4)**
 
+- **Первая Союзная: [#1](https://www.youtube.com/watch?v=l6TpYl8_wVY)**
+
 - **Universe Zen: [#1](https://www.youtube.com/watch?v=aM6dmg4R8D0)**
 
 - **NiceChord 好和弦: [#1](https://www.youtube.com/watch?v=ZvfgJuIGAKM)**
