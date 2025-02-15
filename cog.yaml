@@ -1,0 +1,12 @@
+build:
+  gpu: false
+  system_packages:
+    - "libsndfile1"
+    - "ffmpeg"
+  python_version: "3.12"
+  python_packages:
+    - "matchering"
+
+predict: "predict.py:Predictor"
+
+image: "r8.im/jimothyjohn/matchering"
