@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[Stanisław Gruszczyński][Boosty]** ☕☕☕
 - **[Michel Rodriguez][Boosty]** ☕☕
 - **[Faggianotti][Boosty]** ☕
 - **[Rigo Pex][Boosty]** ☕
