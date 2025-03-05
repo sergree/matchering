@@ -10,6 +10,14 @@
 
 ## Matching + Mastering = ❤️
 
+> ### *Loved Matchering?*
+> 
+> *Check out [**.masterknecht** - free WebAssembly reference mastering tool](https://masterknecht.klangknecht.com/) by [Benjamin Rosseaux](https://www.rosseaux.net/)!*
+> 
+> *Massive props! 🚀*
+> 
+> *— Sergree*
+
 **[Matchering 2.0]** is a novel **[Containerized Web Application](#docker-image)**, **[Python Library][PyPI]**, and **[ComfyUI Node](#comfyui-node)** for audio matching and [mastering].
 
 🔥 Also integrated in the **[UVR5 Desktop App](https://ultimatevocalremover.com/)**!
