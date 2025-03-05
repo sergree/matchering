@@ -15,6 +15,8 @@
 > *Check out [**.masterknecht** - free WebAssembly reference mastering tool](https://masterknecht.klangknecht.com/) by [Benjamin Rosseaux](https://www.rosseaux.net/)!*
 > 
 > *Massive props! 🚀*
+>
+> *Note: [**.masterknecht**](https://masterknecht.klangknecht.com/) is not related to Matchering's source code at all. It's a completely separate tool written in C and compiled to WebAssembly, which processes all audio locally in your browser without the need for any servers!*
 > 
 > *— Sergree*
 
