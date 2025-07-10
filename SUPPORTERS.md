@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[M. Hauer][Boosty]** ☕
 - **[Anonymous][Tribute]** ☕☕
 - **[Iulian Tudorescu][Boosty]** ☕
 - **[Korneliu][Boosty]** ☕☕☕☕☕☕☕☕
