@@ -7,6 +7,7 @@
 [![PyPI Python Versions](https://img.shields.io/pypi/pyversions/matchering.svg)](https://pypi.python.org/pypi/matchering/)
 [![Mentioned in Awesome Python](https://awesome.re/mentioned-badge.svg)](https://github.com/vinta/awesome-python)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![Replicate](https://replicate.com/jimothyjohn/matchering/badge)](https://replicate.com/jimothyjohn/matchering)
 
 ## Matching + Mastering = ❤️
 
