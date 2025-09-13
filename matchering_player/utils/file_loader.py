@@ -153,6 +153,15 @@ class AudioFileLoader:
                 audio_data, sample_rate = sf.read(file_path, dtype='float32')
                 logger.debug(f"Loaded with soundfile: {audio_data.shape}, {sample_rate}Hz")
                 return audio_data, sample_rate
+            except sf.LibsndfileError as e:
+                # Convert LibsndfileError to appropriate system error
+                error_msg = str(e)
+                if "System error" in error_msg:
+                    # File permission issues often come through as "System error"
+                    raise PermissionError(f"Permission denied: {file_path}") from e
+                logger.warning(f"Soundfile failed for {file_path}: {e}")
+                if not HAS_LIBROSA:
+                    raise
             except Exception as e:
                 logger.warning(f"Soundfile failed for {file_path}: {e}")
                 if not HAS_LIBROSA:

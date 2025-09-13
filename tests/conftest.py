@@ -231,6 +231,45 @@ def pytest_runtest_setup(item):
     if "core" in markers and not HAS_MATCHERING:
         pytest.skip("matchering core library not available")
 
+def _ensure_portaudio():
+    """Ensure PortAudio is properly initialized or disabled."""
+    try:
+        import sounddevice as sd
+        from functools import wraps
+        import atexit
+
+        # Remove existing atexit handler to prevent double-termination
+        if hasattr(sd, '_exit_handler'):
+            atexit.unregister(sd._exit_handler)
+
+        # Initialize PortAudio if not already done
+        if not hasattr(sd, '_initialized') or not sd._initialized:
+            _ = sd.query_devices()
+
+        # Register our own cleanup handler that ignores "not initialized" errors
+        def safe_terminate():
+            try:
+                if hasattr(sd, '_terminate'):
+                    sd._terminate()
+            except Exception:
+                pass
+
+        atexit.register(safe_terminate)
+
+    except ImportError:
+        pass
+    except Exception:
+        # If PortAudio init fails, just continue without audio
+        pass
+
+def pytest_sessionstart(session):
+    """Initialize test session dependencies."""
+    _ensure_portaudio()
+
+def pytest_runtest_teardown(item, nextitem):
+    """Cleanup after each test."""
+    pass  # No per-test cleanup needed
+
 # Utility functions for tests
 
 def assert_audio_equal(audio1: np.ndarray, audio2: np.ndarray, tolerance=1e-6):

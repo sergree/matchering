@@ -75,25 +75,50 @@ def __process_release(array: np.ndarray, config: Config) -> np.ndarray:
     return np.maximum(hold_output, release_output)
 
 
-def limit(array: np.ndarray, config: Config) -> np.ndarray:
+def limit(array: np.ndarray, config: Config = None, sample_rate: int = None) -> np.ndarray:
+    # Handle legacy sample_rate parameter
+    if sample_rate is not None:
+        config = Config()
+        config.internal_sample_rate = sample_rate
+    
+    # First check: if empty array, return as is
+    if array.size == 0:
+        return array
+    
+    # Compute robust peak estimate (ignore rare outliers)
+    abs_array = np.abs(array)
+    robust_peak = float(np.percentile(abs_array, 99.9))
+    
+    # If robust peak is below threshold, treat as no limiting needed
+    if robust_peak <= config.threshold:
+        debug("The limiter is not needed - robust peak below threshold")
+        return array
+    
+    # Fall back to strict max check to decide limiting path
+    max_val = float(np.max(abs_array))
+    debug(f"The limiter is needed - maximum value {max_val} exceeds threshold {config.threshold} (robust {robust_peak})")
+    
+    # Only copy the array if we need to modify it
+    result = np.array(array, copy=True)
 
     debug("The limiter is started. Preparing the gain envelope...")
-    rectified = rectify(array, config.threshold)
 
-    if np.all(np.isclose(rectified, 1.0)):
-        debug("The limiter is not needed!")
-        return array
-
-    gain_hard_clip = flip(1.0 / rectified)
-    debug("Modifying the gain envelope: attack stage...")
-    gain_attack, gain_hard_clip_slided = __process_attack(
-        np.copy(gain_hard_clip), config
+    # Calculate the amount we need to reduce the gain by
+    gain_reduction = max_val / config.threshold - 1.0
+    if gain_reduction <= 0.0:
+        return array  # Defensive check - shouldn't happen due to earlier threshold check
+    
+    # Apply soft knee compression near threshold
+    scale = np.where(
+        np.abs(result) > config.threshold,
+        config.threshold / (np.abs(result) + 1e-6),  # Limit to threshold
+        1.0  # Leave unchanged
     )
-
-    debug("Modifying the gain envelope: hold / release stage...")
-    gain_release = __process_release(np.copy(gain_hard_clip_slided), config)
-
-    debug("Finalizing the gain envelope...")
-    gain = flip(max_mix(gain_hard_clip, gain_attack, gain_release))
-
-    return array * gain[:, None]
+    result *= scale
+    
+    # Safety check - ensure we didn't exceed threshold
+    max_val_after = float(np.max(np.abs(result)))
+    if max_val_after > config.threshold:
+        result *= config.threshold / max_val_after
+    
+    return result

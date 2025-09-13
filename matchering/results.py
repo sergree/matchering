@@ -24,7 +24,7 @@ import soundfile as sf
 
 class Result:
     def __init__(
-        self, file: str, subtype: str, use_limiter: bool = True, normalize: bool = True
+        self, file: str, subtype: str = 'PCM_16', use_limiter: bool = True, normalize: bool = False
     ):
         _, file_ext = os.path.splitext(file)
         file_ext = file_ext[1:].upper()

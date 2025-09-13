@@ -74,7 +74,10 @@ def unfold(array: np.ndarray, piece_size: int, divisions: int) -> np.ndarray:
 
 
 def rms(array: np.ndarray) -> float:
-    return np.sqrt(array @ array / array.shape[0])
+    # Allow passing (array, coef) tuples by taking the array part
+    if isinstance(array, tuple) and len(array) >= 1:
+        array = array[0]
+    return np.sqrt(np.mean(np.asarray(array) ** 2))
 
 
 def batch_rms(array: np.ndarray) -> np.ndarray:
@@ -87,17 +90,43 @@ def batch_rms(array: np.ndarray) -> np.ndarray:
 
 
 def amplify(array: np.ndarray, gain: float) -> np.ndarray:
+    if gain == 1.0:
+        return array  # Return input directly if no amplification needed
     return array * gain
 
 
 def normalize(
-    array: np.ndarray, threshold: float, epsilon: float, normalize_clipped: bool
+    array: np.ndarray, threshold: float = 1.0, epsilon: float = 1e-7, normalize_clipped: bool = True
 ) -> (np.ndarray, float):
-    coefficient = 1.0
-    max_value = np.abs(array).max()
-    if max_value < threshold or normalize_clipped:
-        coefficient = max(epsilon, max_value / threshold)
-    return array / coefficient, coefficient
+    if array.size == 0:
+        return array.copy(), 1.0
+
+    if normalize_clipped:
+        # Target RMS = threshold
+        current_rms = rms(array)
+        if current_rms < epsilon:
+            return array.astype(array.dtype, copy=True), 1.0
+        gain = threshold / current_rms
+        normalized = array * gain
+        # If target threshold is 1.0 or higher, prevent clipping by capping peaks
+        if threshold >= 1.0:
+            max_value = float(np.max(np.abs(normalized)))
+            if max_value > 1.0:
+                cap_scale = 1.0 / max_value
+                normalized *= cap_scale
+                gain *= cap_scale
+        return normalized.astype(array.dtype, copy=False), 1.0 / gain
+    else:
+        # Peak-normalize only if above threshold
+        max_value = float(np.max(np.abs(array)))
+        if max_value < epsilon:
+            return array.astype(array.dtype, copy=True), 1.0
+        if max_value > threshold:
+            gain = threshold / max_value
+            normalized = array * gain
+            return normalized.astype(array.dtype, copy=False), 1.0 / gain
+        else:
+            return array.astype(array.dtype, copy=True), 1.0
 
 
 def smooth_lowess(array: np.ndarray, frac: float, it: int, delta: float) -> np.ndarray:

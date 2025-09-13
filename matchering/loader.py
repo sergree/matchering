@@ -27,12 +27,15 @@ from .log import Code, warning, info, debug, ModuleError
 from .utils import random_file
 
 
-def load(file: str, file_type: str, temp_folder: str) -> (np.ndarray, int):
+def load(file: str, file_type: str = 'input', temp_folder: str = None, resample_rate: int = None) -> (np.ndarray, int):
+    # Use file's directory as temp folder if not specified
+    if temp_folder is None:
+        temp_folder = os.path.dirname(os.path.abspath(file))
     file_type = file_type.upper()
     sound, sample_rate = None, None
     debug(f"Loading the {file_type} file: '{file}'...")
     try:
-        sound, sample_rate = sf.read(file, always_2d=True)
+        sound, sample_rate = sf.read(file, always_2d=True, dtype='float32')
     except RuntimeError as e:
         debug(e)
         e = str(e)
@@ -43,7 +46,19 @@ def load(file: str, file_type: str, temp_folder: str) -> (np.ndarray, int):
             raise ModuleError(Code.ERROR_TARGET_LOADING)
         else:
             raise ModuleError(Code.ERROR_REFERENCE_LOADING)
-    debug(f"The {file_type} file is loaded")
+    
+    # Ensure float32 output
+    sound = sound.astype(np.float32)
+    
+    debug(f"The {file_type} file is loaded at {sample_rate} Hz")
+    
+    # Optionally resample
+    if resample_rate is not None and resample_rate != sample_rate:
+        from resampy import resample as _resample
+        debug(f"Resampling {file_type} from {sample_rate} Hz to {resample_rate} Hz...")
+        sound = _resample(sound, sample_rate, resample_rate, axis=0)
+        sample_rate = resample_rate
+    
     return sound, sample_rate
 
 

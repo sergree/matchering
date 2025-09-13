@@ -37,6 +37,20 @@ def process(
     preview_target: Result = None,
     preview_result: Result = None,
 ):
+    # Ensure results is a list
+    if not isinstance(results, list):
+        results = [results]
+
+    # Convert string paths to Result objects with PCM_16 subtype and default parameters
+    results = [
+        res if isinstance(res, Result) else Result(
+            res,  # File path
+            subtype='PCM_16',  # Use PCM_16 as default format
+            use_limiter=True,  # Use limiter by default
+            normalize=False  # Don't normalize by default
+        )
+        for res in results
+    ]
     debug(
         "Please give us a star to help the project: https://github.com/sergree/matchering"
     )
@@ -49,25 +63,36 @@ def process(
     # Get a temporary folder for converting mp3's
     temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
 
-    # Load the target
+    # Load both files and capture original target rate for output
     target, target_sample_rate = load(target, "target", temp_folder)
-    # Analyze the target
-    target, target_sample_rate = check(target, target_sample_rate, config, "target")
+    output_sample_rate = target_sample_rate  # Save original target rate for output
 
-    # Load the reference
+    # Load reference
     reference, reference_sample_rate = load(reference, "reference", temp_folder)
-    # Analyze the reference
-    reference, reference_sample_rate = check(
-        reference, reference_sample_rate, config, "reference"
-    )
+
+    # Set internal rate to the maximum for best quality
+    config.internal_sample_rate = max(target_sample_rate, reference_sample_rate)
+    debug(f"Using internal sample rate: {config.internal_sample_rate} Hz")
+
+    # Analyze target and reference, resampling if needed
+    target, _ = check(target, target_sample_rate, config, "target")
+    reference, _ = check(reference, reference_sample_rate, config, "reference")
 
     # Analyze the target and the reference together
     if not config.allow_equality:
         check_equality(target, reference)
 
+    # Always use target's sample rate as the output rate
+    output_sample_rate = target_sample_rate
+    
+    # Use highest rate for internal processing to maintain quality
+    config.internal_sample_rate = max(target_sample_rate, reference_sample_rate)
+    debug(f"Using internal sample rate: {config.internal_sample_rate} Hz")
+    debug(f"Output will use target sample rate: {output_sample_rate} Hz")
+
     # Validation of the most important conditions
     if (
-        not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)
+        not (target_sample_rate == reference_sample_rate)  # Files must match
         or not (channel_count(target) == channel_count(reference) == 2)
         or not (size(target) > config.fft_size and size(reference) > config.fft_size)
     ):
@@ -104,7 +129,7 @@ def process(
         save(
             required_result.file,
             correct_result,
-            config.internal_sample_rate,
+            output_sample_rate,  # Use original target rate for output
             required_result.subtype,
         )
 

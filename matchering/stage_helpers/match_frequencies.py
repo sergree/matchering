@@ -99,6 +99,7 @@ def get_fir(
     fir = np.fft.ifftshift(fir) * signal.windows.hann(len(fir))
 
     return fir
+    return fir
 
 
 def convolve(

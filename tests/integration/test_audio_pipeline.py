@@ -198,6 +198,7 @@ class TestMatcheringPipeline:
         """Test matchering with different audio formats"""
         matchering = pytest.importorskip("matchering")
         sf = pytest.importorskip("soundfile")
+        from matchering.core import Result
 
         # Create test files with different characteristics
         def create_test_audio(duration, sr, amplitude, freq=440):
@@ -223,7 +224,7 @@ class TestMatcheringPipeline:
             matchering.process(
                 target=str(target_file),
                 reference=str(reference_file),
-                results=[str(output_file)]
+                results=[Result(file=str(output_file))]
             )
 
             assert output_file.exists(), f"Failed to process {sample_rate}Hz files"

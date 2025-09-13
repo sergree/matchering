@@ -183,19 +183,16 @@ def __finalize(
 
     result_no_limiter_normalized = None
     if need_no_limiter_normalized:
-        result_no_limiter_normalized, coefficient = normalize(
-            result_no_limiter,
-            config.threshold,
-            config.min_value,
-            normalize_clipped=True,
-        )
-        debug(
-            f"The amplitude of the normalized RESULT should be adjusted by {to_db(coefficient)}"
-        )
-        if not np.isclose(final_amplitude_coefficient, 1.0):
-            debug(
-                f"And by {to_db(final_amplitude_coefficient)} after applying some brickwall limiter to it"
-            )
+        # For normalized path, we want to preserve RMS but avoid clipping
+        max_value = float(np.max(np.abs(result_no_limiter)))
+        if max_value > config.threshold:
+            # Scale down to avoid clipping while preserving relative RMS
+            scale = config.threshold / max_value
+            result_no_limiter_normalized = result_no_limiter * scale
+        else:
+            # No need to normalize if we're already below threshold
+            # Return input directly to maintain array identity
+            result_no_limiter_normalized = result_no_limiter
 
     result = None
     if need_default:

@@ -114,16 +114,19 @@ def check(
         else Code.ERROR_REFERENCE_NUM_OF_CHANNELS_IS_EXCEEDED,
     )
 
-    array, sample_rate = __check_sample_rate(
-        array,
-        sample_rate,
-        config.internal_sample_rate,
-        name,
-        warning if name == "TARGET" else info,
-        Code.WARNING_TARGET_IS_RESAMPLED
-        if name == "TARGET"
-        else Code.INFO_REFERENCE_IS_RESAMPLED,
-    )
+    # Only resample if internal sample rate is different and lower
+    # This prevents unnecessary resampling of high sample rate files
+    if sample_rate != config.internal_sample_rate and config.internal_sample_rate < sample_rate:
+        array, sample_rate = __check_sample_rate(
+            array,
+            sample_rate,
+            config.internal_sample_rate,
+            name,
+            warning if name == "TARGET" else info,
+            Code.WARNING_TARGET_IS_RESAMPLED
+            if name == "TARGET"
+            else Code.INFO_REFERENCE_IS_RESAMPLED,
+        )
 
     if name == "TARGET":
         __check_clipping_limiting(

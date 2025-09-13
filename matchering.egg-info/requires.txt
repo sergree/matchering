@@ -1,0 +1,5 @@
+numpy>=1.23.4
+scipy>=1.9.2
+soundfile>=0.11.0
+resampy>=0.4.2
+statsmodels>=0.13.2

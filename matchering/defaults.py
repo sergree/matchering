@@ -95,9 +95,14 @@ class Config:
         assert max_length > fft_size / internal_sample_rate
         self.max_length = max_length
 
+        # Convert threshold from dB to linear if needed
+        if threshold < 0:
+            # Threshold is in dB, convert to linear amplitude
+            threshold = 10 ** (threshold / 20)
+        
         assert threshold > min_value
-        assert threshold < 1
-        self.threshold = threshold
+        assert threshold <= 1
+        self.threshold = float(threshold)  # Ensure float type
 
         assert min_value > 0
         assert min_value < 0.1

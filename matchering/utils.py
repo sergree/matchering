@@ -26,7 +26,9 @@ from datetime import timedelta
 
 
 def get_temp_folder(results: list) -> str:
-    first_result_file = results[0].file
+    # Handle both string paths and Result objects
+    first_result = results[0]
+    first_result_file = first_result.file if hasattr(first_result, 'file') else first_result
     return os.path.dirname(os.path.abspath(first_result_file))
 
 
@@ -40,11 +42,16 @@ def random_file(prefix: str = "", extension: str = "wav") -> str:
 
 
 def __to_db_int(value: float) -> float:
+    if value <= 0:
+        return float('-inf')
     return 20 * math.log10(value)
 
 
 def to_db(value: float) -> str:
-    return f"{__to_db_int(value):.4f} dB"
+    db_val = __to_db_int(value)
+    if db_val == float('-inf'):
+        return "-inf dB"
+    return f"{db_val:.4f} dB"
 
 
 def ms_to_samples(value: float, sample_rate: int) -> int:
