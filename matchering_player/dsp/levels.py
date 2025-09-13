@@ -41,12 +41,12 @@ class ReferenceProfile:
         return {
             'file_path': self.file_path,
             'filename': self.filename,
-            'target_rms_mid': self.target_rms_mid,
-            'target_rms_side': self.target_rms_side,
-            'peak_amplitude': self.peak_amplitude,
-            'dynamic_range': self.dynamic_range,
-            'sample_rate': self.sample_rate,
-            'duration': self.duration,
+            'target_rms_mid': float(self.target_rms_mid) if self.target_rms_mid is not None else None,
+            'target_rms_side': float(self.target_rms_side) if self.target_rms_side is not None else None,
+            'peak_amplitude': float(self.peak_amplitude) if self.peak_amplitude is not None else None,
+            'dynamic_range': float(self.dynamic_range) if self.dynamic_range is not None else None,
+            'sample_rate': int(self.sample_rate) if self.sample_rate is not None else None,
+            'duration': float(self.duration) if self.duration is not None else None,
             'analysis_complete': self.analysis_complete,
         }
     
@@ -152,17 +152,14 @@ class RealtimeLevelMatcher:
                 return True
             
             # Need to analyze the reference track
-            # For now, we'll create a basic profile and analyze it later
-            # In a full implementation, this would load and analyze the entire reference
-            self.reference_profile = ReferenceProfile(reference_file_path)
-            print(f"Reference loaded: {self.reference_profile.filename}")
-            print("Note: Full reference analysis will be implemented in next iteration")
-            
-            # For MVP, set some default target values
-            # These would normally come from analyzing the reference track
-            self.reference_profile.target_rms_mid = -18.0  # -18 dB target (typical master)
-            self.reference_profile.target_rms_side = -24.0  # Quieter side channel
-            self.reference_profile.analysis_complete = True
+            print(f"🔍 Analyzing reference track: {Path(reference_file_path).name}")
+            self.reference_profile = self._analyze_reference_track(reference_file_path)
+            if not self.reference_profile:
+                return False
+
+            print(f"✅ Reference analysis complete:")
+            print(f"   Mid RMS: {self.reference_profile.target_rms_mid:.1f} dB")
+            print(f"   Side RMS: {self.reference_profile.target_rms_side:.1f} dB")
             
             # Cache the profile
             self.reference_cache.set_reference(self.reference_profile)
@@ -296,3 +293,88 @@ class RealtimeLevelMatcher:
         self.chunk_count = 0
         self.rms_history_mid.clear()
         self.rms_history_side.clear()
+
+    def _analyze_reference_track(self, reference_file_path: str) -> Optional[ReferenceProfile]:
+        """
+        Analyze a reference track to extract target levels
+
+        Args:
+            reference_file_path: Path to reference audio file
+
+        Returns:
+            ReferenceProfile with analysis results, or None if failed
+        """
+        try:
+            # Import the file loader here to avoid circular imports
+            from ..utils.file_loader import AudioFileLoader
+
+            # Create file loader
+            loader = AudioFileLoader(
+                target_sample_rate=self.config.sample_rate,
+                target_channels=2
+            )
+
+            # Load the reference audio file
+            print(f"📁 Loading reference file...")
+            reference_audio, sample_rate = loader.load_audio_file(reference_file_path)
+
+            print(f"🎵 Analyzing {len(reference_audio)} samples ({len(reference_audio)/sample_rate:.1f}s)")
+
+            # Create reference profile
+            profile = ReferenceProfile(reference_file_path)
+
+            # Convert entire track to Mid-Side for analysis
+            mid, side = lr_to_ms(reference_audio)
+
+            # Calculate overall RMS levels
+            rms_mid = rms(mid)
+            rms_side = rms(side)
+
+            # Convert to dB (with minimum floor to prevent log(0))
+            min_value = 1e-8
+            profile.target_rms_mid = 20 * np.log10(max(rms_mid, min_value))
+            profile.target_rms_side = 20 * np.log10(max(rms_side, min_value))
+
+            # Calculate additional statistics
+            profile.peak_amplitude = np.max(np.abs(reference_audio))
+            profile.dynamic_range = profile.peak_amplitude - rms(reference_audio.flatten())
+
+            # Analyze chunks for dynamic characteristics
+            chunk_size = self.config.buffer_size_samples
+            chunk_rms_values = []
+
+            for i in range(0, len(reference_audio) - chunk_size, chunk_size):
+                chunk = reference_audio[i:i + chunk_size]
+                chunk_rms_mid, _ = lr_to_ms(chunk)
+                chunk_rms = rms(chunk_rms_mid)
+                if chunk_rms > min_value:  # Filter out silence
+                    chunk_rms_values.append(chunk_rms)
+
+            # Calculate dynamic characteristics
+            if chunk_rms_values:
+                chunk_rms_array = np.array(chunk_rms_values)
+                profile.rms_variance = np.var(chunk_rms_array)
+                profile.rms_percentiles = {
+                    'p10': np.percentile(chunk_rms_array, 10),
+                    'p50': np.percentile(chunk_rms_array, 50),
+                    'p90': np.percentile(chunk_rms_array, 90),
+                }
+
+            profile.analysis_complete = True
+
+            # Log analysis results
+            print(f"📊 Reference analysis results:")
+            print(f"   Overall Mid RMS: {profile.target_rms_mid:.1f} dB")
+            print(f"   Overall Side RMS: {profile.target_rms_side:.1f} dB")
+            print(f"   Peak amplitude: {profile.peak_amplitude:.3f}")
+            print(f"   Dynamic range: {profile.dynamic_range:.3f}")
+            if hasattr(profile, 'rms_variance'):
+                print(f"   RMS variance: {profile.rms_variance:.6f}")
+
+            return profile
+
+        except Exception as e:
+            print(f"❌ Error analyzing reference track: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
