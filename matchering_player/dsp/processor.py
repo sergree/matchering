@@ -13,6 +13,9 @@ from threading import Lock
 from .basic import CircularBuffer, is_stereo
 from .levels import RealtimeLevelMatcher
 from .smoothing import AdaptiveGainSmoother, GainChangeRateLimiter
+from .frequency import RealtimeFrequencyMatcher
+from .stereo import RealtimeStereoProcessor
+from .auto_master import AutoMasterProcessor
 from ..core.config import PlayerConfig
 
 
@@ -88,6 +91,9 @@ class RealtimeProcessor:
         
         # DSP Components
         self.level_matcher = RealtimeLevelMatcher(config) if config.enable_level_matching else None
+        self.frequency_matcher = RealtimeFrequencyMatcher(config) if config.enable_frequency_matching else None
+        self.stereo_processor = RealtimeStereoProcessor(config) if config.enable_stereo_width else None
+        self.auto_master = AutoMasterProcessor(config) if config.enable_auto_mastering else None
         
         # Advanced smoothing system
         self.gain_smoother = AdaptiveGainSmoother(
@@ -131,6 +137,9 @@ class RealtimeProcessor:
         print(f"   Sample rate: {config.sample_rate} Hz")
         print(f"   Buffer size: {config.buffer_size_samples} samples ({config.buffer_size_ms:.1f}ms)")
         print(f"   Level matching: {'✅ Enabled' if config.enable_level_matching else '❌ Disabled'}")
+        print(f"   Frequency matching: {'✅ Enabled' if config.enable_frequency_matching else '❌ Disabled'}")
+        print(f"   Stereo width control: {'✅ Enabled' if config.enable_stereo_width else '❌ Disabled'}")
+        print(f"   Auto-mastering: {'✅ Enabled' if config.enable_auto_mastering else '❌ Disabled'}")
         print(f"   Advanced smoothing: ✅ Enabled")
         print(f"   Rate limiting: ✅ 2dB/sec max change")
     
@@ -178,14 +187,25 @@ class RealtimeProcessor:
                 
                 # Start with the input
                 processed_chunk = input_chunk.copy()
-                
+
+                # Auto-mastering coordination (if enabled)
+                auto_targets = {}
+                if self.auto_master and self.config.enable_auto_mastering:
+                    auto_targets, processed_chunk = self.auto_master.process_chunk(processed_chunk)
+
                 # Apply level matching (MVP feature)
                 if self.level_matcher and self.config.enable_level_matching:
-                    processed_chunk = self._process_level_matching(processed_chunk)
-                
+                    processed_chunk = self._process_level_matching(processed_chunk, auto_targets)
+
+                # Apply frequency matching (Phase 2 feature)
+                if self.frequency_matcher and self.config.enable_frequency_matching:
+                    processed_chunk = self._process_frequency_matching(processed_chunk, auto_targets)
+
+                # Apply stereo width control (Phase 2 feature)
+                if self.stereo_processor and self.config.enable_stereo_width:
+                    processed_chunk = self._process_stereo_width(processed_chunk, auto_targets)
+
                 # Future effects would go here:
-                # - Frequency matching (Phase 2)
-                # - Stereo width adjustment (Phase 2) 
                 # - Limiting (Phase 3)
                 
                 # Apply any additional effects in the chain
@@ -210,16 +230,93 @@ class RealtimeProcessor:
             print(f"❌ Error in audio processing: {e}")
             return input_chunk
     
-    def _process_level_matching(self, audio_chunk: np.ndarray) -> np.ndarray:
+    def _process_level_matching(self, audio_chunk: np.ndarray, auto_targets: dict = None) -> np.ndarray:
         """Apply level matching with advanced smoothing"""
-        if not self.level_matcher or not self.level_matcher.reference_profile:
+        # Check for auto-mastering targets
+        if auto_targets and 'target_rms_db' in auto_targets and not self.level_matcher.reference_profile:
+            # Use auto-mastering target instead of reference
+            target_rms = auto_targets['target_rms_db']
+            processed = self._apply_auto_level_target(audio_chunk, target_rms)
+            return processed
+        elif self.level_matcher and self.level_matcher.reference_profile:
+            # Use reference-based level matching
+            processed = self.level_matcher.process_chunk(audio_chunk)
+            return processed
+
+        return audio_chunk
+
+    def _process_frequency_matching(self, audio_chunk: np.ndarray, auto_targets: dict = None) -> np.ndarray:
+        """Apply frequency matching using parametric EQ"""
+        # Check for auto-mastering targets
+        if auto_targets and 'eq_bands' in auto_targets and not self.frequency_matcher.reference_profile:
+            # Apply auto-mastering EQ curve
+            processed = self._apply_auto_eq_targets(audio_chunk, auto_targets['eq_bands'])
+            return processed
+        elif self.frequency_matcher and self.frequency_matcher.reference_profile:
+            # Use reference-based frequency matching
+            processed = self.frequency_matcher.process_chunk(audio_chunk)
+            return processed
+
+        return audio_chunk
+
+    def _process_stereo_width(self, audio_chunk: np.ndarray, auto_targets: dict = None) -> np.ndarray:
+        """Apply stereo width control using Mid-Side processing"""
+        # Check for auto-mastering targets
+        if auto_targets and 'stereo_width' in auto_targets:
+            # Use auto-mastering stereo width
+            self.stereo_processor.set_width(auto_targets['stereo_width'])
+
+        if self.stereo_processor:
+            # Apply stereo width adjustment
+            processed = self.stereo_processor.process_chunk(audio_chunk)
+            return processed
+
+        return audio_chunk
+
+    def _apply_auto_level_target(self, audio_chunk: np.ndarray, target_rms_db: float) -> np.ndarray:
+        """Apply auto-mastering level target"""
+        try:
+            # Calculate current RMS
+            from .basic import rms
+            current_rms = rms(np.mean(audio_chunk, axis=1))
+            current_rms_db = 20 * np.log10(max(current_rms, 1e-8))
+
+            # Calculate gain needed
+            gain_db = target_rms_db - current_rms_db
+            gain_db = np.clip(gain_db, -20, +20)  # Safety limits
+            gain_linear = 10 ** (gain_db / 20)
+
+            # Apply with smoothing
+            smooth_gain = self.gain_smoother.update(gain_linear)
+
+            # Apply gain
+            from .basic import amplify
+            processed = amplify(audio_chunk, smooth_gain)
+            return processed.astype(audio_chunk.dtype)
+
+        except Exception as e:
+            print(f"⚠️ Error in auto level matching: {e}")
             return audio_chunk
-        
-        # For MVP, use the level matcher's built-in smoothing
-        # Future enhancement: extract raw gains and apply our advanced smoothing
-        processed = self.level_matcher.process_chunk(audio_chunk)
-        
-        return processed
+
+    def _apply_auto_eq_targets(self, audio_chunk: np.ndarray, eq_bands: list) -> np.ndarray:
+        """Apply auto-mastering EQ targets"""
+        try:
+            if not hasattr(self, '_auto_eq_cache') or self._auto_eq_cache != eq_bands:
+                # Update frequency matcher with auto-mastering EQ settings
+                if self.frequency_matcher:
+                    # Convert auto-mastering EQ bands to frequency matcher format
+                    self.frequency_matcher.parametric_eq.update_eq_settings(eq_bands)
+                    self._auto_eq_cache = eq_bands.copy()
+
+            # Apply EQ
+            if self.frequency_matcher:
+                processed = self.frequency_matcher.parametric_eq.process_chunk(audio_chunk)
+                return processed
+
+        except Exception as e:
+            print(f"⚠️ Error in auto EQ matching: {e}")
+
+        return audio_chunk
     
     def _adapt_quality(self):
         """Adapt processing quality based on CPU usage"""
@@ -239,27 +336,55 @@ class RealtimeProcessor:
     def load_reference_track(self, reference_file_path: str) -> bool:
         """
         Load a reference track for matching
-        
+
         Args:
             reference_file_path: Path to reference audio file
-            
+
         Returns:
             True if successful, False otherwise
         """
-        if not self.level_matcher:
-            print("❌ Level matching is disabled")
-            return False
-        
         with self.lock:
-            success = self.level_matcher.load_reference(reference_file_path)
-            if success:
-                # Reset all smoothing systems when loading new reference
-                self.level_matcher.reset_smoothing()
-                self.gain_smoother.reset()
-                self.rate_limiter_mid.reset()
-                self.rate_limiter_side.reset()
-                print(f"✅ Reference track loaded and smoothing reset")
-            return success
+            success_level = True
+            success_frequency = True
+            success_stereo = True
+
+            # Load for level matching
+            if self.level_matcher:
+                success_level = self.level_matcher.load_reference(reference_file_path)
+                if success_level:
+                    self.level_matcher.reset_smoothing()
+                    self.gain_smoother.reset()
+                    self.rate_limiter_mid.reset()
+                    self.rate_limiter_side.reset()
+
+            # Load for frequency matching
+            if self.frequency_matcher:
+                success_frequency = self.frequency_matcher.load_reference(reference_file_path)
+
+            # Load for stereo processing
+            if self.stereo_processor:
+                success_stereo = self.stereo_processor.load_reference(reference_file_path)
+
+            overall_success = success_level and success_frequency and success_stereo
+
+            # Count successful loads
+            successes = [s for s in [success_level, success_frequency, success_stereo] if s]
+            enabled_processors = [p for p in [self.level_matcher, self.frequency_matcher, self.stereo_processor] if p]
+
+            if overall_success:
+                print(f"✅ Reference track loaded for all enabled processors")
+            elif len(successes) == len(enabled_processors):
+                print(f"✅ Reference track loaded for all enabled processors")
+            elif len(successes) > 0:
+                processor_names = []
+                if success_level: processor_names.append("level matching")
+                if success_frequency: processor_names.append("frequency matching")
+                if success_stereo: processor_names.append("stereo processing")
+                print(f"⚠️  Reference loaded for: {', '.join(processor_names)}")
+            else:
+                print(f"❌ Failed to load reference track")
+
+            return len(successes) > 0  # Succeed if at least one worked
     
     def set_effect_enabled(self, effect_name: str, enabled: bool):
         """Enable or disable specific effects"""
@@ -267,10 +392,18 @@ class RealtimeProcessor:
             if effect_name == "level_matching" and self.level_matcher:
                 self.level_matcher.set_enabled(enabled)
                 print(f"🎛️  Level matching {'✅ enabled' if enabled else '❌ disabled'}")
+            elif effect_name == "frequency_matching" and self.frequency_matcher:
+                self.frequency_matcher.set_enabled(enabled)
+                print(f"🎛️  Frequency matching {'✅ enabled' if enabled else '❌ disabled'}")
+            elif effect_name == "stereo_width" and self.stereo_processor:
+                self.stereo_processor.set_enabled(enabled)
+                print(f"🎛️  Stereo width control {'✅ enabled' if enabled else '❌ disabled'}")
+            elif effect_name == "auto_mastering" and self.auto_master:
+                self.auto_master.set_enabled(enabled)
+                print(f"🎛️  Auto-mastering {'✅ enabled' if enabled else '❌ disabled'}")
             elif effect_name == "adaptive_quality":
                 self.adaptive_quality = enabled
                 print(f"🎛️  Adaptive quality {'✅ enabled' if enabled else '❌ disabled'}")
-            # Add other effects here as they're implemented
     
     def set_bypass_all(self, bypass: bool):
         """Bypass all processing (emergency disable)"""
@@ -289,6 +422,13 @@ class RealtimeProcessor:
                     alpha = self.config.rms_smoothing_alpha * value
                     self.gain_smoother.base_attack_alpha = alpha * 0.1
                     self.gain_smoother.base_release_alpha = alpha * 0.5
+            elif effect_name == "stereo_width" and self.stereo_processor:
+                if parameter == "width":
+                    self.stereo_processor.set_width(value)
+                elif parameter == "bypass":
+                    self.stereo_processor.set_bypass(value)
+                elif parameter == "reference_matching":
+                    self.stereo_processor.set_reference_matching(value)
             elif effect_name == "processor":
                 if parameter == "max_cpu_usage":
                     self.performance_monitor.max_cpu_usage = value

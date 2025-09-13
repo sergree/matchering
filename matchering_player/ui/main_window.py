@@ -26,6 +26,8 @@ class MatcheringPlayerGUI:
             config = PlayerConfig(
                 buffer_size_ms=100.0,
                 enable_level_matching=True,
+                enable_frequency_matching=True,
+                enable_stereo_width=True,
                 enable_visualization=True
             )
             self.player = MatcheringPlayer(config)
@@ -152,17 +154,46 @@ class MatcheringPlayerGUI:
         
         # Level matching toggle
         self.level_matching_var = tk.BooleanVar(value=True)
-        level_check = ttk.Checkbutton(dsp_frame, text="Level Matching", 
+        level_check = ttk.Checkbutton(dsp_frame, text="Level Matching",
                                      variable=self.level_matching_var,
                                      command=self._toggle_level_matching)
         level_check.grid(row=0, column=0, sticky=tk.W)
-        
+
+        # Frequency matching toggle
+        self.frequency_matching_var = tk.BooleanVar(value=True)
+        freq_check = ttk.Checkbutton(dsp_frame, text="Frequency Matching (EQ)",
+                                    variable=self.frequency_matching_var,
+                                    command=self._toggle_frequency_matching)
+        freq_check.grid(row=1, column=0, sticky=tk.W, pady=(5, 0))
+
+        # Stereo width toggle
+        self.stereo_width_var = tk.BooleanVar(value=True)
+        stereo_check = ttk.Checkbutton(dsp_frame, text="Stereo Width Control",
+                                      variable=self.stereo_width_var,
+                                      command=self._toggle_stereo_width)
+        stereo_check.grid(row=2, column=0, sticky=tk.W, pady=(5, 0))
+
         # Bypass all toggle
         self.bypass_var = tk.BooleanVar(value=False)
         bypass_check = ttk.Checkbutton(dsp_frame, text="Bypass All Effects",
                                       variable=self.bypass_var,
                                       command=self._toggle_bypass)
         bypass_check.grid(row=0, column=1, sticky=tk.W, padx=(20, 0))
+
+        # Stereo width slider (manual control)
+        stereo_control_frame = ttk.Frame(dsp_frame)
+        stereo_control_frame.grid(row=1, column=1, rowspan=2, sticky=(tk.W, tk.E), padx=(20, 0))
+
+        ttk.Label(stereo_control_frame, text="Stereo Width:").grid(row=0, column=0, sticky=tk.W)
+
+        self.stereo_width_scale = tk.DoubleVar(value=1.0)
+        stereo_slider = ttk.Scale(stereo_control_frame, from_=0.0, to=2.0, orient=tk.HORIZONTAL,
+                                 variable=self.stereo_width_scale, command=self._on_stereo_width_change)
+        stereo_slider.grid(row=1, column=0, sticky=(tk.W, tk.E), pady=(2, 0))
+        stereo_control_frame.columnconfigure(0, weight=1)
+
+        self.stereo_width_label = ttk.Label(stereo_control_frame, text="1.00")
+        self.stereo_width_label.grid(row=2, column=0, pady=(2, 0))
         
         # === STATUS SECTION ===
         status_frame = ttk.LabelFrame(main_frame, text="Status", padding="10")
@@ -317,7 +348,31 @@ class MatcheringPlayerGUI:
             self.player.set_effect_enabled('level_matching', enabled)
             status = "enabled" if enabled else "disabled"
             self._update_status(f"Level matching {status}")
-    
+
+    def _toggle_frequency_matching(self):
+        """Toggle frequency matching effect"""
+        if self.player:
+            enabled = self.frequency_matching_var.get()
+            self.player.set_effect_enabled('frequency_matching', enabled)
+            status = "enabled" if enabled else "disabled"
+            self._update_status(f"Frequency matching {status}")
+
+    def _toggle_stereo_width(self):
+        """Toggle stereo width control effect"""
+        if self.player:
+            enabled = self.stereo_width_var.get()
+            self.player.set_effect_enabled('stereo_width', enabled)
+            status = "enabled" if enabled else "disabled"
+            self._update_status(f"Stereo width control {status}")
+
+    def _on_stereo_width_change(self, value):
+        """Handle stereo width slider changes"""
+        if self.player:
+            width = float(value)
+            self.stereo_width_label.config(text=f"{width:.2f}")
+            # Set manual stereo width via effect parameter
+            self.player.set_effect_parameter('stereo_width', 'width', width)
+
     def _toggle_bypass(self):
         """Toggle bypass all effects"""
         if self.player:

@@ -22,6 +22,7 @@ class PlayerConfig:
         enable_level_matching: bool = True,
         enable_frequency_matching: bool = False,  # MVP: start with levels only
         enable_stereo_width: bool = False,  # Phase 2 feature
+        enable_auto_mastering: bool = False,  # Intelligent auto-mastering
         enable_limiter: bool = True,
         
         # Level matching parameters (from Matchering)
@@ -57,6 +58,7 @@ class PlayerConfig:
         self.enable_level_matching = enable_level_matching
         self.enable_frequency_matching = enable_frequency_matching
         self.enable_stereo_width = enable_stereo_width
+        self.enable_auto_mastering = enable_auto_mastering
         self.enable_limiter = enable_limiter
         
         # Level matching parameters
