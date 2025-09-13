@@ -429,6 +429,17 @@ class RealtimeProcessor:
                     self.stereo_processor.set_bypass(value)
                 elif parameter == "reference_matching":
                     self.stereo_processor.set_reference_matching(value)
+            elif effect_name == "auto_mastering" and self.auto_master:
+                if parameter == "profile":
+                    from .auto_master import AutoMasterProfile
+                    if value == "adaptive":
+                        self.auto_master.enable_adaptive_mode()
+                    else:
+                        try:
+                            profile = AutoMasterProfile(value)
+                            self.auto_master.set_profile(profile)
+                        except ValueError:
+                            print(f"⚠️  Unknown auto-mastering profile: {value}")
             elif effect_name == "processor":
                 if parameter == "max_cpu_usage":
                     self.performance_monitor.max_cpu_usage = value

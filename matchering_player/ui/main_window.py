@@ -28,6 +28,7 @@ class MatcheringPlayerGUI:
                 enable_level_matching=True,
                 enable_frequency_matching=True,
                 enable_stereo_width=True,
+                enable_auto_mastering=True,  # Enable auto-mastering
                 enable_visualization=True
             )
             self.player = MatcheringPlayer(config)
@@ -172,6 +173,29 @@ class MatcheringPlayerGUI:
                                       variable=self.stereo_width_var,
                                       command=self._toggle_stereo_width)
         stereo_check.grid(row=2, column=0, sticky=tk.W, pady=(5, 0))
+
+        # Auto-mastering toggle
+        self.auto_mastering_var = tk.BooleanVar(value=True)
+        auto_check = ttk.Checkbutton(dsp_frame, text="🤖 Auto-Mastering (No Reference Needed!)",
+                                    variable=self.auto_mastering_var,
+                                    command=self._toggle_auto_mastering)
+        auto_check.grid(row=3, column=0, columnspan=2, sticky=tk.W, pady=(10, 0))
+
+        # Auto-mastering profile selection
+        auto_profile_frame = ttk.Frame(dsp_frame)
+        auto_profile_frame.grid(row=4, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(5, 0))
+
+        ttk.Label(auto_profile_frame, text="Profile:").grid(row=0, column=0, sticky=tk.W)
+
+        self.auto_profile_var = tk.StringVar(value="adaptive")
+        profile_combo = ttk.Combobox(auto_profile_frame, textvariable=self.auto_profile_var,
+                                    values=["adaptive", "modern_pop", "electronic", "acoustic", "classical", "podcast"],
+                                    state="readonly", width=15)
+        profile_combo.grid(row=0, column=1, padx=(10, 0), sticky=tk.W)
+        profile_combo.bind("<<ComboboxSelected>>", self._on_profile_change)
+
+        self.auto_status_label = ttk.Label(auto_profile_frame, text="🧠 Analyzing...", foreground="blue")
+        self.auto_status_label.grid(row=0, column=2, padx=(10, 0), sticky=tk.W)
 
         # Bypass all toggle
         self.bypass_var = tk.BooleanVar(value=False)
@@ -372,6 +396,31 @@ class MatcheringPlayerGUI:
             self.stereo_width_label.config(text=f"{width:.2f}")
             # Set manual stereo width via effect parameter
             self.player.set_effect_parameter('stereo_width', 'width', width)
+
+    def _toggle_auto_mastering(self):
+        """Toggle auto-mastering effect"""
+        if self.player:
+            enabled = self.auto_mastering_var.get()
+            self.player.set_effect_enabled('auto_mastering', enabled)
+            status = "enabled" if enabled else "disabled"
+            self._update_status(f"🤖 Auto-mastering {status}")
+
+            if enabled:
+                self.auto_status_label.config(text="🧠 Analyzing...", foreground="blue")
+            else:
+                self.auto_status_label.config(text="❌ Disabled", foreground="gray")
+
+    def _on_profile_change(self, event=None):
+        """Handle auto-mastering profile selection"""
+        if self.player:
+            profile = self.auto_profile_var.get()
+            self.player.set_effect_parameter('auto_mastering', 'profile', profile)
+            self._update_status(f"🤖 Auto-mastering profile: {profile}")
+
+            if profile == "adaptive":
+                self.auto_status_label.config(text="🧠 Learning...", foreground="blue")
+            else:
+                self.auto_status_label.config(text=f"🎛️ {profile.title()}", foreground="green")
 
     def _toggle_bypass(self):
         """Toggle bypass all effects"""

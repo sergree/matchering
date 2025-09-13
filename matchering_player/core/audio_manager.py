@@ -13,12 +13,18 @@ from typing import Optional, Callable, Dict, Any
 from enum import Enum
 import logging
 
-# Try to import PyAudio
+# Try to import audio backends
 try:
     import pyaudio
     HAS_PYAUDIO = True
 except ImportError:
     HAS_PYAUDIO = False
+
+try:
+    import sounddevice as sd
+    HAS_SOUNDDEVICE = True
+except ImportError:
+    HAS_SOUNDDEVICE = False
 
 from .config import PlayerConfig
 from ..dsp import RealtimeProcessor, CircularBuffer
@@ -44,14 +50,31 @@ class AudioManager:
     
     def __init__(self, config: PlayerConfig):
         self.config = config
-        
-        # Check PyAudio availability
-        if not HAS_PYAUDIO:
-            raise RuntimeError("PyAudio not available. Install with: pip install pyaudio")
-        
+
+        # Choose audio backend
+        self.use_sounddevice = False
+        if HAS_SOUNDDEVICE:
+            try:
+                # Test sounddevice availability
+                sd.check_output_settings(
+                    device=None,
+                    channels=2,
+                    dtype=np.float32,
+                    samplerate=config.sample_rate
+                )
+                self.use_sounddevice = True
+                logger.info("🎧 Using SoundDevice backend (Pipewire compatible)")
+            except Exception as e:
+                logger.warning(f"SoundDevice test failed: {e}, falling back to PyAudio")
+
+        if not self.use_sounddevice:
+            if not HAS_PYAUDIO:
+                raise RuntimeError("No audio backend available. Install: pip install pyaudio sounddevice")
+            self.pyaudio_instance = pyaudio.PyAudio()
+            logger.info("🎧 Using PyAudio backend")
+
         # Audio components
-        self.pyaudio_instance = pyaudio.PyAudio()
-        self.audio_stream: Optional[pyaudio.Stream] = None
+        self.audio_stream = None
         self.file_loader = AudioFileLoader(config.sample_rate, 2)  # Always stereo
         self.dsp_processor = RealtimeProcessor(config)
         
@@ -92,31 +115,54 @@ class AudioManager:
         """Clean up audio resources"""
         self.stop()
         if self.audio_stream:
-            if not self.audio_stream.is_stopped():
-                self.audio_stream.stop_stream()
-            self.audio_stream.close()
+            if self.use_sounddevice:
+                if self.audio_stream.active:
+                    self.audio_stream.stop()
+                self.audio_stream.close()
+            else:
+                if not self.audio_stream.is_stopped():
+                    self.audio_stream.stop_stream()
+                self.audio_stream.close()
             self.audio_stream = None
-        if self.pyaudio_instance:
+        if hasattr(self, 'pyaudio_instance') and self.pyaudio_instance:
             self.pyaudio_instance.terminate()
     
     def get_audio_devices(self) -> Dict[str, list]:
         """Get available audio devices"""
         devices = {'input': [], 'output': []}
-        
-        for i in range(self.pyaudio_instance.get_device_count()):
-            device_info = self.pyaudio_instance.get_device_info_by_index(i)
-            device_data = {
-                'index': i,
-                'name': device_info['name'],
-                'channels': device_info['maxOutputChannels'],
-                'sample_rate': device_info['defaultSampleRate'],
-            }
-            
-            if device_info['maxOutputChannels'] > 0:
-                devices['output'].append(device_data)
-            if device_info['maxInputChannels'] > 0:
-                devices['input'].append(device_data)
-        
+
+        if self.use_sounddevice:
+            try:
+                device_list = sd.query_devices()
+                for i, device in enumerate(device_list):
+                    device_data = {
+                        'index': i,
+                        'name': device['name'],
+                        'channels': device['max_output_channels'],
+                        'sample_rate': device['default_samplerate'],
+                    }
+
+                    if device['max_output_channels'] > 0:
+                        devices['output'].append(device_data)
+                    if device['max_input_channels'] > 0:
+                        devices['input'].append(device_data)
+            except Exception as e:
+                logger.warning(f"Error querying SoundDevice devices: {e}")
+        else:
+            for i in range(self.pyaudio_instance.get_device_count()):
+                device_info = self.pyaudio_instance.get_device_info_by_index(i)
+                device_data = {
+                    'index': i,
+                    'name': device_info['name'],
+                    'channels': device_info['maxOutputChannels'],
+                    'sample_rate': device_info['defaultSampleRate'],
+                }
+
+                if device_info['maxOutputChannels'] > 0:
+                    devices['output'].append(device_data)
+                if device_info['maxInputChannels'] > 0:
+                    devices['input'].append(device_data)
+
         return devices
     
     def load_file(self, file_path: str) -> bool:
@@ -265,29 +311,47 @@ class AudioManager:
             self.playback_thread.join(timeout=1.0)
         
         # Stop audio stream
-        if self.audio_stream and self.audio_stream.is_active():
-            self.audio_stream.stop_stream()
+        if self.audio_stream:
+            if self.use_sounddevice:
+                if self.audio_stream.active:
+                    self.audio_stream.stop()
+            else:
+                if self.audio_stream.is_active():
+                    self.audio_stream.stop_stream()
         
         # Stop DSP processing
         self.dsp_processor.stop_processing()
     
     def _init_audio_stream(self) -> bool:
-        """Initialize PyAudio stream"""
+        """Initialize audio stream (PyAudio or SoundDevice)"""
         try:
             if self.audio_stream:
                 return True
-            
-            self.audio_stream = self.pyaudio_instance.open(
-                format=pyaudio.paFloat32,
-                channels=2,
-                rate=self.config.sample_rate,
-                output=True,
-                frames_per_buffer=self.config.buffer_size_samples,
-                callback=self._audio_callback,
-                stream_callback=None  # We'll use the callback
-            )
-            
-            logger.info("🎧 Audio stream initialized")
+
+            if self.use_sounddevice:
+                # SoundDevice approach - create output stream
+                self.audio_stream = sd.OutputStream(
+                    samplerate=self.config.sample_rate,
+                    channels=2,
+                    dtype=np.float32,
+                    blocksize=self.config.buffer_size_samples,
+                    callback=self._sounddevice_callback,
+                    latency='low'
+                )
+                self.audio_stream.start()
+                logger.info("🎧 SoundDevice stream initialized")
+            else:
+                # PyAudio approach
+                self.audio_stream = self.pyaudio_instance.open(
+                    format=pyaudio.paFloat32,
+                    channels=2,
+                    rate=self.config.sample_rate,
+                    output=True,
+                    frames_per_buffer=self.config.buffer_size_samples,
+                    stream_callback=self._audio_callback
+                )
+                logger.info("🎧 PyAudio stream initialized")
+
             return True
             
         except Exception as e:
@@ -299,19 +363,36 @@ class AudioManager:
         try:
             # Read processed audio from buffer
             output_data = self.playback_buffer.read(frame_count)
-            
+
             if output_data is None:
                 # No data available - output silence
                 output_data = np.zeros((frame_count, 2), dtype=np.float32)
-            
+
             # Convert to bytes for PyAudio
             output_bytes = output_data.astype(np.float32).tobytes()
-            
+
             return (output_bytes, pyaudio.paContinue)
-            
+
         except Exception as e:
             logger.error(f"❌ Error in audio callback: {e}")
             return (np.zeros((frame_count, 2), dtype=np.float32).tobytes(), pyaudio.paComplete)
+
+    def _sounddevice_callback(self, outdata, frames, time, status):
+        """SoundDevice callback for audio output"""
+        try:
+            # Read processed audio from buffer
+            output_data = self.playback_buffer.read(frames)
+
+            if output_data is None:
+                # No data available - output silence
+                outdata.fill(0)
+            else:
+                # Copy data to output buffer
+                outdata[:] = output_data
+
+        except Exception as e:
+            logger.error(f"❌ Error in SoundDevice callback: {e}")
+            outdata.fill(0)
     
     def _playback_loop(self):
         """Main playback loop (runs in separate thread)"""
