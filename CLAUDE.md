@@ -36,29 +36,46 @@ pip install -e .
 
 # Install dependencies
 pip install -r requirements.txt
+
+# Install test dependencies
+pip install pytest soundfile pytest-cov
 ```
 
-### Testing
+### Testing (Comprehensive Test Suite)
 ```bash
-# Run basic DSP tests
-python test_dsp_core.py
+# Run all tests
+pytest tests/
 
-# Run audio pipeline tests
-python test_audio_pipeline.py
+# Run with coverage report
+python run_tests.py coverage-html
+
+# Run specific test categories
+pytest tests/ -m unit          # Unit tests only
+pytest tests/ -m integration   # Integration tests only
+pytest tests/ -m "not slow"    # Fast tests only
+pytest tests/ -m player        # Player-specific tests
+pytest tests/ -m core          # Core library tests
+
+# Using the convenient test runner
+python tests/test_runner.py fast
+python tests/test_runner.py performance
 ```
 
 ### Running Examples
 ```bash
 # Basic usage example
-python examples/simple.py
+python examples/basic.py
 
 # Advanced results configuration
 python examples/advanced_results.py
+
+# With preview generation
+python examples/with_preview.py
 ```
 
 ### Running GUI Demos
 ```bash
-# Launch modern GUI demo
+# Launch modern GUI demo (full-featured)
 python modern_gui.py
 
 # Launch basic GUI demo
@@ -66,6 +83,9 @@ python gui_demo.py
 
 # Launch simple GUI launcher
 python launch_gui.py
+
+# Demo the player functionality
+python demo_matchering_player.py
 ```
 
 ## Key Technical Details
@@ -90,13 +110,34 @@ python launch_gui.py
 - Supports custom temp directories and internal sample rates
 
 ### File Structure Notes
-- Test files are at repository root (`test_*.py`)
+- **Test suite** in `tests/` directory with pytest configuration
 - GUI demo files are at repository root (`*gui*.py`)
 - Examples in `examples/` directory
 - Core library code in `matchering/` package
 - Player code in `matchering_player/` package
 - Documentation files (`*.md`) contain development plans and technical details
 
+## Test Suite Structure
+```
+tests/
+├── conftest.py                   # Pytest configuration and fixtures
+├── pytest.ini                   # Test settings and markers
+├── unit/                         # Unit tests for individual components
+│   ├── test_dsp_core.py         # DSP functions and processors
+│   ├── test_core_library.py     # Core matchering library
+│   ├── test_player_components.py # Player components
+│   └── test_advanced_features.py # Advanced features (frequency/stereo/auto)
+└── integration/                  # Integration tests across components
+    ├── test_audio_pipeline.py   # Complete audio processing pipelines
+    └── test_error_handling.py   # Error handling and edge cases
+```
+
+## Current Test Coverage
+- **Overall Coverage**: 46% (Production ready for player, core library needs work)
+- **Matchering Player**: 70-85% coverage (well-tested)
+- **Core Library**: 15% coverage (needs significant improvement)
+
 ## Branch Information
 - **Main branch**: `master`
 - **Current branch**: `matchering_player` (development branch for real-time player features)
+- **Active Development**: Player functionality with comprehensive test suite
