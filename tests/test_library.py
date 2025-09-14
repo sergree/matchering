@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 import tempfile
 import shutil
-from src.library.models.database import LibraryManager, Track, Album, Artist
+from src.library.models.database import LibraryManager, Track, Album, Artist, LibraryStatistics
 from src.library.scanning.scanner import LibraryScanner
 from src.library.metadata.reader import MetadataReader
 

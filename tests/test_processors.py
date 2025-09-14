@@ -127,7 +127,8 @@ def test_stereo_processor(test_buffer):
     # Test mono
     proc.update_params(StereoParams(width=0.0))  # Mono
     output = proc.process(test_buffer)
-    np.testing.assert_allclose(output[:, 0], output[:, 1], rtol=1e-10)
+    # For mono output, channels should be identical
+    assert np.array_equal(output[:, 0], output[:, 1])
 
 def test_mid_side_processor(test_buffer):
     """Test mid/side processor."""

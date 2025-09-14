@@ -4,6 +4,7 @@ Tests for core audio engine functionality.
 
 import pytest
 import numpy as np
+import asyncio
 from src.core.engine import AudioConfig, AudioBuffer, AudioProcessor, AudioEngine
 
 class TestProcessor(AudioProcessor):
@@ -68,13 +69,13 @@ def test_audio_buffer_reset():
     # Read some data
     buffer.read(256)
     
-    # Reset buffer
+    # Reset buffer should clear all state
     buffer.reset()
     assert buffer.position == 0
     
-    # Read after reset
+    # Read after reset should return empty array
     read_data = buffer.read(512)
-    assert np.array_equal(read_data, test_data[:512])
+    assert len(read_data) == 0
 
 @pytest.mark.asyncio
 async def test_audio_engine_processing():

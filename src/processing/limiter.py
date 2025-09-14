@@ -89,8 +89,12 @@ class Limiter(AudioProcessor):
                 self._gain_reduction = self._release_coef * self._gain_reduction + \
                                      (1 - self._release_coef) * target_reduction
                                      
-            # Apply gain reduction to delayed signal
-            output[i] = self._buffer[0] * self._gain_reduction * output_gain
+            # Apply gain reduction to delayed signal with hard clip
+            sample = self._buffer[0] * self._gain_reduction * output_gain
+            # Hard clip with a tiny margin below threshold to ensure we never exceed it
+            # even after potential output gain application
+            hard_clip = threshold_linear * 0.999  # 0.1% margin
+            output[i] = np.clip(sample, -hard_clip, hard_clip)
             
             # Update delay buffer
             self._buffer = np.vstack((self._buffer[1:], buffer[i]))
@@ -133,6 +137,9 @@ class BrickwallLimiter(Limiter):
             params: Optional limiter parameters
             oversampling: Oversampling factor for true peak detection
         """
+        # Initialize state placeholders before base init (base.reset may reference them)
+        self._up_state = None
+        self._down_state = None
         super().__init__(sample_rate, params)
         self.oversampling = oversampling
         
@@ -141,7 +148,7 @@ class BrickwallLimiter(Limiter):
         self._up_filter = signal.firwin(61, 0.45, window='hamming')
         self._down_filter = self._up_filter * self.oversampling
         
-        # State variables for oversampling
+        # Ensure states are in a known state
         self._up_state = None
         self._down_state = None
         self.reset()
@@ -169,6 +176,9 @@ class BrickwallLimiter(Limiter):
         
         self._init_states(buffer.shape[1])
         
+        # Convert threshold to linear gain
+        threshold_linear = np.power(10, self.params.threshold / 20)
+        
         # Upsample
         up_samples = self.oversampling * len(buffer)
         up_buffer = np.zeros((up_samples, buffer.shape[1]))
@@ -194,8 +204,12 @@ class BrickwallLimiter(Limiter):
                 up_output[:, ch],
                 zi=self._down_state[:, ch]
             )
-            # Decimate
-            output[:, ch] = down_filtered[::self.oversampling]
+            # Decimate and apply final hard clip to be absolutely certain
+            output[:, ch] = np.clip(
+                down_filtered[::self.oversampling],
+                -threshold_linear,
+                threshold_linear
+            )
             
         return output
         

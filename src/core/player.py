@@ -89,12 +89,13 @@ class Player:
                 self.stop()
                 
                 # Load audio file
-                audio_data, audio_info = sf.read(filepath, dtype=np.float32)
+                audio_data, sample_rate = sf.read(filepath, dtype=np.float32)
+                audio_info = sf.info(filepath)
                 
                 # Convert to stereo if needed
-                if len(audio_data.shape) == 1:
+                if audio_data.ndim == 1:
                     audio_data = np.column_stack((audio_data, audio_data))
-                elif audio_data.shape[1] > 2:
+                elif audio_data.ndim == 2 and audio_data.shape[1] > 2:
                     audio_data = audio_data[:, :2]
                 
                 # Store audio data

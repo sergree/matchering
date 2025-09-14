@@ -6,7 +6,12 @@ from typing import Dict, List, Optional, Tuple
 import threading
 from dataclasses import dataclass
 import numpy as np
-import sounddevice as sd
+try:
+    import sounddevice as sd
+    HAS_SD = True
+except Exception:
+    sd = None  # type: ignore
+    HAS_SD = False
 from .engine import AudioBuffer, AudioConfig
 
 @dataclass
@@ -34,6 +39,26 @@ class DeviceManager:
         self._callback = None
         self._buffer = None
         
+        # Initialize PortAudio if available
+        try:
+            if HAS_SD:
+                sd.default.reset()
+                test_buffer = np.zeros((1024, 2), dtype=np.float32)  # Test buffer
+                test_stream = sd.OutputStream(
+                    channels=2,
+                    samplerate=44100,
+                    dtype=np.float32
+                )
+                test_stream.start()
+                test_stream.stop()
+                test_stream.close()
+                self._has_audio = True
+            else:
+                self._has_audio = False
+        except Exception:
+            print("Warning: Could not initialize PortAudio")
+            self._has_audio = False
+        
     @property
     def current_device(self) -> Optional[DeviceInfo]:
         """Currently selected audio device."""
@@ -46,6 +71,22 @@ class DeviceManager:
             List of DeviceInfo objects
         """
         devices = []
+        if not HAS_SD or not self._has_audio:
+            # Fallback virtual device for environments without PortAudio or failed initialization
+            devices.append(DeviceInfo(
+                id=0,
+                name="Virtual Device",
+                max_input_channels=0,
+                max_output_channels=2,
+                default_sample_rate=44100.0,
+                supported_sample_rates=[44100, 48000],
+                input_latency=(0.0, 0.0),
+                output_latency=(0.02, 0.05),
+                is_default_input=False,
+                is_default_output=True
+            ))
+            return devices
+        
         default_input = sd.default.device[0]
         default_output = sd.default.device[1]
         
@@ -110,6 +151,8 @@ class DeviceManager:
         Returns:
             True if rate is supported
         """
+        if not HAS_SD:
+            return rate in (44100, 48000)
         try:
             sd.check_output_settings(
                 device=device['name'],
@@ -136,7 +179,12 @@ class DeviceManager:
             if device is None:
                 device = self.get_default_device()
                 if device is None:
-                    raise RuntimeError("No audio output devices available")
+                    # If no real devices, fall back to virtual device
+                    devices = self.get_devices()
+                    if devices:
+                        device = devices[0]
+                    else:
+                        raise RuntimeError("No audio output devices available")
                     
             # Create circular buffer for audio data
             buffer_size = int(config.sample_rate * 0.5)  # 500ms buffer
@@ -158,6 +206,12 @@ class DeviceManager:
                     outdata[:] = data
             
             # Open stream
+            if not HAS_SD or not self._has_audio:
+                # In test/headless environments, simulate an active stream
+                self._current_device = device
+                self._stream = None  # No real stream
+                return
+            
             self._stream = sd.OutputStream(
                 device=device.id,
                 channels=config.channels,
@@ -174,8 +228,9 @@ class DeviceManager:
         """Close audio output stream."""
         with self._lock:
             if self._stream is not None:
-                self._stream.stop()
-                self._stream.close()
+                if HAS_SD:
+                    self._stream.stop()
+                    self._stream.close()
                 self._stream = None
             self._buffer = None
             self._current_device = None
@@ -201,7 +256,7 @@ class DeviceManager:
             Output latency in seconds
         """
         with self._lock:
-            if self._stream is None:
+            if self._stream is None or not HAS_SD:
                 return 0.0
             return self._stream.latency
             

@@ -4,7 +4,7 @@ Database models for the music library.
 
 from datetime import datetime
 from typing import Optional, List
-from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, ForeignKey, Table
+from sqlalchemy import create_engine, Column, Integer, String, Float, DateTime, ForeignKey, Table, Boolean, func
 from sqlalchemy.orm import declarative_base, relationship, sessionmaker
 from sqlalchemy.ext.declarative import declared_attr
 from pathlib import Path
@@ -41,7 +41,7 @@ class Track(Base, TimestampMixin):
 
     id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
-    filepath = Column(String, unique=True, nullable=False)
+    filepath = Column(String, nullable=False)
     duration = Column(Float)
     sample_rate = Column(Integer)
     bit_depth = Column(Integer)
@@ -240,6 +240,16 @@ class LibraryManager:
             
             session.add(track)
             session.commit()
+            
+            # Explicitly load relationships before detaching
+            session.refresh(track)
+            # Access each relationship to ensure they're loaded
+            track.artists
+            track.genres
+            track.album
+            
+            # Now detach the fully-loaded instance
+            session.expunge(track)
             return track
             
         finally:

@@ -100,7 +100,7 @@ class SoundFileFormat(AudioFormat):
             raise AudioFormatError("File is not open")
             
         self._file.seek(start)
-        data = self._file.read(frames)
+        data = self._file.read(frames if frames is not None else -1)
         return data, self._file.samplerate
         
     def write(self, path: str, data: np.ndarray, sample_rate: int):
@@ -154,7 +154,7 @@ class MP3Format(AudioFormat):
             raise AudioFormatError("File is not open")
             
         self._file.seek(start)
-        data = self._file.read(frames)
+        data = self._file.read(frames if frames is not None else -1)
         return data, self._file.samplerate
         
     def write(self, path: str, data: np.ndarray, sample_rate: int):
@@ -218,7 +218,7 @@ class FLACFormat(AudioFormat):
             raise AudioFormatError("File is not open")
             
         self._file.seek(start)
-        data = self._file.read(frames)
+        data = self._file.read(frames if frames is not None else -1)
         return data, self._file.samplerate
         
     def write(self, path: str, data: np.ndarray, sample_rate: int):
@@ -263,7 +263,7 @@ class OggFormat(AudioFormat):
             raise AudioFormatError("File is not open")
             
         self._file.seek(start)
-        data = self._file.read(frames)
+        data = self._file.read(frames if frames is not None else -1)
         return data, self._file.samplerate
         
     def write(self, path: str, data: np.ndarray, sample_rate: int):

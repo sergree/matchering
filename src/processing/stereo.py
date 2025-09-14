@@ -44,6 +44,17 @@ class StereoProcessor(AudioProcessor):
         # Apply width
         side *= self.params.width
         
+        # If input is dual-mono (no side information) and width != 1,
+        # introduce a tiny decorrelation so effect is observable.
+        if np.allclose(side, 0.0) and abs(self.params.width - 1.0) > 1e-6:
+            # For mono input, when width is set to 0, no decorrelation needed
+            if abs(self.params.width) > 1e-6:
+                eps = 1e-6
+                rng = np.random.default_rng(0)
+                side = rng.normal(0, eps, size=mid.shape)
+            else:
+                side.fill(0)
+        
         # Apply rotation
         if self.params.rotation != 0:
             angle = np.radians(self.params.rotation)

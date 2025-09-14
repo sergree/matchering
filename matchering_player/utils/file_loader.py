@@ -151,6 +151,9 @@ class AudioFileLoader:
         if HAS_SOUNDFILE and suffix in self.SOUNDFILE_FORMATS:
             try:
                 audio_data, sample_rate = sf.read(file_path, dtype='float32')
+                # Validate non-empty audio
+                if audio_data.size == 0:
+                    raise RuntimeError(f"Empty or unreadable audio file: {file_path}")
                 logger.debug(f"Loaded with soundfile: {audio_data.shape}, {sample_rate}Hz")
                 return audio_data, sample_rate
             except sf.LibsndfileError as e:
@@ -172,6 +175,10 @@ class AudioFileLoader:
             try:
                 # Load with librosa (always returns mono by default)
                 audio_data, sample_rate = librosa.load(file_path, sr=None, mono=False)
+                
+                # Validate non-empty audio
+                if audio_data.size == 0:
+                    raise RuntimeError(f"Empty or unreadable audio file: {file_path}")
                 
                 # Librosa returns (channels, samples) - transpose to (samples, channels)
                 if audio_data.ndim == 1:

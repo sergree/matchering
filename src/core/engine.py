@@ -31,19 +31,21 @@ class AudioBuffer:
             dtype: Buffer data type
         """
         self.data = np.zeros((size, channels), dtype=dtype)
-        self._position = 0
+        self._write_pos = 0
+        self._read_pos = 0
         self._lock = threading.RLock()
+        self._samples_available = 0
         
     @property
     def position(self) -> int:
-        """Current buffer position."""
-        return self._position
+        """Current read position."""
+        return self._read_pos
         
     @position.setter
     def position(self, value: int):
-        """Set buffer position."""
+        """Set read position."""
         with self._lock:
-            self._position = max(0, min(value, len(self.data)))
+            self._read_pos = max(0, min(value, len(self.data)))
             
     def write(self, data: np.ndarray) -> int:
         """Write data to buffer.
@@ -55,13 +57,23 @@ class AudioBuffer:
             Number of samples written
         """
         with self._lock:
-            available = len(self.data) - self._position
-            if available <= 0:
+            write_size = min(len(data), len(self.data))
+            if write_size == 0:
                 return 0
                 
-            write_size = min(len(data), available)
-            self.data[self._position:self._position + write_size] = data[:write_size]
-            self._position += write_size
+            # Handle wrap-around
+            first_chunk = min(write_size, len(self.data) - self._write_pos)
+            self.data[self._write_pos:self._write_pos + first_chunk] = data[:first_chunk]
+            
+            if first_chunk < write_size:
+                # Write remaining data at start of buffer
+                remaining = write_size - first_chunk
+                self.data[:remaining] = data[first_chunk:write_size]
+                self._write_pos = remaining
+            else:
+                self._write_pos = (self._write_pos + write_size) % len(self.data)
+                
+            self._samples_available = min(len(self.data), self._samples_available + write_size)
             return write_size
             
     def read(self, size: int) -> np.ndarray:
@@ -74,18 +86,33 @@ class AudioBuffer:
             Audio data
         """
         with self._lock:
-            if self._position >= len(self.data):
-                return np.zeros((0, self.data.shape[1]), dtype=self.data.dtype)
+            if self._samples_available == 0:
+                return np.empty((0, self.data.shape[1]), dtype=self.data.dtype)
                 
-            read_size = min(size, len(self.data) - self._position)
-            data = self.data[self._position:self._position + read_size].copy()
-            self._position += read_size
+            read_size = min(size, self._samples_available)
+            
+            # Handle wrap-around
+            first_chunk = min(read_size, len(self.data) - self._read_pos)
+            data = np.empty((read_size, self.data.shape[1]), dtype=self.data.dtype)
+            data[:first_chunk] = self.data[self._read_pos:self._read_pos + first_chunk]
+            
+            if first_chunk < read_size:
+                # Read remaining data from start of buffer
+                remaining = read_size - first_chunk
+                data[first_chunk:] = self.data[:remaining]
+                self._read_pos = remaining
+            else:
+                self._read_pos = (self._read_pos + read_size) % len(self.data)
+                
+            self._samples_available -= read_size
             return data
             
     def reset(self):
-        """Reset buffer position."""
+        """Reset buffer state."""
         with self._lock:
-            self._position = 0
+            self._read_pos = 0
+            self._write_pos = 0
+            self._samples_available = 0
 
 class AudioProcessor(ABC):
     """Base class for audio processors."""
@@ -190,6 +217,20 @@ class AudioEngine:
             
             # Small sleep to prevent busy loop
             await asyncio.sleep(0.001)
+            
+    def process_block(self, data: np.ndarray) -> np.ndarray:
+        """Process a block of audio synchronously.
+        
+        Args:
+            data: Input audio block
+        
+        Returns:
+            Processed audio block
+        """
+        output = data
+        for processor in self.processors:
+            output = processor.process(output)
+        return output
             
     def write_input(self, data: np.ndarray) -> int:
         """Write data to input buffer.
