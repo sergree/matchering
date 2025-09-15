@@ -24,6 +24,7 @@ from .core.config import Config
 
 # Real-time player
 from .player.audio_player import AudioPlayer
+from .player.enhanced_audio_player import EnhancedAudioPlayer
 from .player.config import PlayerConfig
 
 # Results and output handling
@@ -36,7 +37,8 @@ from .utils.logging import set_log_handler as log
 __all__ = [
     "process",           # Core batch processing
     "Config",           # Core configuration
-    "AudioPlayer",      # Real-time player
+    "AudioPlayer",      # Basic real-time player
+    "EnhancedAudioPlayer",  # Advanced player with DSP
     "PlayerConfig",     # Player configuration
     "Result", "pcm16", "pcm24",  # Output formats
     "log",              # Logging

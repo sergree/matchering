@@ -50,6 +50,18 @@ def info(message: str):
         _log_handler(f"INFO: {message}")
 
 
+def warning(message: str):
+    """Log a warning message"""
+    if _log_handler:
+        _log_handler(f"WARNING: {message}")
+
+
+def error(message: str):
+    """Log an error message"""
+    if _log_handler:
+        _log_handler(f"ERROR: {message}")
+
+
 def debug_line():
     """Log a debug separator line"""
     if _log_handler:
