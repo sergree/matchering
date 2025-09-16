@@ -1,0 +1,23 @@
+# Auralis Desktop Application Dependencies
+# Core audio processing
+numpy>=1.23.4
+scipy>=1.9.2
+soundfile>=0.11.0
+resampy>=0.4.2
+statsmodels>=0.13.2
+
+# Database and library management
+SQLAlchemy>=2.0.22
+
+# GUI framework
+customtkinter>=5.0.0
+tkinterdnd2>=0.4.0
+
+# Audio metadata
+mutagen>=1.47.0
+
+# System monitoring
+psutil>=5.9.0
+
+# File handling
+pathlib2>=2.3.7; python_version < "3.4"

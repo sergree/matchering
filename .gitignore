@@ -1,8 +1,45 @@
+# IDE and OS files
 .idea
 .DS_Store
-__pycache__
 desktop.ini
+.vscode/
+*.swp
+*.swo
 
+# Python cache and bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Build and distribution artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+*.whl
+*.tar.gz
+*.zip
+*.deb
+*.rpm
+*.dmg
+*.pkg
+*.msi
+*.exe
+
+# PyInstaller specific
+*.spec.backup
+*.manifest
+*.spec.bak
+
+# Audio files
 *.wav
 *.flac
 *.mp3
@@ -12,5 +49,37 @@ desktop.ini
 *.mat
 *.mat5
 
-*.pyc
+# Temporary and cache files
+*.log
+*.tmp
+*.temp
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# System files
+Thumbs.db
+.directory
+
+# Development files
 mg_cli.py
+test_output/
+*.db
+*.sqlite3
+
+# Documentation build
+docs/_build/
+
+# Local configuration
+.env
+.env.local
+config.local.py
+
+# macOS specific
+.AppleDouble
+.LSOverride
+
+# Windows specific
+ehthumbs.db
+Desktop.ini

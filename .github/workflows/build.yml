@@ -1,0 +1,143 @@
+name: Build Auralis
+
+on:
+  push:
+    branches: [ master, matchering_player ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements-desktop.txt
+        pip install pytest pytest-cov
+
+    - name: Run tests
+      run: |
+        python run_all_tests.py
+
+  build-linux:
+    needs: test
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential
+
+    - name: Build Linux package
+      run: |
+        python build_auralis.py --skip-tests
+
+    - name: Upload Linux artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: auralis-linux
+        path: |
+          dist/Auralis-*.tar.gz
+          dist/auralis_*.tar.gz
+
+  build-windows:
+    needs: test
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Build Windows package
+      run: |
+        python build_auralis.py --skip-tests
+
+    - name: Upload Windows artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: auralis-windows
+        path: |
+          dist/Auralis-*.zip
+          *.nsi
+
+  build-macos:
+    needs: test
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Build macOS package
+      run: |
+        python build_auralis.py --skip-tests
+
+    - name: Upload macOS artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: auralis-macos
+        path: |
+          dist/Auralis-*.dmg
+          dist/Auralis.app
+
+  release:
+    needs: [build-linux, build-windows, build-macos]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+
+    steps:
+    - name: Download all artifacts
+      uses: actions/download-artifact@v3
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          auralis-linux/*
+          auralis-windows/*
+          auralis-macos/*
+        body: |
+          ## Auralis ${{ github.ref_name }}
+
+          Cross-platform professional audio mastering system.
+
+          ### Downloads
+          - **Linux**: `Auralis-*-linux-x64.tar.gz`
+          - **Windows**: `Auralis-*-Windows-Setup.exe`
+          - **macOS**: `Auralis-*-macOS.dmg`
+
+          ### Installation
+          - Linux: Extract and run `./Auralis`
+          - Windows: Run the installer
+          - macOS: Mount DMG and drag to Applications
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
