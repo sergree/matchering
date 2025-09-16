@@ -1,3 +1,0 @@
-"""
-SQLAlchemy models.
-"""
