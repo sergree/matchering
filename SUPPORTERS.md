@@ -6,11 +6,9 @@ You keep our ship afloat.
 
 ## Coffee
 
-- **[Anonymous][Tribute]** ☕☕
+- **[Anonymous][Tribute]** (Subscriber) ☕☕☕☕☕☕☕☕
 - **[Bizabit][Boosty]** ☕☕
-- **[Anonymous][Tribute]** ☕☕
 - **[M. Hauer][Boosty]** ☕
-- **[Anonymous][Tribute]** ☕☕
 - **[Iulian Tudorescu][Boosty]** ☕
 - **[Korneliu][Boosty]** ☕☕☕☕☕☕☕☕
 - **[Stanisław Gruszczyński][Boosty]** ☕☕☕
@@ -92,5 +90,6 @@ Special thanks to the members and the staff of the **[AudioSEX - Professional Au
 [Boosty]: https://boosty.to/sergree
 [PIPME]: https://pip.me/sergree
 [Tribute]: https://t.me/tribute/app?startapp=de85
+
 
 
