@@ -10,16 +10,6 @@
 
 ## Matching + Mastering = ❤️
 
-> ### *Loved Matchering?*
-> 
-> *Check out [**.masterknecht** - free WebAssembly reference mastering tool](https://masterknecht.klangknecht.com/) by [Benjamin Rosseaux](https://www.rosseaux.net/)!*
-> 
-> *Massive props! 🚀*
->
-> *Note: [**.masterknecht**](https://masterknecht.klangknecht.com/) is not related to Matchering's source code at all. It's a completely separate tool written in C and compiled to WebAssembly, which processes all audio locally in your browser without the need for any servers!*
-> 
-> *— Sergree*
-
 **[Matchering 2.0]** is a novel **[Containerized Web Application](#docker-image)**, **[Python Library][PyPI]**, and **[ComfyUI Node](#comfyui-node)** for audio matching and [mastering].
 
 🔥 Also integrated in the **[UVR5 Desktop App](https://ultimatevocalremover.com/)**!
@@ -39,7 +29,7 @@ Our algorithm matches both of these tracks and provides you the mastered **TARGE
 
 [![Benn Jordan Review Video](http://i3.ytimg.com/vi/wZRV2H4PK0Q/hqdefault.jpg)][BennVideo]
 
-You can try out **Matchering** yourself without having to install it, thanks to the hosting provided by **[Songmastr](https://www.songmastr.com/)** and **[Moises](https://moises.ai/)**.
+You can try out **Matchering** yourself without having to install it, thanks to the hosting provided by **[Songmastr](https://www.songmastr.com/)**, **[MVSEP](https://mvsep.com/)** and **[Moises](https://moises.ai/)**.
 
 Watch **[the video][Video]**:
 
