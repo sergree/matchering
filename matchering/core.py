@@ -54,7 +54,7 @@ def process(
     elif isinstance(reference, list):
         references = reference
     else:
-        raise RuntimeError('"reference" must be a string (filename) or a list of those')
+        raise RuntimeError('"reference" must be a string (filename) or a list of strings')
 
     # Get a temporary folder for converting mp3's
     temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
@@ -75,9 +75,10 @@ def process(
         if reference_sample_rate is None:
             reference_sample_rate = ref_sr
 
-    # Analyze the target and the first reference together
+    # Analyze the target and the references together
     if not config.allow_equality:
-        check_equality(target, loaded_references[0])
+        for reference in loaded_references:
+            check_equality(target, reference)
 
     # Validation of the most important conditions
     if (
