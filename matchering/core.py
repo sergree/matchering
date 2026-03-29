@@ -34,7 +34,8 @@ def process(
     reference,
     results: list,
     config: Config = Config(),
-    reference_weights = None,
+    reference_weights_levels = None,
+    reference_weights_frequencies = None,
     preview_target: Result = None,
     preview_result: Result = None,
 ):
@@ -89,15 +90,18 @@ def process(
         raise ModuleError(Code.ERROR_VALIDATION)
 
     # Default weights: equal distribution
-    if reference_weights is None:
-        reference_weights = [1.0 / len(loaded_references)] * len(loaded_references)
+    if reference_weights_levels is None:
+        reference_weights_levels = [1.0 / len(loaded_references)] * len(loaded_references)
+    if reference_weights_frequencies is None:
+        reference_weights_frequencies = [1.0 / len(loaded_references)] * len(loaded_references)
 
     # Process
     result, result_no_limiter, result_no_limiter_normalized = main(
         target,
         loaded_references,
         config,
-        reference_weights=reference_weights,
+        reference_weights_levels=reference_weights_levels,
+        reference_weights_frequencies=reference_weights_frequencies,
         need_default=any(rr.use_limiter for rr in results),
         need_no_limiter=any(not rr.use_limiter and not rr.normalize for rr in results),
         need_no_limiter_normalized=any(

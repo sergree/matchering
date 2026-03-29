@@ -238,7 +238,8 @@ def main(
     target: np.ndarray,
     reference: Union[np.ndarray, list],
     config: Config,
-    reference_weights: list = None,
+    reference_weights_levels: list = None,
+    reference_weights_frequencies: list = None,
     need_default: bool = True,
     need_no_limiter: bool = False,
     need_no_limiter_normalized: bool = False,
@@ -250,12 +251,16 @@ def main(
         references = reference
     
     # Default weights: equal distribution
-    if reference_weights is None:
-        reference_weights = [1.0 / len(references)] * len(references)
+    if reference_weights_levels is None:
+        reference_weights_levels = [1.0 / len(references)] * len(references)
+    if reference_weights_frequencies is None:
+        reference_weights_frequencies = [1.0 / len(references)] * len(references)
     
     # Normalize weights to sum to 1.0
-    weights_sum = sum(reference_weights)
-    reference_weights = [w / weights_sum for w in reference_weights]
+    weights_sum = sum(reference_weights_levels)
+    reference_weights_levels = [w / weights_sum for w in reference_weights_levels]
+    weights_sum = sum(reference_weights_frequencies)
+    reference_weights_frequencies = [w / weights_sum for w in reference_weights_frequencies]
 
     (
         target_mid,
@@ -268,7 +273,7 @@ def main(
         target_divisions,
         target_piece_size,
         reference_match_rms,
-    ) = __match_levels(target, references, reference_weights, config)
+    ) = __match_levels(target, references, reference_weights_levels, config)
 
     del target, references
 
@@ -279,7 +284,7 @@ def main(
         reference_mid_loudest_pieces_list,
         target_side_loudest_pieces,
         reference_side_loudest_pieces_list,
-        reference_weights,
+        reference_weights_frequencies,
         config,
     )
 
