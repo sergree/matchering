@@ -31,9 +31,10 @@ from .dsp import channel_count, size
 
 def process(
     target: str,
-    reference: str,
+    references,
     results: list,
     config: Config = Config(),
+    reference_weights = None,
     preview_target: Result = None,
     preview_result: Result = None,
 ):
@@ -46,6 +47,10 @@ def process(
     if not results:
         raise RuntimeError(f"The result list is empty")
 
+    # Handle single reference for backward compatibility
+    if isinstance(references, str):
+        references = [references]
+
     # Get a temporary folder for converting mp3's
     temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
 
@@ -54,30 +59,41 @@ def process(
     # Analyze the target
     target, target_sample_rate = check(target, target_sample_rate, config, "target")
 
-    # Load the reference
-    reference, reference_sample_rate = load(reference, "reference", temp_folder)
-    # Analyze the reference
-    reference, reference_sample_rate = check(
-        reference, reference_sample_rate, config, "reference"
-    )
+    # Load all references
+    loaded_references = []
+    reference_sample_rate = None
+    for i, reference_path in enumerate(references):
+        ref, ref_sr = load(reference_path, f"reference_{i}", temp_folder)
+        # Analyze the reference
+        ref, ref_sr = check(ref, ref_sr, config, f"reference_{i}")
+        loaded_references.append(ref)
+        if reference_sample_rate is None:
+            reference_sample_rate = ref_sr
 
-    # Analyze the target and the reference together
+    # Analyze the target and the first reference together
     if not config.allow_equality:
-        check_equality(target, reference)
+        check_equality(target, loaded_references[0])
 
     # Validation of the most important conditions
     if (
         not (target_sample_rate == reference_sample_rate == config.internal_sample_rate)
-        or not (channel_count(target) == channel_count(reference) == 2)
-        or not (size(target) > config.fft_size and size(reference) > config.fft_size)
+        or not (channel_count(target) == 2)
+        or not all(channel_count(ref) == 2 for ref in loaded_references)
+        or not (size(target) > config.fft_size)
+        or not all(size(ref) > config.fft_size for ref in loaded_references)
     ):
         raise ModuleError(Code.ERROR_VALIDATION)
+
+    # Default weights: equal distribution
+    if reference_weights is None:
+        reference_weights = [1.0 / len(loaded_references)] * len(loaded_references)
 
     # Process
     result, result_no_limiter, result_no_limiter_normalized = main(
         target,
-        reference,
+        loaded_references,
         config,
+        reference_weights=reference_weights,
         need_default=any(rr.use_limiter for rr in results),
         need_no_limiter=any(not rr.use_limiter and not rr.normalize for rr in results),
         need_no_limiter_normalized=any(
@@ -85,7 +101,7 @@ def process(
         ),
     )
 
-    del reference
+    del loaded_references
     if not (preview_target or preview_result):
         del target
 
