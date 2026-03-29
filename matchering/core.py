@@ -31,7 +31,7 @@ from .dsp import channel_count, size
 
 def process(
     target: str,
-    references,
+    reference,
     results: list,
     config: Config = Config(),
     reference_weights = None,
@@ -48,8 +48,12 @@ def process(
         raise RuntimeError(f"The result list is empty")
 
     # Handle single reference for backward compatibility
-    if isinstance(references, str):
-        references = [references]
+    if isinstance(reference, str):
+        references = [reference]
+    elif isinstance(reference, list):
+        references = reference
+    else:
+        raise RuntimeError('"reference" must be a string (filename) or a list of those')
 
     # Get a temporary folder for converting mp3's
     temp_folder = config.temp_folder if config.temp_folder else get_temp_folder(results)
