@@ -6,6 +6,7 @@ You keep our ship afloat.
 
 ## Coffee
 
+- **[RnbJesus Band][Boosty]** ☕☕
 - **[C M][Boosty]** ☕ *Thank you, I'm still playiing with your program*
 - **[C M][Boosty]** ☕☕ *Thank you for your fascinating program. I've been trying it out.*
 - **[G.Z.][Tribute]** ☕☕☕☕☕
