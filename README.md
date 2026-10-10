@@ -132,6 +132,11 @@ mg.process(
     target="my_song.wav",
     # Some "wet" reference track
     reference="some_popular_song.wav",
+    # optionally, you can provide two or more references:
+    #reference=["some_popular_song.wav", "another_popular_song.wav"],
+    # ... and if you want, also specify their weights for levels=dynamics and frequencies separately
+    #reference_weights_levels=[0.5, 0.5], # the weights of the references are equal (default)
+    #reference_weights_frequencies=[0.0, 1.0], # use the frequency response of the second reference, ignore the first
     # Where and how to save your results
     results=[
         mg.pcm16("my_song_master_16bit.wav"),

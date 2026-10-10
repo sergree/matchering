@@ -19,6 +19,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 
 import numpy as np
+from typing import Union
 from .log import Code, info, debug, debug_line
 from . import Config
 from .utils import to_db
@@ -36,15 +37,16 @@ from .limiter import limit
 
 
 def __match_levels(
-    target: np.ndarray, reference: np.ndarray, config: Config
+    target: np.ndarray, references: list, reference_weights: list, config: Config
 ) -> (
     np.ndarray,
     np.ndarray,
     float,
     np.ndarray,
     np.ndarray,
-    np.ndarray,
-    np.ndarray,
+    list,
+    list,
+    float,
     float,
     float,
 ):
@@ -56,7 +58,17 @@ def __match_levels(
         f"or {config.max_piece_size / config.internal_sample_rate:.2f} seconds"
     )
 
-    reference, final_amplitude_coefficient = normalize_reference(reference, config)
+    # Normalize references and compute weighted average amplitude coefficient
+    normalized_references = []
+    amplitude_coefficients = []
+    for i, reference in enumerate(references):
+        norm_ref, amp_coeff = normalize_reference(reference, config)
+        normalized_references.append(norm_ref)
+        amplitude_coefficients.append(amp_coeff)
+    
+    final_amplitude_coefficient = sum(
+        coeff * weight for coeff, weight in zip(amplitude_coefficients, reference_weights)
+    )
 
     (
         target_mid,
@@ -68,14 +80,28 @@ def __match_levels(
         target_piece_size,
     ) = analyze_levels(target, "target", config)
 
-    (
-        reference_mid,
-        reference_side,
-        reference_mid_loudest_pieces,
-        reference_side_loudest_pieces,
-        reference_match_rms,
-        *_,
-    ) = analyze_levels(reference, "reference", config)
+    # Analyze each reference separately
+    reference_mid_loudest_pieces_list = []
+    reference_side_loudest_pieces_list = []
+    reference_match_rms_list = []
+
+    for i, reference in enumerate(normalized_references):
+        (
+            ref_mid,
+            ref_side,
+            ref_mid_loudest_pieces,
+            ref_side_loudest_pieces,
+            ref_match_rms,
+            *_,
+        ) = analyze_levels(reference, f"reference_{i}", config)
+        reference_mid_loudest_pieces_list.append(ref_mid_loudest_pieces)
+        reference_side_loudest_pieces_list.append(ref_side_loudest_pieces)
+        reference_match_rms_list.append(ref_match_rms)
+
+    # Compute weighted average RMS
+    reference_match_rms = sum(
+        rms * weight for rms, weight in zip(reference_match_rms_list, reference_weights)
+    )
 
     rms_coefficient, target_mid, target_side = get_rms_c_and_amplify_pair(
         target_mid,
@@ -96,8 +122,8 @@ def __match_levels(
         final_amplitude_coefficient,
         target_mid_loudest_pieces,
         target_side_loudest_pieces,
-        reference_mid_loudest_pieces,
-        reference_side_loudest_pieces,
+        reference_mid_loudest_pieces_list,
+        reference_side_loudest_pieces_list,
         target_divisions,
         target_piece_size,
         reference_match_rms,
@@ -108,27 +134,28 @@ def __match_frequencies(
     target_mid: np.ndarray,
     target_side: np.ndarray,
     target_mid_loudest_pieces: np.ndarray,
-    reference_mid_loudest_pieces: np.ndarray,
+    reference_mid_loudest_pieces_list: list,
     target_side_loudest_pieces: np.ndarray,
-    reference_side_loudest_pieces: np.ndarray,
+    reference_side_loudest_pieces_list: list,
+    reference_weights: list,
     config: Config,
 ) -> (np.ndarray, np.ndarray):
     debug_line()
     info(Code.INFO_MATCHING_FREQS)
 
-    mid_fir = get_fir(
-        target_mid_loudest_pieces, reference_mid_loudest_pieces, "mid", config
-    )
-    side_fir = get_fir(
-        target_side_loudest_pieces, reference_side_loudest_pieces, "side", config
-    )
+    # Extract FIRs from each reference
+    mid_firs = [
+        get_fir(target_mid_loudest_pieces, ref_mid_loudest_pieces, "mid", config)
+        for ref_mid_loudest_pieces in reference_mid_loudest_pieces_list
+    ]
+    side_firs = [
+        get_fir(target_side_loudest_pieces, ref_side_loudest_pieces, "side", config)
+        for ref_side_loudest_pieces in reference_side_loudest_pieces_list
+    ]
 
-    del (
-        target_mid_loudest_pieces,
-        reference_mid_loudest_pieces,
-        target_side_loudest_pieces,
-        reference_side_loudest_pieces,
-    )
+    # Combine FIRs with weights
+    mid_fir = sum(fir * weight for fir, weight in zip(mid_firs, reference_weights))
+    side_fir = sum(fir * weight for fir, weight in zip(side_firs, reference_weights))
 
     result, result_mid = convolve(target_mid, mid_fir, target_side, side_fir)
 
@@ -209,34 +236,55 @@ def __finalize(
 
 def main(
     target: np.ndarray,
-    reference: np.ndarray,
+    reference: Union[np.ndarray, list],
     config: Config,
+    reference_weights_levels: list = None,
+    reference_weights_frequencies: list = None,
     need_default: bool = True,
     need_no_limiter: bool = False,
     need_no_limiter_normalized: bool = False,
 ) -> (np.ndarray, np.ndarray, np.ndarray):
+    # Handle single reference or list of references
+    if isinstance(reference, np.ndarray):
+        references = [reference]
+    else:
+        references = reference
+    
+    # Default weights: equal distribution
+    if reference_weights_levels is None:
+        reference_weights_levels = [1.0 / len(references)] * len(references)
+    if reference_weights_frequencies is None:
+        reference_weights_frequencies = [1.0 / len(references)] * len(references)
+    
+    # Normalize weights to sum to 1.0
+    weights_sum = sum(reference_weights_levels)
+    reference_weights_levels = [w / weights_sum for w in reference_weights_levels]
+    weights_sum = sum(reference_weights_frequencies)
+    reference_weights_frequencies = [w / weights_sum for w in reference_weights_frequencies]
+
     (
         target_mid,
         target_side,
         final_amplitude_coefficient,
         target_mid_loudest_pieces,
         target_side_loudest_pieces,
-        reference_mid_loudest_pieces,
-        reference_side_loudest_pieces,
+        reference_mid_loudest_pieces_list,
+        reference_side_loudest_pieces_list,
         target_divisions,
         target_piece_size,
         reference_match_rms,
-    ) = __match_levels(target, reference, config)
+    ) = __match_levels(target, references, reference_weights_levels, config)
 
-    del target, reference
+    del target, references
 
     result_no_limiter, result_no_limiter_mid = __match_frequencies(
         target_mid,
         target_side,
         target_mid_loudest_pieces,
-        reference_mid_loudest_pieces,
+        reference_mid_loudest_pieces_list,
         target_side_loudest_pieces,
-        reference_side_loudest_pieces,
+        reference_side_loudest_pieces_list,
+        reference_weights_frequencies,
         config,
     )
 
@@ -244,9 +292,9 @@ def main(
         target_mid,
         target_side,
         target_mid_loudest_pieces,
-        reference_mid_loudest_pieces,
+        reference_mid_loudest_pieces_list,
         target_side_loudest_pieces,
-        reference_side_loudest_pieces,
+        reference_side_loudest_pieces_list,
     )
 
     result_no_limiter = __correct_levels(
